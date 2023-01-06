@@ -1,50 +1,77 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
+import face from '/assets/_male_intellectual_face_in_paper_art.png'
+import Clients from '../components/Clients.astro'
 ---
 
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/pages/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<html lang='en'>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <main>
+      <div class='hero neu-box'>
+        <div>
+          <p>
+            <span class='entry'>As a frontend aficionado</span> with 25 years of
+            experience, I bring a wealth of knowledge and expertise to any project.
+          </p>
+          <p
+            >I have a strong understanding of both frontend and backend
+            technologies, as well as a keen eye for design and user experience.
+            My extensive experience allows me to quickly understand the needs of
+            a project and deliver high-quality solutions that meet or exceed
+            expectations. I am a valuable asset to any team looking to improve
+            their web and app development process.</p
+          >
+        </div>
+        <div><img src={face} alt='Hero image' width='400' /></div>
+      </div>
+      <Clients />
+    </main>
+    <Footer />
+    <Header title={SITE_TITLE} />
+    <style lang='scss'>
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: rgb(37, 59, 85);
+        text-shadow: 1px 0px 1px hsl(0deg 0% 100% / 15%);
+      }
+      p {
+        color: var(--color-dark);
+      }
+      .hero {
+        display: flex;
+        align-items: center;
+        p {
+          padding-inline-start: 3em;
+          .entry {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 2rem;
+            color: var(--color-orange-full);
+            text-shadow: 1px 1px 1px hsl(0 0% 0% / 0.2);
+          }
+          line-height: 2rem;
+        }
+        img {
+          mix-blend-mode: darken;
+          filter: hue-rotate(145deg) grayscale(0) brightness(6);
+          animation: heroimg 5s forwards 1s;
+        }
+      }
+      @keyframes heroimg {
+        0% {
+          filter: hue-rotate(145deg) grayscale(0) brightness(6);
+        }
+        100% {
+          filter: hue-rotate(145deg) grayscale(0) brightness(1);
+        }
+      }
+    </style>
+  </body></html
+>

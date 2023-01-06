@@ -1,25 +1,72 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../config';
+import HeaderLink from './HeaderLink.astro'
+import { SITE_TITLE } from '../config'
+import UiSwitch from './Uiswitch.astro'
 ---
 
 <header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-	</nav>
+  <h1 title={SITE_TITLE} class='logo'><a href='/'>UX/FULLSTACK DEV</a></h1>
+  <nav>
+    <HeaderLink href='/'>Home</HeaderLink>
+    <HeaderLink href='/blog'>Blog</HeaderLink>
+    <HeaderLink href='/about'>About</HeaderLink>
+    <HeaderLink href='https://twitter.com/astrodotbuild' target='_blank'
+      >Twitter</HeaderLink
+    >
+    <HeaderLink href='https://github.com/withastro/astro' target='_blank'
+      >GitHub</HeaderLink
+    >
+    <UiSwitch />
+  </nav>
 </header>
-<style>
-	header {
-		margin: 0em 0 2em;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
+<style lang='scss'>
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 80px;
+    background-color: hsl(166, 8%, 60%, 0.8);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0rem 2rem;
+    border-bottom: 1px solid hsl(0 0% 100% / 0.2);
+    backdrop-filter: blur(5px);
+    box-shadow: 5px 5px 5px hsl(166deg 5% 60%) inset,
+      -15px -15px 20px hsl(166deg 8% 80% / 50%) inset;
+
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      background-color: unset;
+      color: var(--color-dark);
+    }
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+    h1.logo {
+      white-space: nowrap;
+      color: var(--color-dark);
+      font-size: 2rem;
+      cursor: pointer;
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      border-bottom: 1px solid hsla(0deg, 0%, 0%, 0.3);
+      width: 100%;
+    }
+  }
 </style>

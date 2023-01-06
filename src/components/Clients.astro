@@ -1,0 +1,53 @@
+---
+import aktieansvar from '/assets/clients/AktieAnsvar-logo-ligg.png'
+import akzonobel from '/assets/clients/akzonobel.png'
+import gp from '/assets/clients/GP.png'
+import scania from '/assets/clients/scania.png'
+import stena from '/assets/clients/stena.png'
+import svt from '/assets/clients/svt.png'
+import volvo from '/assets/clients/Volvo.png'
+import akelius from '/assets/clients/akelius.png'
+import skf from '/assets/clients/skf.png'
+---
+
+<aside class='neu-box'>
+  <div><img width='250' src={aktieansvar} alt='Aktie-ansvar' /></div>
+  <div><img width='250' src={akzonobel} alt='Akzo Nobel' /></div>
+  <div><img width='250' src={gp} alt='Göteborgs-posten' /></div>
+  <div><img width='250' src={scania} alt='Scania' /></div>
+  <div><img width='250' src={stena} alt='Stena' /></div>
+  <div><img width='250' src={svt} alt='Svt' /></div>
+  <div><img width='250' src={volvo} alt='Volvo' /></div>
+  <div
+    ><img
+      width='250'
+      src={akelius}
+      alt='Akelius'
+      style='padding-inline: 1rem'
+    />
+  </div>
+  <div
+    ><img width='250' src={skf} alt='SKF' style='padding-inline: 0.5rem' />
+  </div>
+</aside>
+<style lang='scss'>
+  aside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    // grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 1rem;
+    margin-block: 3rem;
+    padding-block: 1rem;
+    border-top: 3px solid hsl(30, 4%, 100%, 0.5);
+    border-bottom: 3px solid hsl(30, 4%, 20%, 0.5);
+    img {
+      display: block;
+      max-width: 100%;
+      max-height: 2rem;
+      object-fit: scale-down;
+      filter: grayscale(1);
+    }
+  }
+</style>

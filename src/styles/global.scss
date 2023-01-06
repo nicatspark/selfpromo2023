@@ -1,0 +1,128 @@
+/*
+  The CSS in this style tag is based off of Bear Blog's default CSS.
+  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
+  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ */
+@import 'https://unpkg.com/open-props';
+@import 'https://unpkg.com/open-props/normalize.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;1,200&family=Playfair+Display:ital@0;1&display=swap');
+
+:root {
+  --header-height: 80px;
+  /* colors */
+  --color-dark: hsl(30, 4%, 20%);
+  --color-calm-dark: hsl(189, 65%, 28%);
+  --color-calm-neutral: hsl(166, 8%, 60%);
+  --color-orange-full: hsl(34, 87%, 53%);
+  --color-orange-bright: hsl(18, 86%, 54%);
+  /* bgcolors */
+  --bg-color: #cbd9e1;
+  --neu-light: #e9faff;
+  --neu-dark: #adb8bf;
+  --neu-radius: 15px;
+  /* fonts */
+  --sans-serif: 'Barlow Condensed', sans-serif;
+  --serif: 'Playfair Display', serif;
+}
+
+body {
+  background-color: var(--bg-color); /*var(--gradient-9);*/
+  font-family: var(--serif);
+  color: hsl(172, 9%, 37%); //var(--color-dark);
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: var(--color-calm-dark);
+  font-weight: 400;
+  // text-decoration: underline;
+  background-color: hsl(53deg 87% 53% / 43%);
+  margin-inline: 0.1rem;
+}
+
+:where(p) {
+  line-height: 2em;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--sans-serif);
+  color: var(--color-dark);
+}
+
+main {
+  width: min(100%, 960px);
+  margin: 0 auto 4rem auto;
+  padding-top: calc(var(--header-height) + 2rem);
+  padding-inline: 1rem;
+}
+
+.neu-box {
+  border-radius: var(--neu-radius);
+  background: var(--bg-color);
+  box-shadow: 30px 30px 60px var(--neu-dark), -30px -30px 60px var(--neu-light);
+}
+
+/* body {
+  font-family: Verdana, sans-serif;
+  margin: auto;
+  padding: 20px;
+  max-width: 65ch;
+  text-align: left;
+  background-color: #fff;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+  color: #444;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+  color: #222;
+}
+a {
+  color: #3273dc;
+}
+nav a {
+  margin-right: 10px;
+}
+textarea {
+  width: 100%;
+  font-size: 16px;
+}
+input {
+  font-size: 16px;
+}
+content {
+  line-height: 1.6;
+}
+table {
+  width: 100%;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+code {
+  padding: 2px 5px;
+  background-color: #f2f2f2;
+}
+pre {
+  padding: 1rem;
+}
+pre > code {
+  all: unset;
+}
+blockquote {
+  border: 1px solid #999;
+  color: #222;
+  padding: 2px 0px 2px 20px;
+  margin: 0px;
+  font-style: italic;
+} */
