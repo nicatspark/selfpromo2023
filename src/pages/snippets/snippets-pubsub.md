@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'Pub/sub pattern'
 description: 'Javascript patterns - pub/sub'
 pubDate: 'Jan 7 2023'

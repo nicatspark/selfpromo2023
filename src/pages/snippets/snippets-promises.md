@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'Javascript promise snippets'
 description: 'Promises promises'
 pubDate: 'Jan 7 2023'

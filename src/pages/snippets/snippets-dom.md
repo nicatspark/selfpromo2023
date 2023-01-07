@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'Javascript interacting with the DOM'
 description: 'Javascript date'
 pubDate: 'Jan 7 2023'

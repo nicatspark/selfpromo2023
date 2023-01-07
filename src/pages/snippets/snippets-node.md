@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'Node js snippets'
 description: 'Node'
 pubDate: 'Jan 7 2023'

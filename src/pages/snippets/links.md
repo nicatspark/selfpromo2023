@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'Usefull links'
 description: 'Micro frontends links'
 pubDate: 'Jan 6 2023'

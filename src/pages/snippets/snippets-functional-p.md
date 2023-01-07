@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'Functional programing'
 description: ''
 pubDate: 'Jan 7 2023'

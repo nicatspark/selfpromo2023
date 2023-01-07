@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'Javascript date helpers'
 description: 'Javascript date'
 pubDate: 'Jan 7 2023'

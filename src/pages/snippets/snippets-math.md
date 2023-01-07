@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'Javascript math'
 description: 'Good at math?'
 pubDate: 'Jan 7 2023'

@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'SSH'
 description: 'Usefull SSH stuff'
 pubDate: 'Jan 6 2023'

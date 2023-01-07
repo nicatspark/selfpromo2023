@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'The powerful Javascript Proxy API'
 description: 'Usefull proxy API code'
 pubDate: 'Jan 7 2023'

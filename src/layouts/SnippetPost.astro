@@ -37,7 +37,7 @@ const {
   <body>
     <Header />
     <main>
-      <article>
+      <article class='snippet'>
         {heroImage && <img width={720} height={360} src={heroImage} alt='' />}
         <h2 class='title'>{title}</h2>
         {pubDate && <time>{pubDate}</time>}
@@ -48,7 +48,6 @@ const {
             </div>
           )
         }
-        <hr />
         <Toc client:load />
         <slot />
       </article>

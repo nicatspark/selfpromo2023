@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'Trickeries with CSS'
 description: 'Tricky CSS or CSS that trick you up'
 pubDate: 'Jan 7 2023'
@@ -38,7 +38,7 @@ a {
 }
 ```
 
-###### Clever multicolumn responsive layout with flex.
+##### Clever multicolumn responsive layout with flex
 
 ```css
 .split {
@@ -222,7 +222,7 @@ font-size: calc(
 font-size: clamp(min, viewport-width-unit, max);
 ```
 
-##### Image grid with random height (Mansory Layout)
+##### Image grid with random height (aka maisonary layout grid)
 
 ```html
 <div class="container">
@@ -245,7 +245,7 @@ font-size: clamp(min, viewport-width-unit, max);
   }
   .item {
     display: block;
-    // match gap size
+    /* match gap size */
     margin-bottom: 15px;
   }
 </style>
@@ -343,12 +343,12 @@ nav h1 {
 }
 ```
 
-The :where works similarly but the specificity is always zero
-where the :is specificity is of the overall selector.
+The `:where` works similarly but the specificity is always zero
+where the `:is` specificity is of the overall selector.
 
 ##### CSS Pie Timer
 
-My [codepen example](https://codepen.io/nicolashervy/pen/KKyMXVg)
+Here is my [codepen example](https://codepen.io/nicolashervy/pen/KKyMXVg)  
 Note: Won't work in firefox just yet.
 
 ```css

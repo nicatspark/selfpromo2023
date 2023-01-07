@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'Check out these npm packages if have not'
 description: 'Usefull npm packages'
 pubDate: 'Jan 6 2023'

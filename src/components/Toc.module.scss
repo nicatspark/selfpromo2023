@@ -1,0 +1,19 @@
+.toccontainer {
+  position: fixed;
+  top: 300px;
+  right: 0;
+  max-width: 300px;
+  background-color: white;
+  box-shadow: 3px 3px 8px hsl(0 0% 0% / 0.3);
+  padding: 0.5em;
+  font-family: var(--sans-serif);
+  ul {
+    padding: 0;
+    list-style: none;
+    li {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}

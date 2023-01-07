@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'Git stuff'
 description: 'Usefull git commands'
 pubDate: 'Jan 6 2023'

@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'Regex patterns'
 description: ''
 pubDate: 'Jan 7 2023'

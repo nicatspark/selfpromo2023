@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'The different shapes of async functions'
 description: 'Since we mostly use one or two of these it is easy to forget the syntaax sometimes.'
 pubDate: 'Jan 7 2023'

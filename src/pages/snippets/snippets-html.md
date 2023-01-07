@@ -1,5 +1,5 @@
 ---
-layout: '../../layouts/BlogPost.astro'
+layout: '../../layouts/SnippetPost.astro'
 title: 'The lesser used HTML'
 description: 'Think you know all about HTML?'
 pubDate: 'Jan 7 2023'

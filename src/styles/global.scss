@@ -80,6 +80,10 @@ main {
   color: var(--color-dark);
 }
 
+pre + pre {
+  margin-top: 1rem;
+}
+
 :has(:not(li) > time) time {
   font-family: var(--sans-serif);
   font-size: 0.7rem;
@@ -112,6 +116,20 @@ pre {
   font-size: 0.8em;
   border-radius: 0.3rem;
   min-width: min(400px, 100%);
+}
+
+article.snippet {
+  h2 {
+    padding: 0.5em;
+    background-color: var(--color-orange-full);
+    display: table;
+  }
+  time {
+    background-color: var(--color-orange-full);
+    padding: 0.3rem;
+    position: relative;
+    top: -1rem;
+  }
 }
 
 /* body {
