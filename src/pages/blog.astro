@@ -10,6 +10,11 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
     new Date(b.frontmatter.pubDate).valueOf() -
     new Date(a.frontmatter.pubDate).valueOf()
 )
+const snippets = (await Astro.glob('./snippets/*.{md,mdx}')).sort(
+  (a, b) =>
+    new Date(b.frontmatter.pubDate).valueOf() -
+    new Date(a.frontmatter.pubDate).valueOf()
+)
 ---
 
 <!DOCTYPE html>
@@ -77,7 +82,25 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
       </section>
       <section class='neu-box'>
         <h3>Code</h3>
-        <ul></ul>
+        <ul>
+          {
+            snippets.map((post) => (
+              <li>
+                <time datetime={post.frontmatter.pubDate}>
+                  {new Date(post.frontmatter.pubDate).toLocaleDateString(
+                    'en-us',
+                    {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    }
+                  )}
+                </time>
+                <a href={post.url}>{post.frontmatter.title}</a>
+              </li>
+            ))
+          }
+        </ul>
       </section>
     </main>
     <Footer />

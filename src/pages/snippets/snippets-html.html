@@ -1,0 +1,68 @@
+<!-- Tooltip -->
+<p>
+<abbr title="World Health Organization">WHO</abbr> was founded in 1948.
+</p>
+<p title="Free Web tutorials">W3Schools</p>
+
+<!-- Download-->
+
+<a href="/images/myw3schoolsimage.jpg" download></a>
+<!-- and -->
+<a href="link/to/your/file" download="filename">Download link</a>
+
+<!-- Word break -->
+<p>This is a veryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryvery<wbr>longwordthatwillbreakatspecific<wbr>placeswhenthebrowserwindowisresized.</p>
+
+<!-- Text direction -->
+<p dir="auto">This text is following dir=auto</p>
+
+<!-- Basic Accordion -->
+<details>
+    <summary>Epcot Center</summary>
+    <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
+  </details>
+
+  <!-- Content editable -->
+  <p contenteditable='true'>This is a paragraph. Click the button to make me editable.</p>
+  <script>
+      const x = document.getElementById("myP").isContentEditable;
+  </script>
+
+<!-- add captions -->
+<video width="320" height="240" controls>
+    <source src="forrest_gump.mp4" type="video/mp4">
+    <source src="forrest_gump.ogg" type="video/ogg">
+    <track src="fgsubtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+    <track src="fgsubtitles_no.vtt" kind="subtitles" srclang="no" label="Norwegian">
+  </video>
+  <p>With just HTML, you can add captions to your video files using the <track> element.
+    Use the src attribute to point to the subtitles file and use the srclang attribute to set the language.</p>
+
+<!-- Lazy loading -->
+<img src="/w3images/wedding.jpg" alt="Wedding" style="width:100%">
+<img src="/w3images/rocks.jpg" alt="Rocks" style="width:100%">
+
+<!-- off-screen images -->
+<img src="/w3images/paris.jpg" alt="Paris" style="width:100%" loading="lazy">
+<img src="/w3images/nature.jpg" alt="Nature" style="width:100%" loading="lazy">
+<img src="/w3images/underwater.jpg" alt="Underwater" style="width:100%" loading="lazy">
+<img src="/w3images/ocean.jpg" alt="Ocean" style="width:100%" loading="lazy">
+<img src="/w3images/mountainskies.jpg" alt="Mountains" style="width:100%" loading="lazy">
+
+<!-- Base url -->
+<head>
+    <base href="https://www.w3schools.com/" target="_blank">
+  </head>
+  
+  <body>
+  <img src="images/stickman.gif" width="24" height="39" alt="Stickman">
+  <a href="tags/tag_base.asp">HTML base Tag</a>
+  </body>
+
+<!-- Controlling Context Menu and Paste -->
+<input type="text" onpaste="return false" value="Paste something in here">
+<div oncontextmenu="myFunction()" contextmenu="mymenu">
+
+<!-- Spellcheck -->
+<p contenteditable="true" spellcheck="true">This is a praggagraph. It is editable. Try to change the text.</p>
+
