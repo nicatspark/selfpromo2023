@@ -17,7 +17,7 @@ pubDate: 'Jan 7 2023'
 })
 ```
 
-##### all
+##### All
 
 This snippet returns true if the predicate function returns true for all elements in a collection and false otherwise. You can omit the second argument fn if you want to use Boolean as a default value.
 
@@ -28,7 +28,7 @@ all([4, 2, 3], (x) => x > 1) // true
 all([1, 2, 3]) // true
 ```
 
-##### approximatelyEqual
+##### Approximately equal
 
 This snippet checks whether two numbers are approximately equal to each other, with a small difference.
 
@@ -53,7 +53,7 @@ castArray('foo') // ['foo']
 castArray([1]) // [1]
 ```
 
-##### 16. compact
+##### Compact
 
 This snippet removes false values from an array.} arr
 
@@ -64,7 +64,7 @@ compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34])
 // [ 1, 2, 3, 'a', 's', 34 ]
 ```
 
-##### CountOccurrences
+##### Count occurrences
 
 This snippet counts the occurrences of a value in an array.
 
@@ -74,7 +74,7 @@ const countOccurrences = (arr, val) =>
 countOccurrences([1, 1, 2, 1, 2, 3], 1) // 3
 ```
 
-##### DeepFlatten
+##### Deep flatten
 
 This snippet flattens an array recursively.
 
@@ -98,7 +98,7 @@ const difference = (a, b) => {
 difference([1, 2, 3], [1, 2, 4]) // [3]
 ```
 
-##### DifferenceWith
+##### Difference with
 
 This snippet removes the values for which the comparator function returns false.
 
@@ -114,7 +114,7 @@ differenceWith(
 // [1, 1.2]
 ```
 
-##### Drop Elements
+##### Drop elements
 
 This snippet returns a new array with n elements removed from the left.
 
@@ -126,7 +126,7 @@ drop([1, 2, 3], 2) // [3]
 drop([1, 2, 3], 42) // []
 ```
 
-##### 32. dropRight
+##### Drop right
 
 This snippet returns a new array with n elements removed from the right.
 
@@ -138,7 +138,7 @@ dropRight([1, 2, 3], 2) // [1]
 dropRight([1, 2, 3], 42) // []
 ```
 
-##### 33. dropRightWhile
+##### Drop right while
 
 This snippet removes elements from the right side of an array until the passed function returns true.
 
@@ -151,7 +151,7 @@ const dropRightWhile = (arr, func) => {
 dropRightWhile([1, 2, 3, 4], (n) => n < 3) // [1, 2]
 ```
 
-##### DropWhile
+##### Drop while
 
 This snippet removes elements from an array until the passed function returns true.
 
@@ -164,7 +164,7 @@ const dropWhile = (arr, func) => {
 dropWhile([1, 2, 3, 4], (n) => n >= 3) // [3,4]
 ```
 
-##### FindLast
+##### Find last
 
 This snippet returns the last element for which a given function returns a truthy value.
 
@@ -174,7 +174,7 @@ const findLast = (arr, fn) => arr.filter(fn).pop()
 findLast([1, 2, 3, 4], (n) => n % 2 === 1) // 3
 ```
 
-##### 39. flatten
+##### Flatten
 
 This snippet flattens an array up to a specified depth using recursion.
 
@@ -190,7 +190,7 @@ flatten([1, [2], 3, 4]) // [1, 2, 3, 4]
 flatten([1, [2, [3, [4, 5], 6], 7], 8], 2) // [1, 2, 3, [4, 5], 6, 7, 8]
 ```
 
-##### 40. forEachRight
+##### For each right
 
 This snippet executes a function for each element of an array starting from the array’s last element.
 
@@ -200,7 +200,7 @@ const forEachRight = (arr, callback) => arr.slice(0).reverse().forEach(callback)
 forEachRight([1, 2, 3, 4], (val) => console.log(val)) // '4', '3', '2', '1'
 ```
 
-##### IndexOfAll
+##### IndexOf all
 
 This snippet can be used to get all indexes of a value in an array, which returns an empty array, in case this value is not included in it.
 
@@ -236,7 +236,7 @@ const intersection = (a, b) => {
 intersection([1, 2, 3], [4, 3, 2]) // [2, 3]
 ```
 
-##### IntersectionBy
+##### Intersection by
 
 This snippet can be used to return a list of elements that exist in both arrays, after a particular function has been executed to each element of both arrays.
 
@@ -249,7 +249,7 @@ const intersectionBy = (a, b, fn) => {
 intersectionBy([2.1, 1.2], [2.3, 3.4], Math.floor) // [2.1]
 ```
 
-##### IntersectionWith
+##### Intersection with
 
 This snippet can be used to return a list of elements that exist in both arrays by using a comparator function.
 
@@ -264,7 +264,7 @@ intersectionWith(
 ) // [1.5, 3, 0]
 ```
 
-##### IsAnagram
+##### Is anagram
 
 This snippet can be used to check whether a particular string is an anagram with another string.
 
@@ -283,7 +283,7 @@ const isAnagram = (str1, str2) => {
 isAnagram('iceman', 'cinema') // true
 ```
 
-##### IsArrayLike
+##### Is array like
 
 This snippet can be used to check if a provided argument is iterable like an array.
 
@@ -320,7 +320,7 @@ const negate =
 ;[1, 2, 3, 4, 5, 6].filter(negate((n) => n % 2 === 0)) // [ 1, 3, 5 ]
 ```
 
-##### RandomIntArrayInRange
+##### Random integer array in range
 
 This snippet can be used to generate an array with n random integers in a specified range.
 
@@ -344,7 +344,7 @@ const sample = (arr) => arr[Math.floor(Math.random() * arr.length)]
 sample([3, 7, 9, 11]) // 9
 ```
 
-##### SampleSize
+##### Sample size
 
 This snippet can be used to get n random elements from unique positions from an array up to the size of the array. Elements in the array are shuffled using the Fisher-Yates algorithm.
 
@@ -446,7 +446,7 @@ const union = (a, b) => Array.from(new Set([...a, ...b]))
 union([1, 2, 3], [4, 3, 2]) // [1,2,3,4]
 ```
 
-##### UniqueElements
+##### Unique elements
 
 This snippet uses ES6 Set and the …rest operator to get every element only once.
 

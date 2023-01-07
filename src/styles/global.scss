@@ -57,6 +57,7 @@ a:active {
   font-family: var(--sans-serif);
   letter-spacing: 0.05em;
   color: var(--color-dark);
+  padding: 0.8em 0;
 }
 
 main {
@@ -70,6 +71,47 @@ main {
   border-radius: var(--neu-radius);
   background: var(--bg-color);
   box-shadow: 8px 8px 16px var(--neu-dark), -8px -8px 16px var(--neu-light);
+}
+
+/* blog specific */
+:where(:not(pre) > code) {
+  background-color: var(--color-calm-neutral);
+  font-size: 0.9em;
+  color: var(--color-dark);
+}
+
+:has(:not(li) > time) time {
+  font-family: var(--sans-serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+h5 + p {
+  margin-top: -1.5em;
+}
+
+h6 {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  & + h5 {
+    margin-top: -1.5rem;
+  }
+}
+
+pre + h5,
+pre + h6 {
+  margin-top: 2em;
+}
+
+pre {
+  padding: 0.5em;
+  background-color: var(--color-dark) !important;
+  font-size: 0.8em;
+  border-radius: 0.3rem;
+  min-width: min(400px, 100%);
 }
 
 /* body {

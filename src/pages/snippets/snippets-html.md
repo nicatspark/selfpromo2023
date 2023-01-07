@@ -7,14 +7,18 @@ pubDate: 'Jan 7 2023'
 
 ##### Tooltip
 
-````html
+```html
 <p> <abbr title="World Health Organization">WHO</abbr> was founded in 1948. </p>
 <p title="Free Web tutorials">W3Schools</p>
-``` ##### Download ```html
+```
+
+##### Download
+
+```html
 <a href="/images/myw3schoolsimage.jpg" download></a>
 <!-- or -->
 <a href="link/to/your/file" download="filename">Download link</a>
-````
+```
 
 ##### Word break
 
@@ -33,7 +37,7 @@ pubDate: 'Jan 7 2023'
 
 ##### Basic Accordion
 
-````html
+```html
 <details>
   <summary>Epcot Center</summary>
   <p
@@ -42,19 +46,22 @@ pubDate: 'Jan 7 2023'
     special events.</p
   >
 </details>
+```
 
-##### Content editable ```html
+##### Content editable
+
+```html
 <p contenteditable="true"
   >This is a paragraph. Click the button to make me editable.</p
 >
 <script>
   const x = document.getElementById('myP').isContentEditable
 </script>
-````
+```
 
 ##### add captions
 
-````html
+```html
 <video width="320" height="240" controls>
   <source src="forrest_gump.mp4" type="video/mp4" />
   <source src="forrest_gump.ogg" type="video/ogg" />
@@ -76,10 +83,18 @@ pubDate: 'Jan 7 2023'
   <track /> element. Use the src attribute to point to the subtitles file and
   use the srclang attribute to set the language.</p
 >
-``` ##### Lazy loading ```html
+```
+
+##### Lazy loading
+
+```html
 <img src="/w3images/wedding.jpg" alt="Wedding" style="width: 100%" />
 <img src="/w3images/rocks.jpg" alt="Rocks" style="width: 100%" />
-``` ##### off-screen images ```html
+```
+
+##### off-screen images
+
+```html
 <img src="/w3images/paris.jpg" alt="Paris" style="width: 100%" loading="lazy" />
 <img
   src="/w3images/nature.jpg"
@@ -100,11 +115,11 @@ pubDate: 'Jan 7 2023'
   style="width: 100%"
   loading="lazy"
 />
-````
+```
 
 ##### Base url
 
-````html
+```html
 <head>
   <base href="https://www.w3schools.com/" target="_blank" />
 </head>
@@ -113,13 +128,20 @@ pubDate: 'Jan 7 2023'
   <img src="images/stickman.gif" width="24" height="39" alt="Stickman" />
   <a href="tags/tag_base.asp">HTML base Tag</a>
 </body>
-``` ##### Controlling Context Menu and Paste ```html
+```
+
+##### Controlling Context Menu and Paste
+
+```html
 <input type="text" onpaste="return false" value="Paste something in here" />
-<div oncontextmenu="myFunction()" contextmenu="mymenu">
-  ``` ##### Spellcheck ```html
-  <p contenteditable="true" spellcheck="true"
-    >This is a praggagraph. It is editable. Try to change the text.</p
-  >
+<div oncontextmenu="myFunction()" contextmenu="mymenu"></div>
+```
+
+##### Spellcheck
+
+```html
+<p contenteditable="true" spellcheck="true"
+  >This is a praggagraph. It is editable. Try to change the text.</p
+>
 </div>
 ```
-````

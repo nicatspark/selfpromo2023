@@ -5,7 +5,7 @@ description: 'Usefull proxy API code'
 pubDate: 'Jan 7 2023'
 ---
 
-Examples from <https://medium.com/javascript-in-plain-english/the-proxy-api-is-so-powerful-that-every-web-developer-should-master-it-9bdc71a4032c>
+Examples from [this Medium article](https://medium.com/javascript-in-plain-english/the-proxy-api-is-so-powerful-that-every-web-developer-should-master-it-9bdc71a4032c)
 
 ```javascript
 const p = new Proxy(target, handler)
@@ -31,19 +31,19 @@ console.log(proxy.age) // log: Accessing the age property \n undefined
 When creating a Proxy object, in addition to defining the get trap,
 we can also define other traps, such as has, set, delete, apply or ownKeys, etc.
 
-handler.get: is a trap for getting a property value.
-handler.set: is a trap for setting a property value.
-handler.has: is a trap for the in operator.
-handler.deleteProperty: is a trap for the delete operator.
-handler.ownKeys: is a trap for Reflect.ownKeys().
+`handler.get` is a trap for getting a property value.
+`handler.set` is a trap for setting a property value.
+`handler.has` is a trap for the in operator.
+`handler.deleteProperty` is a trap for the delete operator.
+`handler.ownKeys` is a trap for `Reflect.ownKeys()`.
 
 Note that all traps are optional. If no trap is defined, the default behavior
 of the source object is preserved. After reading the introduction of the traps
 above, do you think the Proxy API is very powerful?
 
-##### Example 1
+###### Example 1
 
-Enhanced Array
+##### Enhanced Array
 
 ```javascript
 function enhancedArray(arr) {
@@ -83,9 +83,9 @@ console.log(arr['2:4']) // [ 8, 5 ]
 console.log(arr['-2:3']) // [ 5, 2, 10, 6, 8 ]
 ```
 
-##### Example 2
+###### Example 2
 
-Enhanced Object
+##### Enhanced Object
 
 ```javascript
 const enhancedObject = (target) =>
@@ -126,9 +126,9 @@ console.log(data.theme) // light
 console.log(data.address) // null
 ```
 
-##### Example 3
+###### Example 3
 
-Freeze Object
+##### Freeze Object
 
 ```javascript
 const man = { name: 'Joe' }
@@ -160,9 +160,9 @@ freezedMan.age = 30
 console.log(freezedMan) // { name: 'Joe' }
 ```
 
-##### Example 4
+###### Example 4
 
-Trace Method Call
+##### Trace Method Call
 
 ```javascript
 function traceMethodCall(obj) {
@@ -195,9 +195,9 @@ tracedObj.say('Hello Proxy API')
 
 In fact, in addition to being able to track method calls, we can also track access to properties in object.
 
-##### Example 5
+###### Example 5
 
-Trace Property Access
+##### Trace Property Access
 
 ```javascript
 function tracePropertyAccess(obj, propKeys) {
@@ -227,9 +227,9 @@ console.log(tracedMan.age) // undefined
 tracedMan.name = 'Lolo' // SET name=Lolo
 ```
 
-##### Example 6
+###### Example 6
 
-Hide Property
+###### Hide Property
 
 ```javascript
 function hideProperty(target, prefix = '_') {
@@ -254,9 +254,9 @@ console.log('_pwd' in safeMan) // false
 console.log(Object.keys(safeMan)) // [ 'name' ]
 ```
 
-##### Example 7
+###### Example 7
 
-Sandbox
+##### Sandbox
 
 For JavaScript, the sandbox is not a sandbox in the traditional sense,
 it is just a security mechanism to run some untrusted code in the sandbox,
@@ -292,13 +292,13 @@ let code = 'log();console.log(name)'
 sandbox(code)(man)
 ```
 
-##### Example 8
+###### Example 8
 
-Builder
+##### Builder pattern
 
 The builder pattern decomposes a complex object into relatively simple parts,
 then creates them separately according to different needs,
-and finally builds the complex object. \*/
+and finally builds the complex object.
 
 ```javascript
 function Builder(typeOrTemplate, template) {

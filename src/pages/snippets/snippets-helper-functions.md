@@ -5,7 +5,7 @@ description: 'Usefull helpers'
 pubDate: 'Jan 7 2023'
 ---
 
-##### attempt
+##### Attempt
 
 This snippet executes a function, returning either the result or the caught error object.
 
@@ -23,7 +23,7 @@ var elements = attempt(function (selector) {
 if (elements instanceof Error) elements = [] // elements = []
 ```
 
-##### average
+##### Average
 
 This snippet returns the average of two or more numerical values.
 
@@ -34,7 +34,7 @@ average(...[1, 2, 3]) // 2
 average(1, 2, 3) // 2
 ```
 
-##### defer
+##### Defer
 
 This snippet delays the execution of a function until the current call stack is cleared.
 
@@ -44,7 +44,7 @@ const defer = (fn, ...args) => setTimeout(fn, 1, ...args)
 defer(console.log, 'a'), console.log('b') // logs 'b' then 'a'
 ```
 
-##### functionName
+##### Function name
 
 This snippet prints the name of a function into the console.
 
@@ -54,7 +54,7 @@ const functionName = (fn) => (console.debug(fn.name), fn)
 functionName(Math.max) // max (logged in debug channel of console)
 ```
 
-##### getType
+##### Get type
 
 - This snippet can be used to get the type of a value.
   \*/
@@ -67,7 +67,7 @@ functionName(Math.max) // max (logged in debug channel of console)
 
 getType(new Set([1, 2, 3])) // 'set'
 
-##### is
+##### Is
 
 This snippet can be used to check if a value is of a particular type.
 
@@ -89,7 +89,7 @@ is(Boolean, true) // true
 is(Boolean, new Boolean(true)) // true
 ```
 
-##### isNumber
+##### Is number
 
 This snippet can be used to check whether a provided value is a number.
 
@@ -102,7 +102,7 @@ isNumber('1') // false
 isNumber(1) // true
 ```
 
-##### isPromiseLike
+##### Is promise like
 
 This snippet checks whether an object looks like a Promise.
 
@@ -135,7 +135,7 @@ isPromise(new Promise(() => {})) // true
 isFunction(() => {}) // true
 ```
 
-##### isValidJSON
+##### Is valid JSON
 
 This snippet can be used to check whether a string is a valid JSON.
 
@@ -154,7 +154,7 @@ isValidJSON('{"name":"Adam",age:"20"}') // false
 isValidJSON(null) // true
 ```
 
-##### minN
+##### MinN
 
 This snippet returns the n smallest elements from a list. If n is greater than or equal to the list’s length, then it will return the original list (sorted in ascending order).
 
@@ -176,7 +176,7 @@ const generateRandomHexColor = () =>
 generateRandomHexColor() // "#e34155"
 ```
 
-##### runPromisesInSeries
+##### Run promises in series
 
 This snippet can be used to run an array of promises in series.
 
@@ -189,7 +189,7 @@ runPromisesInSeries([() => delay(1000), () => delay(2000)])
 // Executes each promise sequentially, taking a total of 3 seconds to complete
 ```
 
-##### sleep
+##### Sleep
 
 This snippet can be used to delay the execution of an asynchronous function by putting it into sleep.
 
@@ -203,7 +203,7 @@ async function sleepyWork() {
 }
 ```
 
-##### timeTaken
+##### Time taken
 
 This snippet can be used to find out the time it takes to execute a function.
 
@@ -218,7 +218,7 @@ const timeTaken = (callback) => {
 timeTaken(() => Math.pow(2, 10)) // 1024, (logged): timeTaken: 0.02099609375ms
 ```
 
-##### times
+##### Times
 
 This snippet can be used to iterate over a callback n times.
 
@@ -233,7 +233,7 @@ times(5, (i) => (output += i))
 console.log(output) // 01234
 ```
 
-##### toCurrency
+##### To currency
 
 This snippet can be used to format a number like a currency.
 
@@ -251,7 +251,7 @@ toCurrency(322342436423.2435, 'JPY') // ¥322,342,436,423 | currency: Japanese Y
 toCurrency(322342436423.2435, 'JPY', 'fi') // 322 342 436 423 ¥ | currency: Japanese Yen | currencyLangFormat: Finnish
 ```
 
-##### toDecimalMark
+##### To decimal mark
 
 This snippet uses the toLocaleString() function to convert float-point arithmetic to the decimal mark form by using a number to make a comma-separated string.
 
@@ -261,7 +261,7 @@ const toDecimalMark = (num) => num.toLocaleString('en-US')
 toDecimalMark(12305030388.9087) // "12,305,030,388.909"
 ```
 
-##### validateNumber
+##### Validate number
 
 This snippet can be used to check whether a value is a number.
 
