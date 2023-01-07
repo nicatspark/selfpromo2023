@@ -2,6 +2,7 @@
 import HeaderLink from './HeaderLink.astro'
 // import { SITE_TITLE } from '../config'
 import UiSwitch from './Uiswitch.astro'
+import CheckScrollDirection from './CheckScrollDirection'
 ---
 
 <header>
@@ -11,8 +12,31 @@ import UiSwitch from './Uiswitch.astro'
     <HeaderLink href='/blog'>Blog</HeaderLink>
     <HeaderLink href='/about'>About</HeaderLink>
     <UiSwitch />
+    <CheckScrollDirection client:load />
   </nav>
+  <script>
+    const header = document.querySelector('header')
+    const scrollEventHandler = (e: any) => {
+      if (!header) return
+      if (e.detail === 'UP') {
+        header.classList.remove('slideout')
+      } else {
+        header.classList.add('slideout')
+      }
+    }
+    const mouseEventHandler = (e: MouseEvent) => {
+      if (!header) return
+      const styles = getComputedStyle(document.documentElement)
+      const headerHeight = parseInt(styles.getPropertyValue('--header-height'))
+      if (e.clientY < headerHeight && header.classList.contains('slideout')) {
+        header.classList.remove('slideout')
+      }
+    }
+    document.addEventListener('NEWSCROLLDIRECTION', scrollEventHandler)
+    document.addEventListener('mousemove', mouseEventHandler)
+  </script>
 </header>
+
 <style lang='scss'>
   header {
     position: fixed;
@@ -30,6 +54,12 @@ import UiSwitch from './Uiswitch.astro'
     padding: 0rem 2rem;
     border-bottom: 1px solid hsl(0 0% 100% / 0.2);
     backdrop-filter: blur(5px);
+    transition: top 300ms ease-out;
+
+    &.slideout {
+      top: calc(var(--header-height) * -1);
+      transition: top 800ms ease-in 500ms;
+    }
 
     a:link,
     a:visited,
