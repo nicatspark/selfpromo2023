@@ -1,5 +1,17 @@
+---
+layout: '../../layouts/BlogPost.astro'
+title: 'Pub/sub pattern'
+description: 'Javascript patterns - pub/sub'
+pubDate: 'Jan 7 2023'
+---
 
+If you're not feeling like figure things out yourself use my framework agnostic [broadcaster package](http://broadcaster.hervy.se).
 
+`npm install broadcaster/foundit`
+
+...or use one of these...
+
+```javascript
 /*
  * Broadcaster © 2008 Tore Darell
  *
@@ -68,72 +80,75 @@
  *
  */
 
-Broadcaster = function(){
-  this.listeners = {};
-};
-
-(function(p){
-
-  p.defaultScope = this;// window/global
+Broadcaster = function () {
+  this.listeners = {}
+}
+;(function (p) {
+  p.defaultScope = this // window/global
 
   //Attach a listener for a particular message with a callback function and
   //an optional scope in which it will run. Returns the callback function.
-  p.listen = function(message, callback, scope){
-    if (!this.listeners[message]) { this.listeners[message] = []; }
-    this.listeners[message].push({callback: callback, scope: scope});
-    return callback;
-  };
-  p.subscribe = p.listen;
+  p.listen = function (message, callback, scope) {
+    if (!this.listeners[message]) {
+      this.listeners[message] = []
+    }
+    this.listeners[message].push({ callback: callback, scope: scope })
+    return callback
+  }
+  p.subscribe = p.listen
 
   //Remove a listener which matches a particular message and callback function
-  p.stopListening = function(message, callback){
-    var l = this.listeners, m = message, c = callback, i;
+  p.stopListening = function (message, callback) {
+    var l = this.listeners,
+      m = message,
+      c = callback,
+      i
     if (l[m]) {
-      for (i=0; i<l[m].length; i++) {
-        if (l[m][i].callback == c) { l[m].splice(i,1); }
+      for (i = 0; i < l[m].length; i++) {
+        if (l[m][i].callback == c) {
+          l[m].splice(i, 1)
+        }
       }
     }
-  };
-  p.unsubscribe = p.stopListening;
+  }
+  p.unsubscribe = p.stopListening
 
   //Broadcast a message. Any additional arguments are proxied to
   //the listener's callback function. Listeners for the special
   //message '*' will receive all messages that are fired
-  p.broadcast = function(message){
-    var l = this.listeners[message], g = this.listeners['*'], args, i;
+  p.broadcast = function (message) {
+    var l = this.listeners[message],
+      g = this.listeners['*'],
+      args,
+      i
 
     if (l || g) {
-      args = Array.prototype.slice.call(arguments, 1);
+      args = Array.prototype.slice.call(arguments, 1)
 
-      if (l) {//Specific listeners
-        for (i=0; i<l.length; i++) {
+      if (l) {
+        //Specific listeners
+        for (i = 0; i < l.length; i++) {
           l[i].callback.apply(l[i].scope || this.defaultScope, args)
         }
       }
 
-      if (g) {//Global listeners
-        for (i=0; i<g.length; i++) {//Globals also receive message name
+      if (g) {
+        //Global listeners
+        for (i = 0; i < g.length; i++) {
+          //Globals also receive message name
           g[i].callback.apply(g[i].scope || this.defaultScope, arguments)
         }
       }
     }
-  };
-  p.fire = p.broadcast;
-  p.send = p.broadcast;
+  }
+  p.fire = p.broadcast
+  p.send = p.broadcast
+})(Broadcaster.prototype)
+```
 
-})(Broadcaster.prototype);
+---
 
-
-
-
-
-/***************************************************** */
-
-
-
-
-
-
+```javascript
 /**
  * The Publisher/Subscriber Pattern in JavaScript
  * From https://medium.com/better-programming/the-publisher-subscriber-pattern-in-javascript-2b31b7ea075a
@@ -145,54 +160,55 @@ Broadcaster = function(){
  * Best for: Usecases with a limited scope.
  */
 
- function pubSub() {
-    const subscribers = {}
-  
-    function publish(eventName, data) {
-      if (!Array.isArray(subscribers[eventName])) {
-        return
-      }
-      subscribers[eventName].forEach((callback) => {
-        callback(data)
-      })
+function pubSub() {
+  const subscribers = {}
+
+  function publish(eventName, data) {
+    if (!Array.isArray(subscribers[eventName])) {
+      return
     }
-  
-    function subscribe(eventName, callback) {
-      if (!Array.isArray(subscribers[eventName])) {
-        subscribers[eventName] = []
-      }
-  
-      subscribers[eventName].push(callback)
-  
-      const index = subscribers[eventName].length - 1
-  
-      return {
-        unsubscribe() {
-          subscribers[eventName].splice(index, 1)
-          /* Alt. without using index */
-          // subscribers[eventName] = subscribers[eventName].filter((cb) => {
-          //   /* Does not include the callback in the new array */
-          //   return (cb === callback)? false: true;
-          // })
-        },
-      }
+    subscribers[eventName].forEach((callback) => {
+      callback(data)
+    })
+  }
+
+  function subscribe(eventName, callback) {
+    if (!Array.isArray(subscribers[eventName])) {
+      subscribers[eventName] = []
     }
-  
+
+    subscribers[eventName].push(callback)
+
+    const index = subscribers[eventName].length - 1
+
     return {
-      publish,
-      subscribe,
+      unsubscribe() {
+        subscribers[eventName].splice(index, 1)
+        /* Alt. without using index */
+        // subscribers[eventName] = subscribers[eventName].filter((cb) => {
+        //   /* Does not include the callback in the new array */
+        //   return (cb === callback)? false: true;
+        // })
+      },
     }
   }
-  // ===========
-  function showMeTheMoney(money) {
-    console.log(money)
+
+  return {
+    publish,
+    subscribe,
   }
-  pubSub().subscribe('show-money', showMeTheMoney)
-  // Later...
-  pubSub().publish('show-money', 1000000)
-  //============
-  const unsubscribeFood = subscribe('food', function (data) {
-    console.log(`Received some food: ${data}`)
-  })
-  // Removes the subscribed callback
-  unsubscribeFood()
+}
+// ===========
+function showMeTheMoney(money) {
+  console.log(money)
+}
+pubSub().subscribe('show-money', showMeTheMoney)
+// Later...
+pubSub().publish('show-money', 1000000)
+//============
+const unsubscribeFood = subscribe('food', function (data) {
+  console.log(`Received some food: ${data}`)
+})
+// Removes the subscribed callback
+unsubscribeFood()
+```
