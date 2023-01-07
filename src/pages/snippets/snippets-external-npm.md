@@ -1,6 +1,6 @@
 ---
 layout: '../../layouts/BlogPost.astro'
-title: 'Check out these npm packages if havn\'t'
+title: 'Check out these npm packages if have not'
 description: 'Usefull npm packages'
 pubDate: 'Jan 6 2023'
 ---
