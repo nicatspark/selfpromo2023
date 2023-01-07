@@ -1,6 +1,6 @@
 ---
 layout: '../../layouts/BlogPost.astro'
-title: 'Snippets objects'
+title: 'Snippets working with Javascript objects'
 description: 'Usefull js snippets about objects'
 pubDate: 'Jan 6 2023'
 ---
