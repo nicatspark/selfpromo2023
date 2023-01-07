@@ -5,7 +5,7 @@ description: 'Javascript date'
 pubDate: 'Jan 7 2023'
 ---
 
-##### bottomVisible
+##### Bottom visible
 
 This snippet checks whether the bottom of a page is visible.
 
@@ -18,7 +18,7 @@ const bottomVisible = () =>
 bottomVisible() // true
 ```
 
-##### elementContains
+##### Element contains
 
 This snippet checks whether the parent element contains the child.
 
@@ -30,18 +30,7 @@ elementContains(document.querySelector('head'), document.querySelector('title'))
 elementContains(document.querySelector('body'), document.querySelector('body')) // false
 ```
 
-##### Filter Duplicate Elements
-
-This snippet removes duplicate values in an array.
-
-```javascript
-const filterNonUnique = (arr) =>
-  arr.filter((i) => arr.indexOf(i) === arr.lastIndexOf(i))
-
-filterNonUnique([1, 2, 2, 3, 4, 4, 5]) // [1, 3, 5]
-```
-
-##### getStyle
+##### Get style
 
 This snippet can be used to get the value of a CSS rule for a particular element.
 
@@ -51,7 +40,7 @@ const getStyle = (el, ruleName) => getComputedStyle(el)[ruleName]
 getStyle(document.querySelector('p'), 'font-size') // '16px'
 ```
 
-##### hide
+##### Hide
 
 This snippet can be used to hide all elements specified.
 
@@ -61,7 +50,7 @@ const hide = (...el) => [...el].forEach((e) => (e.style.display = 'none'))
 hide(document.querySelectorAll('img')) // Hides all <img> elements on the page
 ```
 
-##### insertAfter
+##### Insert after
 
 This snippet can be used to insert an HTML string after the end of a particular element.
 
@@ -72,7 +61,7 @@ const insertAfter = (el, htmlString) =>
 insertAfter(document.getElementById('myId'), '<p>after</p>') // <div id="myId">...</div> <p>after</p>
 ```
 
-##### insertBefore
+##### Insert before
 
 This snippet can be used to insert an HTML string before a particular element.
 
@@ -83,7 +72,7 @@ const insertBefore = (el, htmlString) =>
 insertBefore(document.getElementById('myId'), '<p>before</p>') // <p>before</p> <div id="myId">...</div>
 ```
 
-##### isBrowserTabFocused
+##### Is browser tab focused
 
 This snippet can be used to determine whether the browser tab is focused.
 
@@ -93,7 +82,7 @@ const isBrowserTabFocused = () => !document.hidden
 isBrowserTabFocused() // true
 ```
 
-##### nodeListToArray
+##### Node list to array
 
 This snippet can be used to convert a nodeList to an array.
 
@@ -103,7 +92,7 @@ const nodeListToArray = (nodeList) => [...nodeList]
 nodeListToArray(document.childNodes) // [ <!DOCTYPE html>, html ]
 ```
 
-##### scrollToTop
+##### scroll to top
 
 This snippet can be used to do a smooth scroll to the top of the current page.
 
@@ -119,7 +108,7 @@ const scrollToTop = () => {
 scrollToTop()
 ```
 
-##### serializeCookie
+##### Serialize cookie
 
 This snippet can be used to serialize a cookie name-value pair into a Set-Cookie header string.
 
@@ -130,7 +119,7 @@ const serializeCookie = (name, val) =>
 serializeCookie('foo', 'bar') // 'foo=bar'
 ```
 
-##### setStyle
+##### Set style
 
 This snippet can be used to set the value of a CSS rule for a particular element.
 
@@ -141,7 +130,7 @@ setStyle(document.querySelector('p'), 'font-size', '20px')
 // The first <p> element on the page will have a font-size of 20px
 ```
 
-##### show
+##### Show
 
 This snippet can be used to show all the elements specified.
 
@@ -151,7 +140,7 @@ const show = (...el) => [...el].forEach((e) => (e.style.display = ''))
 show(...document.querySelectorAll('img')) // Shows all <img> elements on the page
 ```
 
-##### smoothScroll
+##### Smooth scroll
 
 This snippet can be used to smoothly scroll the element on which it is called into the visible area of the browser window.
 
@@ -166,6 +155,8 @@ smoothScroll('.fooBar') // scrolls smoothly to the first element with a class of
 ```
 
 ##### Start a css transition with js fairly synchronosly.
+
+But watchout, the new [web animation api](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) probably makes this snippet obsolete.
 
 ```javascript
 function setTransitionStylesOnElement(element, startStyles, endStyles) {
@@ -189,7 +180,7 @@ setStylesOnElement(overlayElement, visibleStyles, hiddenStyles).then((el) =>
 )
 ```
 
-##### Lazy-loading stylesheet onscroll.
+##### Lazy-loading stylesheet on scroll
 
 ```javascript
 const loadStyle = (src) => {
@@ -215,7 +206,7 @@ window.onscroll = () => {
 }
 ```
 
-##### Mutation observer example.
+##### Mutation observer example
 
 ```javascript
 // Select the node that will be observed for mutations
