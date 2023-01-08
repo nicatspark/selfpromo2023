@@ -23,9 +23,9 @@ const TocPanel = () => {
       )
     )
     const margin = 10
-    const numberToScroll =
+    const pixelsToScroll =
       window.scrollY + el.getBoundingClientRect().y - headerHeight - margin
-    window.scrollTo({ top: numberToScroll, behavior: 'smooth' })
+    window.scrollTo({ top: pixelsToScroll, behavior: 'smooth' })
   }
 
   useEffect(() => {

@@ -78,7 +78,7 @@ pokemons.map((pokemon) => (
 ))
 ```
 
-##### Implicit create JSX Elements and nested elements.
+##### Implicit create JSX Elements and nested elements
 
 ```jsx
 const element = // JSX

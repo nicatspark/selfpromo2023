@@ -18,11 +18,11 @@ pubDate: 'Jan 6 2023'
 
 ## Rensa upp
 
-#### Rensa locala brancher som tagits bort på remote.
+#### Rensa locala brancher som tagits bort på remote
 
 `git fetch upstream --prune`
 
-#### Rensa remote på brancher som tagits bort lokalt.
+#### Rensa remote på brancher som tagits bort lokalt
 
 `git remote prune origin --dry-run`
 `git remote prune origin`
@@ -197,15 +197,15 @@ Only the changes to branch and HEAD can be undone, this way
 
 If you made lot of things after your git reset --hard, then you should search your commit using reflog
 
-#### git reflog for HEAD:
+#### git reflog for HEAD
 
 `git reflog`
 
-#### git reflog for any branch:
+#### git reflog for any branch
 
 `git reflog <branchname>`
 
-#### Find the commit sha, and use it on git reset:
+#### Find the commit sha, and use it on git reset
 
 `git reset <SHA>`
 `git stash`
@@ -266,7 +266,7 @@ alias.next checkout
 
 #### Partial cherry-pick
 
-Credits to https://stackoverflow.com/a/5717615/7193150
+Credits to <https://stackoverflow.com/a/5717615/7193150>
 
 ```bash
 git cherry-pick -n $1
