@@ -1,19 +1,31 @@
 .toccontainer {
-  position: fixed;
-  top: 300px;
-  right: 0;
-  max-width: 300px;
-  background-color: white;
-  box-shadow: 3px 3px 8px hsl(0 0% 0% / 0.3);
-  padding: 0.5em;
   font-family: var(--sans-serif);
   ul {
+    display: flex;
+    gap: 0.5rem;
+    flex-flow: wrap;
     padding: 0;
     list-style: none;
     li {
+      font-size: 0.7rem;
+      border: 1px solid #9ba6ac;
+      border-radius: 2rem;
+      padding: 0.5em 1em;
+      max-width: 250px;
+      display: inline;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      user-select: none;
+      cursor: pointer;
+
+      // Don't seem to catch on
+      &.showall {
+        background-color: #9ba6ac;
+        color: white;
+      }
     }
   }
 }

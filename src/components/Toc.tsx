@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import classes from './Toc.module.scss'
 
-const Button = () => {
+const TocPanel = () => {
+  const [showMax, setShowMax] = useState(3)
   const isSnippetsPage =
     globalThis?.location?.pathname.split('/')[1] === 'snippets'
   const ref = useRef<HTMLDivElement | null>(null)
@@ -26,14 +27,18 @@ const Button = () => {
       hidden={headers.length === 0}
       className={classes.toccontainer}
     >
-      <h4>Table of contents</h4>
       <ul>
-        {headers.map((h, i) => (
+        {headers.slice(0, showMax).map((h, i) => (
           <li key={i}>{h}</li>
         ))}
+        {headers.length > showMax && (
+          <li className='showall' onClick={() => setShowMax(100)}>
+            show all {headers.length}
+          </li>
+        )}
       </ul>
     </div>
   )
 }
 
-export default Button
+export default TocPanel

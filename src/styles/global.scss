@@ -118,6 +118,23 @@ pre {
   min-width: min(400px, 100%);
 }
 
+.sticky {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+  background-color: var(--color-orange-full);
+  margin: 0;
+  box-shadow: 0 0 5px hsl(0 0% 0% / 0.3);
+  h2.title {
+    margin: 0 auto;
+    width: min(100%, 960px);
+    padding: 0.5rem 2rem;
+    max-inline-size: unset;
+  }
+}
+
 article.snippet {
   h2 {
     padding: 0.5em;
@@ -130,6 +147,11 @@ article.snippet {
     position: relative;
     top: -1rem;
   }
+}
+
+li.showall {
+  background-color: #9ba6ac;
+  color: white;
 }
 
 /* body {

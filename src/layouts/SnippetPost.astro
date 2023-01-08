@@ -59,5 +59,28 @@ const {
         opacity: 0.5;
       }
     </style>
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const intersecting = entry.isIntersecting as boolean
+            const h2 = entry.target as HTMLHeadingElement
+            if (intersecting) document.querySelector('div.sticky')?.remove()
+            else copy(h2)
+          })
+        },
+        { threshold: 1 }
+      )
+      function copy(el: HTMLHeadingElement) {
+        const clone = el.cloneNode(true) as HTMLHeadingElement
+        const div = document.createElement('div')
+        div.className = 'sticky'
+        div.appendChild(clone)
+        document.body.appendChild(div)
+        return div
+      }
+      const el = document.querySelector('h2')
+      if (el) observer.observe(el)
+    </script>
   </body></html
 >
