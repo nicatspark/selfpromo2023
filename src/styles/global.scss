@@ -58,6 +58,7 @@ a:active {
   letter-spacing: 0.05em;
   color: var(--color-dark);
   padding: 0.8em 0;
+  max-inline-size: unset;
 }
 
 main {
@@ -152,6 +153,11 @@ article.snippet {
 li.showall {
   background-color: #9ba6ac;
   color: white;
+  button {
+    padding: 0;
+    background-color: transparent;
+    text-transform: uppercase;
+  }
 }
 
 /* body {

@@ -6,14 +6,18 @@ const TocPanel = () => {
   const isSnippetsPage =
     globalThis?.location?.pathname.split('/')[1] === 'snippets'
   const ref = useRef<HTMLDivElement | null>(null)
-  const [headers, setHeaders] = useState<string[]>([])
+  const [headers, setHeaders] = useState<HTMLHeadingElement[]>([])
 
   const getHeaders = () => {
     const article = document.querySelector('article')
     const headerEls = article?.querySelectorAll('h5')
     if (!headerEls) return
-    setHeaders([...headerEls].map((header) => header.innerText))
+    const headerArr = [...headerEls]
+    setHeaders(headerArr)
   }
+
+  const scrollToEl = (el: HTMLHeadingElement) =>
+    el.scrollIntoView({ behavior: 'smooth' })
 
   useEffect(() => {
     if (ref.current && !isSnippetsPage)
@@ -29,11 +33,15 @@ const TocPanel = () => {
     >
       <ul>
         {headers.slice(0, showMax).map((h, i) => (
-          <li key={i}>{h}</li>
+          <li key={i}>
+            <button onClick={() => scrollToEl(h)}>{h.innerText}</button>
+          </li>
         ))}
         {headers.length > showMax && (
-          <li className='showall' onClick={() => setShowMax(100)}>
-            show all {headers.length}
+          <li className='showall'>
+            <button onClick={() => setShowMax(100)}>
+              show all {headers.length}
+            </button>
           </li>
         )}
       </ul>

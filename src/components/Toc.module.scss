@@ -7,19 +7,28 @@
     padding: 0;
     list-style: none;
     li {
-      font-size: 0.7rem;
       border: 1px solid #9ba6ac;
       border-radius: 2rem;
       padding: 0.5em 1em;
       max-width: 250px;
       display: inline;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      user-select: none;
-      cursor: pointer;
+      & > button {
+        background-color: transparent;
+        font-size: 0.7rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        user-select: none;
+        padding: 0;
+      }
+      &:has(button:hover) {
+        background-color: #9ba6ac;
+        & > button {
+          color: var(--bg-color);
+        }
+      }
 
       // Don't seem to catch on
       &.showall {

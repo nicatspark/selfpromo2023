@@ -113,5 +113,5 @@ const tomorrow = () => {
   return t.toISOString().split('T')[0]
 }
 
-tomorrow() // 2019-09-08 (if current date is 2018-09-08)
+tomorrow() // 2019-09-09 (if current date is 2019-09-08)
 ```

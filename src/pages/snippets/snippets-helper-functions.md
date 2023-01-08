@@ -302,7 +302,9 @@ export function cancelableFetch(reqInfo, reqInit) {
   const req = window.fetch(reqInfo, Object.assign({ signal: signal }, reqInit))
   return wrapResult(req)
 }
-// ===========
+
+// =========== usage
+
 const req = cancelableFetch('/api/config')
   .then((res) => res.json())
   .catch((err) => {
@@ -316,16 +318,40 @@ const req = cancelableFetch('/api/config')
 setTimeout(() => req.cancel(), 2000)
 ```
 
+##### Try X number of times then bail if unsuccessful
+
 Run a (anonymous) function recursivly a countdown number of
 times until condition are met or countdown is done.
 
 ```javascript
+const cbFetch = async () => fetch('http://trickyURL.com')
+
 ;({
   do({ countdown } = { countdown: 5 }) {
     console.log('Counting down: ' + countdown)
     countdown--
     // Do (asynk) work.
-    if (countdown !== 0) setTimeout(() => this.do({ countdown }), 1000)
+    cbFetch()
+      .then(res => console.log('Success', res)
+      .catch(()=>{
+        if (countdown !== 0) setTimeout(() => this.do({ countdown }), 1000)
+    })
+    //
+  },
+}.do())
+
+// ----- or check if something has loaded in the UI
+
+;({
+  do({ countdown, interval } = { countdown: 5, interval: 1000 }) {
+    console.log('Counting down: ' + countdown)
+    countdown--
+    // Do (asynk) work.
+    if(document.querySelector('#root')) {
+      console.log('Loaded.')
+    } else if (countdown !== 0) setTimeout(() => this.do({ countdown }), interval)
+    else console.error('Never loaded.')
+    //
   },
 }.do())
 ```
