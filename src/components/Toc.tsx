@@ -16,8 +16,17 @@ const TocPanel = () => {
     setHeaders(headerArr)
   }
 
-  const scrollToEl = (el: HTMLHeadingElement) =>
-    el.scrollIntoView({ behavior: 'smooth' })
+  const scrollToEl = (el: HTMLHeadingElement) => {
+    const headerHeight = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        '--header-height'
+      )
+    )
+    const margin = 10
+    const numberToScroll =
+      window.scrollY + el.getBoundingClientRect().y - headerHeight - margin
+    window.scrollTo({ top: numberToScroll, behavior: 'smooth' })
+  }
 
   useEffect(() => {
     if (ref.current && !isSnippetsPage)

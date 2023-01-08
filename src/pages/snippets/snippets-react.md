@@ -5,7 +5,7 @@ description: ''
 pubDate: 'Jan 7 2023'
 ---
 
-###### Load SVG image vs. inline SVG
+##### Load SVG image vs. inline SVG
 
 Inline SVG has the advantage of beeing accessible
 for CSS animation from React. Inline also loads faster.
@@ -42,7 +42,7 @@ const [, rerender] = useReducer((x) => x + 1, 0)
 rerender()
 ```
 
-##### Pass a Function to setState
+##### Pass a Function to use useState
 
 ```javascript
 const [count, setCount] = useState(0)
@@ -58,7 +58,7 @@ useEffect(() => {
 }, [])
 ```
 
-##### String Values as HTML Elements
+##### Define HTML Elements upon use
 
 ```jsx
  const Button = ({ Component = 'button', ...props }) => <Component {...props} />
@@ -94,10 +94,11 @@ const element = // JSX
     ),
     React.createElement('p', null, ' lalalalala ')
   )
+```
 
-/**
- * Cacellable fetch and clean up in react
- */
+##### Cancellable fetch and clean up in react
+
+```javascript
 export default function User({ id }) {
   const [user, setUser] = useState(null)
 
