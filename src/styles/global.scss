@@ -20,11 +20,12 @@
   --color-calm-dark: hsl(189, 65%, 28%);
   --color-calm-neutral: hsl(166, 8%, 60%);
   --color-orange-full: hsl(34, 87%, 53%);
+  --color-orange-faded: hsl(34deg 100% 72%);
   --color-orange-bright: hsl(18, 86%, 54%);
   /* bgcolors */
-  --bg-color: #cbd9e1;
-  --neu-light: #e9faff;
-  --neu-dark: #adb8bf;
+  --bg-color: #edf1f2; // #f6f8f9;
+  --neu-light: #ffffff; // #e9faff;
+  --neu-dark: #c9cdce; // #adb8bf;
   --neu-radius: 15px;
   /* fonts */
   --sans-serif: Eurostyle, 'Barlow Condensed', sans-serif;
@@ -41,11 +42,11 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-  color: var(--color-calm-dark);
+  color: hsl(11deg 10% 44%); //var(--color-calm-dark);
   font-weight: 400;
   // text-decoration: underline;
-  background-color: hsl(53deg 87% 53% / 43%);
-  margin-inline: 0.1rem;
+  // background-color: hsl(53deg 87% 53% / 43%);
+  // margin-inline: 0.1rem;
 }
 
 :where(p) {
@@ -73,11 +74,12 @@ main {
   border-radius: var(--neu-radius);
   background: var(--bg-color);
   box-shadow: 8px 8px 16px var(--neu-dark), -8px -8px 16px var(--neu-light);
+  border-top: 1px solid white;
 }
 
 /* blog specific */
 :where(:not(pre) > code) {
-  background-color: var(--color-calm-neutral);
+  background-color: hsl(44 16% 84% / 1); // var(--color-calm-neutral);
   font-size: 0.9em;
   color: var(--color-dark);
 }
@@ -126,7 +128,7 @@ pre {
   top: 0;
   width: 100vw;
   z-index: 1;
-  background-color: var(--color-orange-full);
+  background-color: var(--color-orange-faded);
   margin: 0;
   box-shadow: 0 0 5px hsl(0 0% 0% / 0.3);
   h2.title {
@@ -140,11 +142,12 @@ pre {
 article.snippet {
   h2 {
     padding: 0.5em;
-    background-color: var(--color-orange-full);
+    background-color: var(--color-orange-faded);
     display: table;
+    text-shadow: 1px 1px 0 hsl(0deg 0% 100% / 50%);
   }
   time {
-    background-color: var(--color-orange-full);
+    background-color: var(--color-orange-faded);
     padding: 0.3rem;
     position: relative;
     top: -1rem;

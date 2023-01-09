@@ -229,7 +229,7 @@ tracedMan.name = 'Lolo' // SET name=Lolo
 
 ###### Example 6
 
-###### Hide Property
+##### Hide Property
 
 ```javascript
 function hideProperty(target, prefix = '_') {
