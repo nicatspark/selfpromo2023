@@ -28,7 +28,7 @@
   --neu-radius: 15px;
   /* fonts */
   --sans-serif: Eurostyle, 'Barlow Condensed', sans-serif;
-  --serif: 'Playfair Display', serif;
+  --serif: Helvetica, Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -49,8 +49,9 @@ a:active {
 }
 
 :where(p) {
-  line-height: 2em;
+  line-height: 1.8em;
   padding: 1rem 0;
+  font-size: 1rem;
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
