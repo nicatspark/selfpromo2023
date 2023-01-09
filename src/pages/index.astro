@@ -72,6 +72,21 @@ import Clients from '../components/Clients.astro'
           filter: hue-rotate(145deg) grayscale(0) brightness(1);
         }
       }
+      @media (prefers-color-scheme: dark) {
+        .hero {
+          img {
+            mix-blend-mode: hard-light;
+          }
+          @keyframes heroimg {
+            0% {
+              filter: hue-rotate(145deg) grayscale(0) brightness(0);
+            }
+            100% {
+              filter: hue-rotate(145deg) grayscale(0) brightness(1);
+            }
+          }
+        }
+      }
     </style>
   </body></html
 >

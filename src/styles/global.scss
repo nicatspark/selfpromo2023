@@ -22,14 +22,34 @@
   --color-orange-full: hsl(34, 87%, 53%);
   --color-orange-faded: hsl(34deg 100% 72%);
   --color-orange-bright: hsl(18, 86%, 54%);
+  --color-pre: var(--color-dark);
   /* bgcolors */
+  --bg-header: hsl(202deg 27% 84% / 75%);
   --bg-color: #edf1f2; // #f6f8f9;
   --neu-light: #ffffff; // #e9faff;
   --neu-dark: #c9cdce; // #adb8bf;
+  --bg-code: hsl(44 16% 84% / 1);
   --neu-radius: 15px;
   /* fonts */
   --sans-serif: Eurostyle, 'Barlow Condensed', sans-serif;
   --serif: Helvetica, Verdana, Geneva, Tahoma, sans-serif;
+
+  @at-root {
+    .dark-theme {
+      --color-dark: hsl(28, 17%, 79%);
+      --color-calm-dark: hsl(189, 65%, 28%);
+      --color-calm-neutral: hsl(166, 8%, 60%);
+      --color-orange-full: hsl(34, 77%, 17%);
+      --color-orange-faded: rgb(75, 58, 34);
+      --color-orange-bright: hsl(19, 63%, 19%);
+      --color-pre: hsl(36, 4%, 24%);
+      --bg-header: rgba(69, 74, 76, 0.75);
+      --bg-color: #151616; // #f6f8f9;
+      --neu-light: #2f2e2e; // #e9faff;
+      --neu-dark: #0f0f0f; // #adb8bf;
+      --bg-code: rgb(61, 61, 61);
+    }
+  }
 }
 
 body {
@@ -79,7 +99,7 @@ main {
 
 /* blog specific */
 :where(:not(pre) > code) {
-  background-color: hsl(44 16% 84% / 1); // var(--color-calm-neutral);
+  background-color: var(--bg-code); // var(--color-calm-neutral);
   font-size: 0.9em;
   color: var(--color-dark);
 }
@@ -116,7 +136,7 @@ pre + h6 {
 
 pre {
   padding: 0.5em;
-  background-color: var(--color-dark) !important;
+  background-color: var(--color-pre) !important;
   font-size: 0.8em;
   border-radius: 0.3rem;
   min-width: min(400px, 100%);

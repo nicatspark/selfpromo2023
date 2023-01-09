@@ -1,4 +1,8 @@
-<label class='switch'>
+---
+const { className } = Astro.props
+---
+
+<label class={`switch ${className}`}>
   <input type='checkbox' />
   <span class='slider'></span>
 </label>
