@@ -131,10 +131,9 @@ import CheckScrollDirection from './CheckScrollDirection'
       width: 100%;
     }
   }
-  @media (prefers-color-scheme: dark) {
-    header {
-      --logo-color: hsl(28deg 70% 37%);
-      --logo-shadow: 1px 1px 5px hsl(0deg 0% 30%);
-    }
+
+  html.dark-theme header {
+    --logo-color: hsl(28deg 70% 37%);
+    --logo-shadow: 1px 1px 5px hsl(0deg 0% 30%);
   }
 </style>

@@ -6,7 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = (await Astro.glob('./blog/*.{md,mdx}'))
-  .filter((a) => a.frontmatter.title.toLowerCase().includes !== 'draft')
+  .filter((post) => !post.frontmatter.draft)
   .sort(
     (a, b) =>
       new Date(b.frontmatter.pubDate).valueOf() -
@@ -15,6 +15,7 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}'))
 // console.log('posts', posts[0].Content)
 const snippets = (await Astro.glob('./snippets/*.{md,mdx}'))
   .filter((a) => a.frontmatter.title.toLowerCase().includes !== 'draft')
+  .filter((post) => !post.frontmatter.draft)
   .sort(
     (a, b) =>
       new Date(b.frontmatter.pubDate).valueOf() -
@@ -86,7 +87,7 @@ const snippets = (await Astro.glob('./snippets/*.{md,mdx}'))
         </ul>
       </section>
       <section class='neu-box'>
-        <h3>Code</h3>
+        <h3>Code Snippets</h3>
         <ul>
           {
             snippets.map((post) => (
