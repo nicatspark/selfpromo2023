@@ -1,13 +1,14 @@
 ---
 layout: '../../layouts/SnippetPost.astro'
-title: 'Web comonents'
+title: 'Web components'
 description: 'Usefull npm packages'
 pubDate: 'Jan 6 2023'
 ---
 
-/_Much from <https://medium.com/better-programming/2020-007-the-facets-of-w3c-web-components-e76798ab7b29>_/
+[Much from this article](https://medium.com/better-programming/2020-007-the-facets-of-w3c-web-components-e76798ab7b29)
 
-How to keep separation of concerns in web components.
+### How to keep separation of concerns in web components.
+
 By calling this on connectedCallback we can load the HTML and CSS from separate files and thus keep our separation of concerns.
 
 ```javascript
@@ -69,7 +70,7 @@ Then in parent code, refer the variables as this:
 }
 ```
 
-### Dokumentation
+### Documentation
 
 The published readme file should have these sections:
 
@@ -83,7 +84,9 @@ The published readme file should have these sections:
 
 ---
 
-## 7 Web Component Tricks [link](https://daverupert.com/2022/04/7-web-component-tricks/)
+## 7 Web Component Tricks
+
+[Original article](https://daverupert.com/2022/04/7-web-component-tricks/)
 
 ### 1. You can manipulate props right on a Lit element
 
@@ -169,19 +172,19 @@ customElements.define('our-button', OurButton)
 
 The OpenWC group also has some nice [community guidelines for publishing Web Components](https://open-wc.org/guides/developing-components/publishing/).
 
-[x] Do publish latest standard EcmaScript
-[x] Do publish standard es modules
-[x] Do include "main": "index.js" and "module": "index.js" in your package.json
-[x] Do export element classes
-[x] Do export side effects separately
-[x] Do import 3rd party node modules with “bare” import specifiers
-[x] Do include file extensions in import specifiers
+- [x] Do publish latest standard EcmaScript
+- [x] Do publish standard es modules
+- [x] Do include "main": "index.js" and "module": "index.js" in your package.json
+- [x] Do export element classes
+- [x] Do export side effects separately
+- [x] Do import 3rd party node modules with “bare” import specifiers
+- [x] Do include file extensions in import specifiers
 
-~~Do not optimize~~
-~~Do not bundle~~
-~~Do not minify~~
-~~Do not use .mjs file extensions~~
-~~Do not import polyfills~~
+- ~~Do not optimize~~
+- ~~Do not bundle~~
+- ~~Do not minify~~
+- ~~Do not use .mjs file extensions~~
+- ~~Do not import polyfills~~
 
 That’s helpful and hopefully provides a consistent experience, allowing for a consistent bundling story, and preventing weird footguns that might occur when trying to use other people’s Web Components in your project.
 
