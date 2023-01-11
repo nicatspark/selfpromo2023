@@ -6,7 +6,7 @@ const { className } = Astro.props
   <input type='checkbox' />
   <span class='slider'></span>
 </label>
-<style>
+<style lang='scss'>
   .switch {
     --button-width: 3.5em;
     --button-height: 2em;
@@ -16,15 +16,19 @@ const { className } = Astro.props
     );
     --toggle-shadow-offset: 10px;
     --toggle-wider: 3em;
-    --color-grey: var(--color-calm-dark);
-    --color-green: var(--color-orange-bright);
+    --color-bg-slider: rgb(97 152 171 / 75%); // var(--color-calm-dark);
+    // --color-green: var(--color-orange-bright);
+  }
+  html.dark-theme .switch {
+    --color-bg-slider: rgb(25 32 25 / 75%);
+    // --color-green: var(--bg-header);
   }
 
   .slider {
     display: inline-block;
     width: var(--button-width);
     height: var(--button-height);
-    background-color: var(--color-grey);
+    background-color: var(--color-bg-slider);
     border-radius: calc(var(--button-height) / 2);
     position: relative;
     transition: 0.3s all ease-in-out;
@@ -49,9 +53,9 @@ const { className } = Astro.props
     transition: 0.3s all ease-in-out;
   }
 
-  .switch input[type='checkbox']:checked + .slider {
-    background-color: var(--color-green);
-  }
+  // .switch input[type='checkbox']:checked + .slider {
+  //   background-color: var(--color-green);
+  // }
 
   .switch input[type='checkbox']:checked + .slider::after {
     transform: translateX(
