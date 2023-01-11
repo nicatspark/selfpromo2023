@@ -3,10 +3,14 @@ import HeaderLink from './HeaderLink.astro'
 // import { SITE_TITLE } from '../config'
 import UiSwitch from './Uiswitch.astro'
 import CheckScrollDirection from './CheckScrollDirection'
+import Icon from './icon.astro'
 ---
 
 <header>
-  <h1 class='logo'><a href='/'>UX/FULLSTACK DEV</a></h1>
+  <div class='logo'>
+    <Icon icon='logo' />
+    <h1><a href='/'>UX/FULLSTACK DEV</a></h1></div
+  >
   <nav>
     <HeaderLink href='/'>Home</HeaderLink>
     <HeaderLink href='/blog'>Articles</HeaderLink>
@@ -110,15 +114,19 @@ import CheckScrollDirection from './CheckScrollDirection'
       font-size: 0.9rem;
       letter-spacing: 0.1em;
     }
-    h1.logo {
-      white-space: nowrap;
-      color: var(--logo-color);
-      font-size: 2rem;
-      cursor: pointer;
-      text-shadow: var(--logo-shadow);
-      a {
-        color: inherit;
-        text-decoration: none;
+    .logo {
+      display: flex;
+      align-items: center;
+      h1 {
+        white-space: nowrap;
+        color: var(--logo-color);
+        font-size: 2rem;
+        cursor: pointer;
+        text-shadow: var(--logo-shadow);
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
       }
     }
 
