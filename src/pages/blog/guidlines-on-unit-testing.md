@@ -1,10 +1,12 @@
 ---
 layout: '../../layouts/BlogPost.astro'
-title: 'Guidelines for frontend unit tests'
+title: 'Guidelines for frontend unit tests at SKF'
 description: ''
 pubDate: 'Jan 12 2023'
 #heroImage: ''
 ---
+
+When you've read this article also check out [Googles take on unit tests](https://abseil.io/resources/swe-book/html/ch12.html). However I can't ge rid of the feeling that the ROI in unit test does not add up. Since we introduced Typescript and a CI pipline at SKF I have not had one case were unit test saved us for 1.5 years. However writing test always takes time and there seems to always be some pitfall messing things up until we get it right. However, end-2-end tests (Playwright/Cypress) I still finding valuable.
 
 ##### Types of tests
 
