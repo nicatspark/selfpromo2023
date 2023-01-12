@@ -1,17 +1,18 @@
 ---
 layout: '../../layouts/BlogPost.astro'
-title: 'The new view-transitions api'
+title: 'The new View Transition API'
 description: ''
+heroImage: '/assets/blog/view-transition-api.webp'
 pubDate: 'Jan 9 2023'
 ---
 
-The view-transitions API lets you create animations declaratively between pages. Something that will further take our web apps closer to the look and fell of well designed native application on your phone.
+The View Transition API lets you create animations declaratively between pages. Something that will further take our web apps closer to the look and feel of well designed native application on your phone.
 
 If you know me I am a succer for all things native because this means I wont have to rebuild or relearn as things evolve. So this is great news.
 
-Now the view-transitions api is in beta stage and expected to soon be available in browsers. It is currently available behind a flag in chrome.
+Now the View Transition API is in beta stage and expected to soon be available in browsers. It is currently available behind a flag in chrome.
 
-##### 1. Enable view-transition api in chrome
+##### 1. Enable View Transitions in chrome
 
 To play around with it before it is available you need to [enable the viewTransitions API and the viewTransitions API for navigations](chrome://flags)
 

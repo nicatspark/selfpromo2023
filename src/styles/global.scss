@@ -33,6 +33,7 @@
   /* fonts */
   --sans-serif: Eurostyle, 'Barlow Condensed', sans-serif;
   --serif: Helvetica, Verdana, Geneva, Tahoma, sans-serif;
+  scroll-behavior: smooth;
 
   @at-root {
     .dark-theme {
@@ -81,6 +82,10 @@ a:active {
   color: var(--color-dark);
   padding: 0.8em 0;
   max-inline-size: unset;
+}
+
+html.dark-theme :where(img) {
+  filter: brightness(0.8);
 }
 
 main {
@@ -161,15 +166,20 @@ pre {
 }
 
 // article.snippet,
-// article.blog {
-hr.separator {
-  border-top: 1px solid hsl(172deg, 9%, 37%);
-  height: 1px;
+article.blog {
+  hr.separator {
+    border-top: 1px solid hsl(172deg, 9%, 37%);
+    height: 1px;
+    width: min(100%, 720px);
+    & + p {
+      max-inline-size: min(100%, 740px);
+      font-size: 1.2rem;
+    }
+  }
+  time + hr {
+    margin-top: -0.2rem;
+  }
 }
-time + hr {
-  margin-top: -0.2rem;
-}
-// }
 
 article.snippet {
   h2 {
@@ -194,6 +204,9 @@ article.snippet {
         padding-bottom: 0.3em;
       }
     }
+  }
+  h5:target {
+    color: red;
   }
 }
 

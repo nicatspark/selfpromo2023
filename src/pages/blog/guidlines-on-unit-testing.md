@@ -2,6 +2,7 @@
 layout: '../../layouts/BlogPost.astro'
 title: 'Guidelines for frontend unit tests at SKF'
 description: ''
+heroImage: '/assets/blog/unit-tests.webp'
 pubDate: 'Jan 12 2023'
 #heroImage: ''
 ---
@@ -86,9 +87,10 @@ Sooner or later you'll run into the warning An update to Component inside a test
 A common cause for the warning is that the component updates after an async operation has completed. Maybe a loading spinner is removed after a data fetch call completes, but the test is not asserting that. The waitForElementToBeRemoved is useful in these scenarios.
 
 ```javascript
-await waitForElementToBeRemoved(() => screen.queryByRole("progressbar"));
-Helper libraries such as user-event do wrap calls in act(...) so running userEvent.click(element) by itself is enough.
+await waitForElementToBeRemoved(() => screen.queryByRole('progressbar'))
 ```
+
+Helper libraries such as user-event do wrap calls in `act(...)` so running `userEvent.click(element)` by itself is enough.
 
 ##### Use getBy, findBy or queryBy?
 

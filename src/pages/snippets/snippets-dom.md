@@ -156,7 +156,7 @@ smoothScroll('.fooBar') // scrolls smoothly to the first element with a class of
 
 ##### Start a css transition with js fairly synchronosly.
 
-But watchout, the new [web animation api](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) probably makes this snippet obsolete.
+But watchout, the new [web animation api](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) put this snippet in the legacy bin. Read my [intro article](http://localhost:3000/blog/we-animation-API).
 
 ```javascript
 function setTransitionStylesOnElement(element, startStyles, endStyles) {

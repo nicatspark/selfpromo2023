@@ -60,16 +60,19 @@ import Clients from '../components/Clients.astro'
         }
         img {
           mix-blend-mode: darken;
-          filter: hue-rotate(145deg) grayscale(0) brightness(6);
+          filter: opacity(0) hue-rotate(145deg) grayscale(0) brightness(6);
           animation: heroimg 2s forwards 1s;
         }
       }
+      html.dark-theme .hero .entry {
+        color: hsl(180, 20%, 42%);
+      }
       @keyframes heroimg {
         0% {
-          filter: hue-rotate(145deg) grayscale(0) brightness(6);
+          filter: opacity(0) hue-rotate(145deg) grayscale(0) brightness(6);
         }
         100% {
-          filter: hue-rotate(145deg) grayscale(0) brightness(1);
+          filter: opacity(1) hue-rotate(145deg) grayscale(0) brightness(1);
         }
       }
       @media (prefers-color-scheme: dark) {
@@ -79,10 +82,10 @@ import Clients from '../components/Clients.astro'
           }
           @keyframes heroimg {
             0% {
-              filter: hue-rotate(145deg) grayscale(0) brightness(0);
+              filter: opacity(0) hue-rotate(145deg) grayscale(0) brightness(0);
             }
             100% {
-              filter: hue-rotate(145deg) grayscale(0) brightness(1);
+              filter: opacity(1) hue-rotate(145deg) grayscale(0) brightness(1);
             }
           }
         }
