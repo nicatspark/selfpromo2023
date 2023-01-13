@@ -180,13 +180,18 @@ A better and less HTML intrusive solution would use CSS
 padding alone. The formula is something like this:
 100vw — min(max-width, (100vw — (left-gap + right-gap))) / 2.
 
-````css
+```css
 main {
   background: #3f51b5;
   padding: 15px calc((100vw - min(900px, calc(100vw - 50px))) / 2);
   color: #fff;
 }
-``` ##### Extend the clickable area ```css button {
+```
+
+##### Extend the clickable area
+
+```css
+button {
   border: none;
   background: #222;
   width: 10px;
@@ -208,7 +213,7 @@ button::after {
   /* for demo purpose only - should be removed   */
   background: rgba(0, 0, 0, 0.2);
 }
-````
+```
 
 ##### Responsive text
 
