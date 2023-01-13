@@ -1,6 +1,6 @@
 ---
 layout: '../../layouts/SnippetPost.astro'
-title: 'Check out these npm packages if have not already'
+title: 'Useful npm packages'
 description: 'Usefull npm packages'
 pubDate: 'Jan 6 2023'
 ---

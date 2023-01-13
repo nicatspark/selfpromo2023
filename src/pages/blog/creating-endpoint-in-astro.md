@@ -3,14 +3,14 @@ layout: '../../layouts/BlogPost.astro'
 title: 'How to create an endpoint in Astrojs'
 description: ''
 pubDate: 'Jan 11 2023'
-#heroImage: ''
+heroImage: '/placeholder-hero.jpg'
 ---
 
-Here is how two ways to create an endpoint in Astrojs.
+Here are two ways to create an endpoint in Astrojs. Let's play around with the idea that we want to use a form to upload an image and two ways to do that in Astrojs. First a primer om formData.
 
-##### What is form data
+##### About formData
 
-> FormData [is an] interface [which] provides a way to easily construct a set of key/value pairs representing form fields and their values, which can then be easily sent using the fetch() or XMLHttpRequest.send() method. It uses the same format a form would use if the encoding type were set to "multipart/form-data". Source: MDN - [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData?ref=hackernoon.com)
+> `FormData` [is an] interface [which] provides a way to easily construct a set of key/value pairs representing form fields and their values, which can then be easily sent using the fetch() or XMLHttpRequest.send() method. It uses the same format a form would use if the encoding type were set to "multipart/form-data". Source: MDN - [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData?ref=hackernoon.com)
 
 Basically instead of using JSON to send data to and from your server, you'd use `FormData`, except unlike JSON it supports files natively.
 

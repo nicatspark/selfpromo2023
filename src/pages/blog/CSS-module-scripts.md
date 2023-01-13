@@ -44,6 +44,26 @@ import sheet from './styles.css' // Failed to load module script:
 // with a MIME type of "text/css".
 ```
 
+##### Dynamically imported stylesheets
+
+You can also import a CSS module using dynamic import, with a new second parameter for the type: 'css' import assertion:
+
+```javascript
+const cssModule = await import('./style.css', {
+  assert: { type: 'css' },
+})
+document.adoptedStyleSheets = [cssModule.default]
+```
+
+> ☝️ Gotchas
+> Note that it's `cssModule.default` (not cssModule itself) that is added to adoptedStyleSheets. This is because the object returned from dynamic import() is a module namespace object. The CSSStyleSheet is the default export of the module, so it's accessed at `cssModule.default`.
+
+##### @import rules not yet allowed
+
+Currently CSS `@import` rules don't work in constructable stylesheets, including CSS module scripts. If `@import` rules are present in a constructable stylesheet, those rules will be ignored.
+
+Support for @import in CSS module scripts may be added to the specification. Track this specification discussion in [the GitHub issue](https://github.com/WICG/webcomponents/issues/870).
+
 ---
 
 _[Source of this article](https://web.dev/css-module-scripts/)_
