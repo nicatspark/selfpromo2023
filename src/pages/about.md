@@ -6,6 +6,14 @@ updatedDate: 'August 08 2022'
 heroImage: '/placeholder-about.jpg'
 ---
 
-This is my public note book as well as my self promotional place on the web. I'll soon ask Chat GPT write something nice about me here. I'll be back.
+With 20 years of experience in the industry, I am a seasoned full stack developer with a focus on frontend and user experience. My career began as a graphic designer in 1990, where I honed my skills in advertising, brand identities, logotypes, and magazine design for both advertising agencies and individual clients.
+
+Since 1997, I have been working in the web development industry, creating web sites and web apps, and working with user experience. I use tools such as Figma and Adobe XD to create prototypes, and I believe that my involvement in UX allows me to have a holistic view of projects, better understanding the needs of the client's customer.
+
+Throughout my career, I have had the opportunity to work in both large teams for big companies, using frameworks such as SAFe, and also taking on complete projects for smaller companies. I am a strong believer in the importance of knowledge sharing and code reviews, and I enjoy getting feedback on my code to continue to improve my skills.
+
+Even though my focus is mainly on the frontend, I still have a passion for being involved in UX and believe that this gives me an advantage as my technological knowledge allows me to see solutions others may have missed. On the backend, I have mainly worked with SQL databases such as MsSQL and MariaDB. I am proficient in a React/Typescript environment, native web components, and sometimes use meta frameworks such as Astro or Next. I am also open to working on bigger projects using Svelte or other frameworks as long as they are up to date and fit for the task at hand.
+
+Overall, my experience and passion for web development make me a valuable asset to any team. I am excited to continue my journey in the industry and to take on new challenges.
 
 [My linkedin page](https://www.linkedin.com/feed/)
