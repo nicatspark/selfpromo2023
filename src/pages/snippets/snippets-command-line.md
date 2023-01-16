@@ -78,3 +78,17 @@ Then clone with `git clone workSKF:skfccoe/rep-document-bundles.git`
 <https://gist.github.com/jexchan/2351996/>
 <https://www.section.io/engineering-education/using-multiple-ssh-keys-for-multiple-github-accounts/>
 <https://gist.github.com/bgauduch/06a8c4ec2fec8fef6354afe94358c89e>
+
+## CURL
+
+Get request with curl
+
+`curl <url>`
+
+Get headers
+
+`curl -v <url>`
+
+Have curl follow redirect
+
+`curl -L <url>`
