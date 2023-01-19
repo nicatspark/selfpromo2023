@@ -146,3 +146,8 @@ _2020-01-20 23:45_ Lets code a client side router. It very well might be the eas
 #### PWA
 
 _2020-07-20 11:49_ [PWA is seriously catching up with native](https://youtu.be/M0wPM8B6z5c)
+
+#### Usefull links in general
+
+Make your own wifi QR-code to print out for easy sharing.
+[qifi.org](https://qifi.org/)
