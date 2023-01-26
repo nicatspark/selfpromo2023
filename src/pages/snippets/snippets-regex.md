@@ -54,3 +54,15 @@ Somewhere inbetween:
 or
 ^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)_@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)_$
 etc...
+
+##### Target a tag with a attribute as backreference
+
+```regex
+(<svg[^>]+(xmlns="[^"]*")[^>]*>)
+```
+
+...or if double or single qoutes are optional:
+
+```regex
+(<svg[^>]+(xmlns=["'][^("|')]*["'])[^>]*>)
+```
