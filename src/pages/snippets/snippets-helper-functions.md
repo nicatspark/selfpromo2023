@@ -677,3 +677,128 @@ function uuid() {
 
 const userID = uuid() //something like: "ec0c22fa-f909-48da-92cb-db17ecdb91c5"
 ```
+
+##### Capitalize first letter of string
+
+```typescript
+const firstUcase = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
+```
+
+##### Optimize svg
+
+```typescript
+interface svgOptimizerProps {
+  addSvgAttr?: Record<string, string>
+  removeAttributes?: string[]
+  removeTags?: string[]
+  replaceAttrValue?: Record<string, string>
+  str: string
+}
+
+/**
+ * Cleans up svg code.
+ * In object add keys in camelCase where attributes normaly are kebab case.
+ * Minimal defaults are set.
+ *
+ * @param str - [string] String to process.
+ * @param removeAttributes - [array] Attributes to remove.
+ * @param removeTags - [array] Attributes to remove.
+ * @param replaceAttrValue - [object] Replace value attributes if exists. Transforms camelcase to kebab case.
+ * @param addSvgAttr - [object] Add attributes with value to svg tag. Transforms camelcase to kebab case.
+ * @returns string
+ */
+export function svgOptimizer({
+  str,
+  removeAttributes = ['xml', 'doctype'],
+  removeTags = ['width', 'height'],
+  replaceAttrValue = {},
+  addSvgAttr = { width: '100%', height: '100%' },
+}: svgOptimizerProps) {
+  if (!str)
+    throw new Error(
+      'Missing string and/or options in argument to svgOptimizer.'
+    )
+  const attributesRegex = (attributes: string[]) =>
+    new RegExp(
+      `([\s]*(${attributes.join('|')})=")([a-zA-Z0-9:;%\/\.\s\(\)\-\,]*)(")`,
+      'gmi'
+    )
+
+  // =================================================================================================
+  // REMOVE TAGS
+  // =================================================================================================
+
+  const tagsRegex = (tags: string[]) =>
+    new RegExp(`\s*<[!?]*[\/]*(${tags.join('|')})[^>]*>\s*`, 'gmi')
+  str = str.replace(
+    tagsRegex(removeTags.map((a: string) => camelcaseToKebabcase(a))),
+    ''
+  )
+  // TODO: If xmlns is remove also remove "xlink:" from links, sometimes also "xmlns:xlink:".
+
+  // =================================================================================================
+  // REMOVE ATTRIBUTES
+  // =================================================================================================
+
+  str = str.replace(attributesRegex(removeAttributes), '')
+
+  // Clean up trailing whitespace in svg tag
+  str = str.replace(/(<svg[^>]( )>)/gi, '<svg>')
+
+  // =================================================================================================
+  // REPLACE ATTRIBUTE VALUES IF EXISTS
+  // =================================================================================================
+
+  Object.keys(replaceAttrValue).forEach((attr: string) => {
+    str = str.replace(
+      attributesRegex([camelcaseToKebabcase(attr)]),
+      `$1${replaceAttrValue[attr]}$4`
+    )
+  })
+
+  // =================================================================================================
+  // ADD ATTRIBUTES WITH VALUES TO SVG TAG
+  // =================================================================================================
+
+  const svgTagRegex = new RegExp('/(<svg[^>]*>)/', 'gmi')
+  // Extract svg tag
+  const svgTag = (str.match(svgTagRegex) || [])[0]
+  // First: remove same previous attributes
+  let newSvgTag = svgTag?.replace(attributesRegex(Object.keys(addSvgAttr)), '')
+  // Second: insert requested attributes with value
+  if (newSvgTag && svgTag) {
+    let attributesToAdd = ''
+    Object.keys(addSvgAttr).forEach((attr: string) => {
+      attributesToAdd += ` ${camelcaseToKebabcase(attr)}="${addSvgAttr[attr]}"`
+    })
+    newSvgTag = newSvgTag.replace('<svg', `<svg${attributesToAdd}`)
+    // Reinsert updated svg tag
+    str = str.replace(svgTag, newSvgTag)
+  }
+
+  // =================================================================================================
+  // RETURN OPTIMIZED STRING
+  // =================================================================================================
+
+  return str
+
+  // =================================================================================================
+  // INTERNAL HELPERS
+  // =================================================================================================
+
+  function camelcaseToKebabcase(propertyName: string) {
+    const upperToHyphenLower = (match: string, offset: number) =>
+      (offset > 0 ? '-' : '') + match.toLowerCase()
+    return propertyName.replace(/[A-Z]/g, upperToHyphenLower)
+  }
+}
+
+// Usage
+/* console.log('svgOptimizer', svgOptimizer({
+    str, 
+    removeAttributes: ['height','focusable','xmlns'], 
+    replaceAttrValue: {fill: 'currentColor'}, 
+    removeTags: ['xml','doctype'],
+    addSvgAttr: {width: '100%', height: '100%', focusInline: 'false'}
+})) */
+```
