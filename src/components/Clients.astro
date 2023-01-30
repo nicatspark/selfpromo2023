@@ -1,4 +1,5 @@
 ---
+import { Image } from '@astrojs/image/components'
 import aktieansvar from '../assets/clients/AktieAnsvar-logo-ligg.png'
 import akzonobel from '../assets/clients/akzonobel.png'
 import gp from '../assets/clients/GP.png'
@@ -8,34 +9,61 @@ import svt from '../assets/clients/svt.png'
 import volvo from '../assets/clients/Volvo.png'
 import akelius from '../assets/clients/akelius.png'
 import skf from '../assets/clients/skf.png'
-import { Image } from '@astrojs/image/components'
 ---
 
 <aside class='neu-box'>
   <div
     ><Image
       width={250}
+      aspectRatio={500 / 112}
       src={aktieansvar}
       alt='Aktie-ansvar'
       format='png'
     /></div
   >
-  <div><Image width={250} src={akzonobel} alt='Akzo Nobel' /></div>
-  <div><Image width={250} src={gp} alt='Göteborgs-posten' /></div>
-  <div><Image width={250} src={scania} alt='Scania' /></div>
-  <div><Image width={250} src={stena} alt='Stena' /></div>
-  <div><Image width={250} src={svt} alt='Svt' /></div>
-  <div><Image width={250} src={volvo} alt='Volvo' /></div>
+  <div
+    ><Image
+      aspectRatio={500 / 97}
+      width={250}
+      src={akzonobel}
+      alt='Akzo Nobel'
+    /></div
+  >
   <div
     ><Image
       width={250}
+      aspectRatio={500 / 78}
+      src={gp}
+      alt='Göteborgs-posten'
+    /></div
+  >
+  <div
+    ><Image width={250} aspectRatio={500 / 58} src={scania} alt='Scania' /></div
+  >
+  <div
+    ><Image width={250} aspectRatio={300 / 172} src={stena} alt='Stena' /></div
+  >
+  <div><Image width={250} aspectRatio={500 / 124} src={svt} alt='Svt' /></div>
+  <div
+    ><Image width={250} aspectRatio={1200 / 165} src={volvo} alt='Volvo' /></div
+  >
+  <div
+    ><Image
+      width={250}
+      aspectRatio={500 / 128}
       src={akelius}
       alt='Akelius'
       style='padding-inline: 1rem'
     />
   </div>
   <div
-    ><Image width={250} src={skf} alt='SKF' style='padding-inline: 0.5rem' />
+    ><Image
+      width={250}
+      aspectRatio={500 / 95}
+      src={skf}
+      alt='SKF'
+      style='padding-inline: 0.5rem'
+    />
   </div>
 </aside>
 <style lang='scss'>
