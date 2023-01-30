@@ -11,9 +11,12 @@ import react from '@astrojs/react';
 // https://astro.build/config
 
 // https://astro.build/config
+import image from "@astrojs/image";
+
+// https://astro.build/config
 export default defineConfig({
   site: 'https://hervy.netlify.com/',
-  integrations: [mdx(), sitemap(), react()],
+  integrations: [mdx(), sitemap(), react(), image()],
   output: 'server',
   adapter: netlify()
 });

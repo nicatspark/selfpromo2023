@@ -1,33 +1,41 @@
 ---
-import aktieansvar from '/assets/clients/AktieAnsvar-logo-ligg.png'
-import akzonobel from '/assets/clients/akzonobel.png'
-import gp from '/assets/clients/GP.png'
-import scania from '/assets/clients/scania.png'
-import stena from '/assets/clients/stena.png'
-import svt from '/assets/clients/svt.png'
-import volvo from '/assets/clients/Volvo.png'
-import akelius from '/assets/clients/akelius.png'
-import skf from '/assets/clients/skf.png'
+import aktieansvar from '../assets/clients/AktieAnsvar-logo-ligg.png'
+import akzonobel from '../assets/clients/akzonobel.png'
+import gp from '../assets/clients/GP.png'
+import scania from '../assets/clients/scania.png'
+import stena from '../assets/clients/stena.png'
+import svt from '../assets/clients/svt.png'
+import volvo from '../assets/clients/Volvo.png'
+import akelius from '../assets/clients/akelius.png'
+import skf from '../assets/clients/skf.png'
+import { Image } from '@astrojs/image/components'
 ---
 
 <aside class='neu-box'>
-  <div><img width='250' src={aktieansvar} alt='Aktie-ansvar' /></div>
-  <div><img width='250' src={akzonobel} alt='Akzo Nobel' /></div>
-  <div><img width='250' src={gp} alt='Göteborgs-posten' /></div>
-  <div><img width='250' src={scania} alt='Scania' /></div>
-  <div><img width='250' src={stena} alt='Stena' /></div>
-  <div><img width='250' src={svt} alt='Svt' /></div>
-  <div><img width='250' src={volvo} alt='Volvo' /></div>
   <div
-    ><img
-      width='250'
+    ><Image
+      width={250}
+      src={aktieansvar}
+      alt='Aktie-ansvar'
+      format='png'
+    /></div
+  >
+  <div><Image width={250} src={akzonobel} alt='Akzo Nobel' /></div>
+  <div><Image width={250} src={gp} alt='Göteborgs-posten' /></div>
+  <div><Image width={250} src={scania} alt='Scania' /></div>
+  <div><Image width={250} src={stena} alt='Stena' /></div>
+  <div><Image width={250} src={svt} alt='Svt' /></div>
+  <div><Image width={250} src={volvo} alt='Volvo' /></div>
+  <div
+    ><Image
+      width={250}
       src={akelius}
       alt='Akelius'
       style='padding-inline: 1rem'
     />
   </div>
   <div
-    ><img width='250' src={skf} alt='SKF' style='padding-inline: 0.5rem' />
+    ><Image width={250} src={skf} alt='SKF' style='padding-inline: 0.5rem' />
   </div>
 </aside>
 <style lang='scss'>

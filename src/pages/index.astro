@@ -3,8 +3,9 @@ import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
-import face from '/assets/_male_intellectual_face_in_paper_art.png'
+import face from '../../public/assets/_male_intellectual_face_in_paper_art.png'
 import Clients from '../components/Clients.astro'
+import { Image } from '@astrojs/image/components'
 ---
 
 <!DOCTYPE html>
@@ -29,7 +30,15 @@ import Clients from '../components/Clients.astro'
             their web and app development process.</p
           >
         </div>
-        <div><img src={face} alt='Hero image' width='400' /></div>
+        <div
+          ><Image
+            src={face}
+            alt='Hero image'
+            width={400}
+            aspectRatio={1 / 1}
+            format='png'
+          /></div
+        >
       </div>
       <Clients />
     </main>
