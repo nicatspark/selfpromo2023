@@ -3,7 +3,6 @@ import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 // import Toc from '../components/Toc'
-import { Image } from '@astrojs/image/components'
 
 export interface Props {
   content: {
@@ -42,14 +41,7 @@ const {
         <!-- {heroImage && <img width={720} height={360} src={heroImage} alt='' />} -->
         {
           heroImage && (
-            <Image
-              width={720}
-              aspectRatio={720 / 400}
-              height={400}
-              src={heroImage}
-              alt=''
-              format={heroImage.split('.')[1]}
-            />
+            <img width={720} height={400} src={heroImage} alt='Hero image' />
           )
         }
         <h2 class='title'>{title}</h2>
