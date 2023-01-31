@@ -15,7 +15,7 @@ import skf from '../assets/clients/skf.png'
   <div
     ><Image
       width={250}
-      aspectRatio={500 / 112}
+      height={(250 * 112) / 500}
       src={aktieansvar}
       alt='Aktie-ansvar'
       format='png'
@@ -23,8 +23,8 @@ import skf from '../assets/clients/skf.png'
   >
   <div
     ><Image
-      aspectRatio={500 / 97}
       width={250}
+      height={(250 * 97) / 500}
       src={akzonobel}
       alt='Akzo Nobel'
     /></div
@@ -32,30 +32,41 @@ import skf from '../assets/clients/skf.png'
   <div
     ><Image
       width={250}
-      aspectRatio={500 / 78}
+      height={(250 * 78) / 500}
       src={gp}
       alt='Göteborgs-posten'
     /></div
   >
   <div
-    ><Image width={250} aspectRatio={500 / 58} src={scania} alt='Scania' /></div
+    ><Image
+      width={250}
+      height={(250 * 58) / 500}
+      src={scania}
+      alt='Scania'
+    /></div
   >
-  <div
-    ><Image width={250} aspectRatio={300 / 172} src={stena} alt='Stena' /></div
-  >
-  <div><Image width={250} aspectRatio={500 / 124} src={svt} alt='Svt' /></div>
   <div
     ><Image
       width={250}
-      aspectRatio={1200 / 165}
-      src='../assets/clients/Volvo.png'
+      height={(250 * 124) / 300}
+      src={stena}
+      alt='Stena'
+    /></div
+  >
+  <div><Image width={250} height={(250 * 124) / 500} src={svt} alt='Svt' /></div
+  >
+  <div
+    ><Image
+      width={250}
+      height={(250 * 165) / 1200}
+      src={volvo}
       alt='Volvo'
     /></div
   >
   <div
     ><Image
       width={250}
-      aspectRatio={500 / 128}
+      height={(250 * 128) / 500}
       src={akelius}
       alt='Akelius'
       style='padding-inline: 1rem'
@@ -64,7 +75,7 @@ import skf from '../assets/clients/skf.png'
   <div
     ><Image
       width={250}
-      aspectRatio={500 / 95}
+      height={(250 * 95) / 500}
       src={skf}
       alt='SKF'
       style='padding-inline: 0.5rem'
