@@ -145,3 +145,58 @@ pubDate: 'Jan 7 2023'
 >
 </div>
 ```
+
+#### Best practices
+
+##### Correct use of `img`
+
+First addd `loading=lazy`.
+
+```html
+<img loading="lazy" src="image.png" />
+```
+
+Next add `srcset` so every browser that supports that will get correct size.
+
+```html
+<img
+  loading="lazy"
+  srcset="
+    /image.png?width=100 100w,
+    /image.png?width=200 200w,
+    /image.png?width=400 400w
+  "
+  src="image.png"
+/>
+```
+
+Then add the `picture` tag and serve the smallest file depending on what the browser can handle.
+
+```html
+<picture>
+  <source
+    type="image/webp"
+    srcset="
+      /image.webp?width=100 100w,
+      /image.webp?width=200 200w,
+      /image.webp?width=400 400w
+    "
+  />
+  <img
+    loading="lazy"
+    role="presentation"
+    srcset="
+      /image.png?width=100 100w,
+      /image.png?width=200 200w,
+      /image.png?width=400 400w
+    "
+    src="image.png"
+  />
+</picture>
+```
+
+In modern frameworks like Next and Quick this gets handled for free and you only need to write:
+
+```html
+< Image src="/my-image.png" alt="My image" />
+```
