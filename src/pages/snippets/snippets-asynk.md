@@ -54,3 +54,22 @@ const getPost = async (id) => {
   ).json()
 }
 ```
+
+However, it is difficult to properly errorHandle it. You probably want to use this pattern instead.
+
+```javascript
+fetch("anything")
+    .then(response => {
+      if(!response.ok) {
+        if(response.status === 404) throw new Error("Not found")
+        else if(response.status === 401) throw new Error("Unauthorized")
+        else if(response.status === 418) throw new Error("I'm a teapot !")
+        else throw new Error("Other error")
+      }
+      else // ...
+    })
+    .then(data => /* ... */)
+    .catch(error => { /* network error / offline */ })
+```
+
+Since quickly quite verbose and non dynamic you might be intrested in [extending the native error](/blog/error-handling-in-typescript). Or use a [library like Wretch](/blog/error-handling-fetch).
