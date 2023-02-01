@@ -11,7 +11,11 @@ import react from '@astrojs/react'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://hervy.netlify.com/',
-  integrations: [mdx(), sitemap(), react()],
+  integrations: [
+    mdx({ extendMarkdownConfig: false, smartypants: true, gfm: true }),
+    sitemap(),
+    react(),
+  ],
   output: 'server',
   adapter: netlify(),
 })
