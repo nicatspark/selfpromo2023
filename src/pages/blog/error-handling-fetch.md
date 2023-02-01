@@ -4,7 +4,7 @@ title: 'Error handling fetch requests (Wretch)'
 description: ''
 pubDate: 'Jan 31 2023'
 draft: false
-heroImage: '/assets/blog/errorhandling.webp'
+heroImage: '/assets/blog/breakingdown.webp'
 ---
 
 The fetch request is awsome but you might be writing it wrong.
