@@ -1,9 +1,11 @@
 ---
 layout: '../../layouts/SnippetPost.astro'
-title: 'The different shapes of async functions'
+title: 'Async functions'
 description: 'Since we mostly use one or two of these it is easy to forget the syntaax sometimes.'
 pubDate: 'Jan 7 2023'
 ---
+
+#### The different shapes of async functions
 
 ##### Async arrow functions look like this
 
@@ -55,21 +57,39 @@ const getPost = async (id) => {
 }
 ```
 
-However, it is difficult to properly errorHandle it. You probably want to use this pattern instead.
+However, it is difficult to properly error-handle it. You probably want to use this pattern instead.
 
 ```javascript
 fetch("anything")
     .then(response => {
-      if(!response.ok) {
+      if(!response.ok) { // status not in the 200-range
         if(response.status === 404) throw new Error("Not found")
         else if(response.status === 401) throw new Error("Unauthorized")
         else if(response.status === 418) throw new Error("I'm a teapot !")
         else throw new Error("Other error")
       }
-      else // ...
+      else // ... could be [return response.json;] for example
     })
     .then(data => /* ... */)
     .catch(error => { /* network error / offline */ })
 ```
 
-Since quickly quite verbose and non dynamic you might be intrested in [extending the native error](/blog/error-handling-in-typescript). Or use a [library like Wretch](/blog/error-handling-fetch).
+Since this quickly becomes quite verbose and non dynamic you might be intrested in [extending the native error](/blog/error-handling-in-typescript). Or use a [library like Wretch](/blog/error-handling-fetch).
+
+##### So how to load in parallel with best practice in mind?
+
+Key here is to use `allSettled` instead of `Promise.all` with a `try/catch`.
+
+```javascript
+async function getPageData() {
+  const result = await Promise.allSettled([fetchUser(), fetchProduct()])
+
+  const [user, product] = handle(result) //case not result.ok===true, error handle to the best of your ability.
+}
+```
+
+---
+
+People interested in this article also found good use of this:
+
+- [tries-to-execute-a-function-until-it-does-not-return-falsey-attempts-number-of-times](/snippets/snippets-helper-functions#tries-to-execute-a-function-until-it-does-not-return-falsey-attempts-number-of-times)
