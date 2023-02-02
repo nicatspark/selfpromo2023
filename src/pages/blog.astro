@@ -44,7 +44,7 @@ latestPost['contrastColorShadow'] = latestPost.contrastColorShadow || 'black'
           display: grid;
           grid-template-areas: 'stack';
           place-items: center;
-          border-radius: 1rem;
+          border-radius: var(--neu-radius);
           overflow: hidden;
           isolation: isolate;
           max-height: calc(var(--img-height) + 100px);
@@ -56,7 +56,7 @@ latestPost['contrastColorShadow'] = latestPost.contrastColorShadow || 'black'
           & > * {
             grid-area: stack;
             position: relative;
-            top: calc(var(--img-height) * -1);
+            top: calc((var(--img-height)/2) * -1);
           }
           img {
             clip-path: inset(

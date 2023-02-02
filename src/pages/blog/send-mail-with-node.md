@@ -58,4 +58,4 @@ emails.forEach((email) => {
 })
 ```
 
-Keep in mind that sending a large number of emails at once can take a long time, and it may be better to use a queue system to send the emails in smaller batches. You can use a library like Bull to do this.
+Keep in mind that sending a large number of emails at once can take a long time, and it may be better to use a queue system to send the emails in smaller batches. You can use a library like [Bull](https://www.npmjs.com/package/bull) to do this.
