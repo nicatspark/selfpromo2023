@@ -5,6 +5,8 @@ description: ''
 pubDate: 'Jan 31 2023'
 draft: false
 heroImage: '/assets/blog/breakingdown.webp'
+contrastColor: '#bccaca'
+contrastColorShadow: '#000'
 ---
 
 The fetch request is awsome but you might be writing it wrong.

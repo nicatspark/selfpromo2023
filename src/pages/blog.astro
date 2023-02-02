@@ -22,7 +22,10 @@ const snippets = (await Astro.glob('./snippets/*.{md,mdx}'))
       new Date(a.frontmatter.pubDate).valueOf()
   )
 const latestPost = posts[0].frontmatter
+console.log('latestPost', latestPost)
 latestPost['url'] = posts[0].url
+latestPost['contrastColor'] = latestPost.contrastColor || 'white'
+latestPost['contrastColorShadow'] = latestPost.contrastColorShadow || 'black'
 ---
 
 <!DOCTYPE html>
@@ -36,6 +39,8 @@ latestPost['url'] = posts[0].url
         gap: 1rem;
         .latest-article {
           --img-height: 200px;
+          --contrast-color: {latestPost?.contrastColor};
+          --contrast-color-shadow: {latestPost?.contrastColorShadow};
           display: grid;
           grid-template-areas: 'stack';
           place-items: center;
@@ -61,8 +66,8 @@ latestPost['url'] = posts[0].url
           }
           h1 {
             position: relative;
-            color: #bccaca;
-            text-shadow: 0px 0px 4px black;
+            color: var(--contrast-color, white);
+            text-shadow: 0px 0px 4px var(--contrast-color-shadow, black);
             font-size: 2rem;
             z-index: 1;
             pointer-events: none;
@@ -122,7 +127,7 @@ latestPost['url'] = posts[0].url
   <body>
     <Header />
     <main>
-      <div class='latest-article'
+      <div class='latest-article' style={`--contrast-color: ${latestPost?.contrastColor};--contrast-color-shadow: ${latestPost?.contrastColorShadow};`}
         ><a href={latestPost?.url}
           ><img src={latestPost?.heroImage} alt={latestPost?.title} /></a
         ><h1 class='title'>{latestPost?.title}</h1></div
