@@ -8,7 +8,15 @@ pubDate: 'Feb 23 2023'
 
 Or more specifically, how to send mail using nodemailer with a gmail account in a Astrojs project endpoint.
 
-Forst create `HOST`, `EMAIL` and `PASS`. Host will contain `smtp.gmail.com`, email/pass contain the email account info you want to use from gmail. You will need to go to [gmail settings](https://www.google.com/settings/security/lesssecureapps) and allow less secure email apps to access. (You may wanna add a captcha to the form later after this.) Lets start with the client side contact page.
+Forst create `HOST`, `EMAIL` and `PASS` environment variables.
+
+```bash
+HOST = "smtp.gmail.com"
+EMAIL = "nicolas@hervy.se"
+PASS = "******"
+```
+
+Host will contain `smtp.gmail.com` since we're using gmail. Email/pass contain the email account info you want to use from gmail. You will need to go to [gmail settings](https://www.google.com/settings/security/lesssecureapps) and allow "less secure" email apps to access. (You may wanna add a captcha to the form later after this.) Lets start with the client side contact page.
 
 ```html
 <!-- pages/contact.astro -->
@@ -79,6 +87,7 @@ const retrieveInfo = () => {
 }
 // end: localstorage
 
+// This kicks thing of, should really be on window.onload but...
 const submitBtn = document.querySelector('[type="submit"]')
 submitBtn?.addEventListener('click', submitForm)
 retrieveInfo()
@@ -174,7 +183,7 @@ export const post: APIRoute = async ({ request }) => {
 }
 ```
 
-It took a whle until I figured out that it did not work on the Netlify server unless I switched the second argument callback to an await on the last sendmail function, and then error handled with a try catch of course.
+It took a while until I figured out that it did not work on the Netlify server unless I switched the second argument callback to an await on the last sendmail function, and then error handled with a try catch of course.
 
 [Astrojs documentation on endpoints](https://docs.astro.build/en/core-concepts/endpoints/)
 [nodemailer](https://nodemailer.com/usage/using-gmail/)
