@@ -373,3 +373,55 @@ Note: Won't work in firefox just yet.
   }
 }
 ```
+
+##### Tada animation
+
+```css
+.email {
+  animation: tada 0.5s 2s;
+}
+@keyframes Tada {
+  from: {
+    transform: scale3d(1,1,1);
+  }
+  10,20 {
+    transform: scale3d(0.9,0.9,0.9)
+    rotate3d: (0,0,1,-3d);
+  }
+  30,50,70 {
+    transform: scale3d(1.1,1.1,1.1)
+    rotate3d(0,0,1,3deg)
+  }
+  40,60,80 {
+    transform: scale3d(1.1,1.1,1.1)
+    rotate3d(0,0,1,-3deg)
+  }
+  to {
+    transform: scale3d(1,1,1);
+  }
+}
+```
+
+```css
+.counter-notification {
+  opacity: 0;
+  animation: pop 0.1s 2.5s cubic-bezier(0.71, -0.52, 0.7, 1.72) forwards;
+}
+
+@keyframes pop {
+  from: {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opactiy: 1;
+  }
+}
+```
+
+[source](https://www.youtube.com/shorts/8wNAhCTyH9A)
