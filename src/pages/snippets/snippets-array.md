@@ -485,3 +485,21 @@ console.log(Math.max(...list), Math.min(...list)) // 3, 1
 const average = (arr) => arr.reduce((a, b) => a + b) / arr.length
 console.log(`average: `, average([1, 5, 10])) // 5
 ```
+
+##### From array to text language
+
+```javascript
+const array = ['one', 'two', 'three']
+const f = new Intl.ListFormat('en-us')
+console.log(f.format(array)) // one, two, and three
+// also check out ListFormat options argument
+{
+  type: 'disjunktion'
+} // or
+{
+  style: 'short'
+} // &
+{
+  style: 'narrow'
+} // (nothing)
+```
