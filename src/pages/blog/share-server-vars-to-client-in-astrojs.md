@@ -40,7 +40,15 @@ Theoretically sharing states from server to client can be done using hydration t
 
 ##### Alternatively load the full script externaly
 
-It's not that obvious how to use imports in astro files client side.
+The following seems to be deprecated. Try this instead:
+
+```html
+<script>
+  import 'lightbox2/dist/js/lightbox.min.js'
+</script>
+```
+
+~~It's not that obvious how to use imports in astro files client side.~~
 
 ```html
 <!-- Test.astro -->
@@ -53,10 +61,10 @@ It's not that obvious how to use imports in astro files client side.
 </script>
 ```
 
-This returns `Uncaught TypeError: Failed to resolve module specifier "three".`
-`Relative references must start with either "/", "./", or "../".` in the console.
+~~This returns~~ `~~Uncaught TypeError: Failed to resolve module specifier "three".~~`
+`~~Relative references must start with either "/", "./", or "../".~~` ~~in the console.~~
 
-Astro doesn't let you import npm modules in inline script tags within .astro unfortunatley. However we can import in an external `.js`/`.ts` file, then make use of `Astro.resolve` like so:
+~~Astro doesn't let you import npm modules in inline script tags within .astro unfortunatley. However we can import in an external `.js`/`.ts` file, then make use of `Astro.resolve` like so:~~
 
 ```html
 <!-- Test.astro -->
@@ -65,9 +73,9 @@ Astro doesn't let you import npm modules in inline script tags within .astro unf
 <script src={Astro.resolve('./myScript.js')} type="module"/>
 ```
 
-`type="module"` guarantees your script will load client side.
+~~`type="module"` guarantees your script will load client side.~~
 
-Inside `myScript.js` we can import things as expected.
+~~Inside `myScript.js` we can import things as expected.~~
 
 ```javascript
 // myScript.js
