@@ -131,3 +131,28 @@ const slugify = (string) =>
 const randomString = () => Math.random().toString(36).slice(2)
 // for eg: y3lpt2gs5q
 ```
+
+##### To pascal case + to camel case
+
+```typescript
+function toCamelCase(string: string) {
+  return toPascalCase(`${string}`).replace(
+    new RegExp(/^([A-Z])(.*)/, 'g'),
+    ($1, $2, $3) => `${$2.toLowerCase() + $3}`
+  )
+}
+
+function toPascalCase(string: string) {
+  return `${string}`
+    .replace(new RegExp(/[-_]+/, 'g'), ' ')
+    .replace(new RegExp(/[^\w\s]/, 'g'), '')
+    .replace(
+      new RegExp(/\s+(.)(\w*)/, 'g'),
+      ($1, $2, $3) => `${$2.toUpperCase() + $3.toLowerCase()}`
+    )
+    .replace(new RegExp(/\w/), (s) => s.toUpperCase())
+}
+
+console.log(toCamelCase('Alpha-beta')) // alphaBeta
+console.log(toPascalCase(' aLLlpha-BETA eta')) // AlllphaBetaEta
+```

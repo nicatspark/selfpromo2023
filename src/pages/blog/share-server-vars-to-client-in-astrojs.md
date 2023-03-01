@@ -38,48 +38,12 @@ There is also a concept of [sharing states](https://docs.astro.build/en/core-con
 
 Theoretically sharing states from server to client can be done using hydration technique by combining `define:vars` and [nanostore](https://github.com/nanostores/nanostores#guide) library map api during the onLoad event may be 🧪.
 
-##### Alternatively load the full script externaly
+##### Updated: Alternatively load the full script externaly
 
-The following seems to be deprecated. Try this instead:
+The previous code here seems to have been deprecated. But this is much smaller if it works as suggested:
 
 ```html
 <script>
   import 'lightbox2/dist/js/lightbox.min.js'
 </script>
-```
-
-~~It's not that obvious how to use imports in astro files client side.~~
-
-```html
-<!-- Test.astro -->
-<canvas class="webgl"></canvas>
-
-<script type="module">
-  import * as THREE from 'three'
-
-  console.log(THREE) //undefined :(
-</script>
-```
-
-~~This returns~~ `~~Uncaught TypeError: Failed to resolve module specifier "three".~~`
-`~~Relative references must start with either "/", "./", or "../".~~` ~~in the console.~~
-
-~~Astro doesn't let you import npm modules in inline script tags within .astro unfortunatley. However we can import in an external `.js`/`.ts` file, then make use of `Astro.resolve` like so:~~
-
-```html
-<!-- Test.astro -->
-<canvas class="webgl"></canvas>
-
-<script src={Astro.resolve('./myScript.js')} type="module"/>
-```
-
-~~`type="module"` guarantees your script will load client side.~~
-
-~~Inside `myScript.js` we can import things as expected.~~
-
-```javascript
-// myScript.js
-import * as THREE from 'three'
-
-console.log(THREE) // Three.js module!
 ```
