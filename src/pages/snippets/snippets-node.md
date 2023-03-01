@@ -51,11 +51,11 @@ or npm `npm start -- --inspect-brk`
 
 Now, open up any Edge or Chrome dev tools window and click the little green Node.js logo button next to the responsivity button.
 
-###### Debugging Exceptions
+##### Debugging Exceptions
 
 If you want to debug a thrown exception, go to the Sources tab and click the octagonal button with a pause symbol. This causes Chrome DevTools to stop on any uncaught thrown exceptions.
 
-###### About --inspect versus --inspect-brk
+##### About --inspect versus --inspect-brk
 
 What's the difference between --inspect and --inspect-brk?
 
