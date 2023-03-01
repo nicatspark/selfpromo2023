@@ -25,6 +25,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/nodemailer": "^6.4.7",
     "sass": "^1.57.1"
   }
 }

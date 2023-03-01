@@ -59,7 +59,7 @@ export const post: APIRoute = async ({ request }) => {
     console.log('mailresult', mailresult)
 
     // return response
-    return new Response(JSON.stringify(mailDetails), {
+    return new Response(JSON.stringify({ ...mailDetails, success: true }), {
       status: 200,
     })
   }

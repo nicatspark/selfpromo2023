@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import Toc from '../components/Toc'
+import Toaster from '../components/Toaster'
 
 export interface Props {
   content: {
@@ -82,5 +83,7 @@ const {
       const el = document.querySelector('h2')
       if (el) observer.observe(el)
     </script>
+
+    <Toaster client:only />
   </body></html
 >

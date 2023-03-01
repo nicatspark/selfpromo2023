@@ -1,0 +1,214 @@
+---
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
+---
+
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style lang='scss'>
+      form {
+        display: flex;
+        flex-flow: column;
+        position: relative;
+        fieldset {
+          margin: 1rem 0;
+          border: none;
+        }
+        input,
+        textarea {
+          width: 100%;
+          border: none;
+          border-bottom: 1px solid var(--medium-dark);
+          padding: 1em 1em;
+          position: relative;
+          color: #555;
+        }
+        textarea {
+          min-height: 8rem;
+        }
+        label {
+          text-transform: uppercase;
+          font-size: 0.7rem;
+          letter-spacing: 0.2em;
+          color: #999;
+        }
+        & [disable='true'] {
+          pointer-events: none;
+          // opacity: 0.5;
+        }
+        button {
+          padding: 1rem 2rem;
+          border-radius: 1.5rem;
+          background-color: #405be3;
+          color: white;
+          width: min(40ch, 100%);
+          .loader {
+            display: none;
+          }
+        }
+        &.loading {
+          button {
+            .idle {
+              display: none;
+            }
+            .loader {
+              display: block;
+              margin: auto;
+            }
+          }
+          & > :is(fieldset, .columns) {
+            opacity: 0.5;
+          }
+        }
+      }
+      html form :is(input, textarea) {
+        background-color: var(--bg-header);
+        color: #333;
+      }
+
+      html.dark-theme form :is(input, textarea) {
+        background-color: #1f1e1e;
+        color: #9c9c9c;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <form id='form' onsubmit='event => event.preventDefault();return false'>
+        <fieldset>
+          <label for='name'>Name</label>
+          <input type='text' id='name' value='' />
+        </fieldset>
+        <fieldset>
+          <label for='email'>Email</label>
+          <input type='text' id='email' value='' />
+        </fieldset>
+        <fieldset>
+          <label for='subject'>Subject</label>
+          <input type='text' id='subject' value='' />
+        </fieldset>
+        <fieldset>
+          <textarea id='message'></textarea>
+        </fieldset>
+        <button type='submit'>
+          <div class='idle'>Submit</div>
+          <div class='loader'></div>
+        </button>
+      </form>
+      <script is:inline type='module'>
+        const get = (id) =>
+          document.getElementById(id) || {
+            value: '',
+          }
+
+        const submitForm = () => {
+          if (formState().isLoading()) return
+          formState().setToLoading(true)
+          saveInput()
+          sendmail()
+        }
+
+        // localStorage code
+        const getFormData = () => {
+          const store = Object.create(null)
+          store.name = get('name')?.value
+          store.email = get('email')?.value
+          store.subject = get('subject')?.value
+          store.message = get('message')?.value
+          return store
+        }
+        const saveInput = () => {
+          const { message, subject, ...rest } = getFormData()
+          localStorage.setItem('contactinfo', JSON.stringify(rest))
+        }
+        const retrieveInfo = () => {
+          const store = JSON.parse(localStorage.getItem('contactinfo') || '{}')
+          get('name').value = store.name || ''
+          get('email').value = store.email || ''
+        }
+        // End: localStorage
+
+        const formState = () => {
+          const inputs = [...document.querySelectorAll('input')]
+          const button = document.querySelector('button')
+          const form = document.querySelector('form')
+          const textarea = document.querySelector('textarea')
+          const disabled = [...document.querySelectorAll('[disabled]')]
+
+          const setToLoading = (isLoading) => {
+            if (!form || !button) return
+            if (isLoading) {
+              inputs.forEach((inpt) => {
+                inpt.setAttribute('disabled', 'true')
+              })
+              textarea.setAttribute('disabled', 'true')
+              form.classList.add('loading')
+              return
+            }
+            form.classList.remove('loading')
+            disabled.forEach((inpt) => inpt.removeAttribute('disabled'))
+          }
+
+          const isLoading = () => form.classList.contains('loading')
+
+          return { setToLoading, isLoading }
+        }
+
+        const submitBtn = document.querySelector('[type="submit"]')
+        submitBtn?.addEventListener('click', submitForm)
+        retrieveInfo()
+        ;[...document.querySelectorAll('input')][0]?.focus()
+        // window.onload = () => {
+        // }
+
+        // ----
+        const sendmail = async () => {
+          const { name, surname, email, tel, message, subject } = getFormData()
+          const data = await fetch('/api/sendmail.json', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name,
+              surname,
+              email,
+              tel,
+              message,
+              subject,
+            }),
+          })
+            .then((res) => res.json())
+            // .then((data) => console.log(data))
+            .catch((err) => {
+              console.log('Error', err)
+              throw new Error('Network error.')
+            })
+          console.log(data)
+          formState().setToLoading(false)
+          if (data.success) {
+            get('subject').value = ''
+            get('message').value = ''
+            displayToaster('👍 Message was sent successfully')
+          } else {
+            displayToaster('💩 Could not send message.', 'error')
+          }
+        }
+
+        function displayToaster(message, type = 'success') {
+          document.body.dispatchEvent(
+            new CustomEvent('TOASTER', {
+              detail: [message, 5, type],
+            })
+          )
+        }
+      </script>
+    </main>
+    <Footer />
+  </body></html
+>

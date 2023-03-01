@@ -1,0 +1,37 @@
+.toaster__container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.toaster__item {
+  list-style: none;
+  width: max-content;
+  margin: auto;
+  background: rgb(164, 194, 235);
+  color: rgb(82, 96, 133);
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  transition: all 0.5s ease-out;
+  transform: translateY(0);
+  opacity: 1;
+  box-shadow: 3px 3px 6px hsl(0 0% 0% / 0.1);
+  &[data-type='success'] {
+    background: rgb(164, 194, 235);
+    color: rgb(82, 96, 133);
+  }
+  &[data-type='error'] {
+    background: rgb(235, 195, 164);
+    color: rgb(23, 23, 23);
+    border: 1px solid darkred;
+  }
+  &[data-type='info'] {
+    background: rgb(164, 194, 235);
+    color: rgb(82, 96, 133);
+  }
+  &[data-type='warning'] {
+    background: rgb(235, 226, 164);
+    color: rgb(58, 56, 52);
+    border: 1px solid rgb(224, 179, 0);
+  }
+}
