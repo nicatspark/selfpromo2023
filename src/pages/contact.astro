@@ -14,6 +14,19 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
         display: flex;
         flex-flow: column;
         position: relative;
+        padding: 1rem;
+        max-inline-size: min(400px, 100%);
+        margin-inline: auto;
+        border-top: 1px solid hsl(0 0% 100% / 0.5);
+        background: rgb(248, 248, 249);
+        background: linear-gradient(
+          156deg,
+          rgba(255, 255, 255, 0.2903536414565826) 0%,
+          rgba(187, 187, 187, 0.33237044817927175) 48%,
+          rgba(0, 212, 255, 0.15870098039215685) 100%
+        );
+        box-shadow: 2px 2px 6px hsl(0 0% 0% / 0.3);
+        border-radius: 5px;
         fieldset {
           margin: 1rem 0;
           border: none;
@@ -42,10 +55,24 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
         }
         button {
           padding: 1rem 2rem;
-          border-radius: 1.5rem;
-          background-color: #405be3;
-          color: white;
-          width: min(40ch, 100%);
+          background-color: hsl(222deg 100% 55%);
+          color: hsl(0 0% 100% /0.8);
+          margin: 0 auto 2rem 0.75rem;
+          clip-path: polygon(
+            0% 0%,
+            100% 0,
+            100% calc(100% - 20px),
+            calc(100% - 20px) 100%,
+            0% 100%
+          );
+          min-width: 200px;
+          font-family: var(--sans-serif);
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          &:hover {
+            background-color: hsl(222deg 100% 60%);
+            color: white;
+          }
           .loader {
             display: none;
           }
@@ -66,13 +93,23 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
         }
       }
       html form :is(input, textarea) {
-        background-color: var(--bg-header);
-        color: #333;
+        background-color: white;
+        color: #4a4a4a;
       }
 
-      html.dark-theme form :is(input, textarea) {
-        background-color: #1f1e1e;
-        color: #9c9c9c;
+      html.dark-theme form {
+        background-color: hsl(0 0% 100% / 0.1);
+        background: linear-gradient(
+          156deg,
+          rgba(248, 248, 249, 0.2903536414565826) 0%,
+          rgba(92, 92, 122, 0.33237044817927175) 35%,
+          rgba(0, 212, 255, 0.33237044817927175) 100%
+        );
+
+        &:is(input, textarea) {
+          background-color: #1f1e1e;
+          color: #9c9c9c;
+        }
       }
     </style>
   </head>
