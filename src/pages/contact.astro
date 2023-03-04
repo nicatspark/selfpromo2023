@@ -137,7 +137,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
           <div class='loader'></div>
         </button>
       </form>
-      <script is:inline type='module'>
+      <script is:inline>
         const get = (id) =>
           document.getElementById(id) || {
             value: '',
@@ -205,7 +205,20 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 
         // ----
         const sendmail = async () => {
-          const { name, surname, email, tel, message, subject } = getFormData()
+          const { name, email, message, subject } = getFormData()
+          if (name.trim() === '') {
+            displayToaster('Name is missing.', (type = 'error'))
+            name.focus()
+            return
+          }
+          if (!/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(email)) {
+            displayToaster('Email is not valid.', (type = 'error'))
+            email.focus()
+            return
+          }
+          if (subject.trim() === '') {
+            subject = 'No subject'
+          }
           const data = await fetch('/api/sendmail.json', {
             method: 'POST',
             headers: {
