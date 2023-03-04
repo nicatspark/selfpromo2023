@@ -6,7 +6,7 @@ updatedDate: 'August 08 2022'
 heroImage: '/placeholder-about.jpg'
 ---
 
-With 20 years of experience in the industry, I am a seasoned full stack developer with a focus on frontend and user experience. My entry point is from the UX side since career started as a graphic designer back in the days.
+With 20 years of experience in the industry, I am a seasoned full stack developer with a focus on frontend and user experience. My entry point into software engineering is from the UX angle since my career started as a graphic designer.
 
 Since 1997, I have been working in the web development industry, creating web sites/apps, and working with user experience. I use tools such as Figma and Adobe XD to create prototypes. I believe that my involvement in UX allows me to have a enhanced holistic view of the project, goals and a better understanding the needs of the client's customer.
 

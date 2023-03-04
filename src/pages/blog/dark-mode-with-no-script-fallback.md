@@ -84,3 +84,26 @@ function toggleMode() {
 ```
 
 Check out [my code at CodePen.io](https://codepen.io/nicolashervy/pen/wvEdXOJ)
+
+#### Favicon bonus tip!
+
+Make your favicon as a SVG file and you can have it adapt to dark/light mode with one media query css.
+
+```html
+<svg
+  enable-background="new 0 0 122.88 122.88"
+  viewBox="0 0 122.88 122.88"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="m61.44 0c8.32 ...truncated endless numbers for your convenience... 23.81 10.92 33.03z"
+  />
+  <style>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        filter: invert(100%);
+      }
+    }
+  </style>
+</svg>
+```
