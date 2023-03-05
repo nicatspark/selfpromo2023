@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
+import { post } from './api/sendmail.json'
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = (await Astro.glob('./blog/*.{md,mdx}'))
@@ -21,9 +22,12 @@ const snippets = (await Astro.glob('./snippets/*.{md,mdx}'))
       new Date(b.frontmatter.pubDate).valueOf() -
       new Date(a.frontmatter.pubDate).valueOf()
   )
-const latestPost = posts[0].frontmatter
+let i = posts.findIndex((post) => !!post?.frontmatter?.heroImage?true:false)
+console.log('i',i)
+i = (i===-1)? 0: i; 
+const latestPost = posts[i].frontmatter
 console.log('latestPost', latestPost)
-latestPost['url'] = posts[0].url
+latestPost['url'] = posts[i].url
 latestPost['contrastColor'] = latestPost.contrastColor || 'white'
 latestPost['contrastColorShadow'] = latestPost.contrastColorShadow || 'black'
 ---

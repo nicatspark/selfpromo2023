@@ -2,7 +2,7 @@
 layout: '../../layouts/BlogPost.astro'
 title: 'Dark mode with no script fallback'
 description: ''
-pubDate: 'March 4 2023'
+pubDate: 'Mar 4 2023'
 heroImage: '/assets/blog/dark-mode.webp'
 ---
 
