@@ -95,6 +95,24 @@ const partialUserType: MyPartial<User> = {
 }
 ```
 
+##### All partial except specified properties
+
+Make all properties optional except
+
+```typescript
+type partialExcept = Partial<HslObject> & Pick<HslObject, 'hue'>
+```
+
+##### PartialBy
+
+Create optional except specified
+
+```typescript
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
+type HslObjectLightness = PartialBy<HslObject, 'saturation' | 'hue'>
+```
+
 ##### Getter type. (using the 'as' keyword available since ts 4.1)
 
 Creates a new key out of the current key string.
