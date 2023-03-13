@@ -11,12 +11,24 @@ import Icon from './icon.astro'
     <Icon icon='logo' />
     <h1><a href='/'>UX/FULLSTACK DEV</a></h1></div
   >
-  <nav>
-    <HeaderLink href='/'>Home</HeaderLink>
-    <HeaderLink href='/blog'>Articles</HeaderLink>
-    <HeaderLink href='/about'>About</HeaderLink>
-    <HeaderLink href='/contact'>Contact</HeaderLink>
-    <UiSwitch className='theme-toggle' />
+  <nav aria-label='Main Menu'>
+    <ul>
+      <li aria-label='home'>
+        <HeaderLink href='/'>Home</HeaderLink>
+      </li>
+      <li aria-label='blog'>
+        <HeaderLink href='/blog'>Articles</HeaderLink>
+      </li>
+      <li aria-label='about'>
+        <HeaderLink href='/about'>About</HeaderLink>
+      </li>
+      <li aria-label='contact'>
+        <HeaderLink href='/contact'>Contact</HeaderLink>
+      </li>
+      <li aria-label='darkmode'>
+        <UiSwitch className='theme-toggle' />
+      </li>
+    </ul>
     <CheckScrollDirection client:load />
   </nav>
   <script>
@@ -72,6 +84,19 @@ import Icon from './icon.astro'
         sessionStorage.setItem('theme', theme)
       })
   </script>
+  <script is:inline>
+    ;(function highlightCurrentNavItem() {
+      const path = document.location.pathname.toLowerCase()
+      const current =
+        path.split('/')[1] || (path.split('/')[0] === '' ? 'home' : '')
+      const currentListItem = document.querySelector(
+        `nav li[aria-label="${current}"]`
+      )
+      console.log('currentListItem', currentListItem)
+      currentListItem?.setAttribute('aria-current', 'true')
+    })()
+    // window.onload = highlightCurrentNavItem
+  </script>
 </header>
 
 <style lang='scss'>
@@ -113,6 +138,20 @@ import Icon from './icon.astro'
       text-transform: uppercase;
       font-size: 0.9rem;
       letter-spacing: 0.1em;
+      ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        li {
+          padding: 0;
+          &[aria-current='true'] {
+            font-weight: bold;
+            a {
+              border-bottom: 1px solid var(--color-dark);
+            }
+          }
+        }
+      }
     }
     .logo {
       display: flex;

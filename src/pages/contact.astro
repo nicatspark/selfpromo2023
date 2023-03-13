@@ -38,7 +38,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
           border-bottom: 1px solid var(--medium-dark);
           padding: 1em 1em;
           position: relative;
-          color: #555;
+          color: #777;
         }
         textarea {
           min-height: 8rem;
@@ -55,7 +55,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
         }
         button {
           padding: 1rem 2rem;
-          background-color: hsl(222deg 100% 55%);
+          background-color: var(--cta-clr);
           color: hsl(0 0% 100% /0.8);
           margin: 0 auto 2rem 0.75rem;
           clip-path: polygon(
@@ -70,7 +70,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
           text-transform: uppercase;
           letter-spacing: 0.2em;
           &:hover {
-            background-color: hsl(222deg 100% 60%);
+            background-color: var(--cta-clr-hover);
             color: white;
           }
           .loader {

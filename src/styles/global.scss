@@ -22,6 +22,7 @@
   --color-orange-full: hsl(34, 87%, 53%);
   --color-orange-faded: hsl(34deg 100% 72%);
   --color-orange-bright: hsl(18, 86%, 54%);
+  --color-blue: hsl(222deg 65% 60%);
   --color-pre: var(--color-dark);
   /* bgcolors */
   --bg-header: hsl(202deg 27% 84% / 75%);
@@ -29,6 +30,8 @@
   --neu-light: #ffffff; // #e9faff;
   --neu-dark: #c9cdce; // #adb8bf;
   --bg-code: hsl(44 16% 84% / 1);
+  --cta-clr: var(--color-blue);
+  --cta-clr-hover: hsl(222deg 65% 65%);
   --neu-radius: 15px;
   /* fonts */
   --sans-serif: Eurostyle, 'Barlow Condensed', sans-serif;
@@ -43,12 +46,15 @@
       --color-orange-full: hsl(34, 77%, 17%);
       --color-orange-faded: rgb(34 64 75); //rgb(75, 58, 34);
       --color-orange-bright: hsl(19, 63%, 19%);
+      --color-accent: hsl(18, 86%, 54%);
       --color-pre: hsl(36, 4%, 24%);
       --bg-header: rgba(69, 74, 76, 0.75);
       --bg-color: #151616; // #f6f8f9;
       --neu-light: #2f2e2e; // #e9faff;
       --neu-dark: #0f0f0f; // #adb8bf;
       --bg-code: rgb(61, 61, 61);
+      --cta-clr: var(--color-accent);
+      --cta-clr-hover: hsl(18, 86%, 60%);
     }
   }
 }
