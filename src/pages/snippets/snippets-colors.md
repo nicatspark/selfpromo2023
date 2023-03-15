@@ -26,34 +26,41 @@ use 0-1 or 0-100 for saturation and lightness.
 Same for rgbToObject and the 0-1 or 0-255 range for the rgb values.
 The other functions however will expect 0-1 values in the color object.
 
+### Fan of CSS vars? Got you covered
+
+CSS properties or CSS vars are fantastic. Until you need that color string.
+Well with the `cssVarToColorObject` function you can extract the color and manipulate it. Here what you have to do:
+
+- Provide the function with element and the css var. It only work if the css var is either a hex or hsl or color value (Ie `#BADA55` or `hsl(20deg, 80%, 50%)`).
+- The result can be used as a color object in for example the lighten function.
+
+```html
+<style type="text/css">
+  :root {
+    --my-css-var: #bada55;
+  }
+  .aNestedGrandChild {
+    background-color: var(--my-css-var);
+  }
+  .aNestedGrandChild:hover {
+    background-color: Red;
+  }
+</style>
+<div id="myDiv" style="--my-css-var:#BADA55">
+  <div id="aNestedGrandChild" style="color:--my-css-var"></div>
+</div>
+<script>
+  const el = document.getElementById('aNestedGrandChild')
+  const clrObj = cssVarToColorObject({ el, cssVar: '--my-css-var' })
+  const newColor = lighten(0.2)(clrObj)
+</script>
+```
+
+lighten = (0.1) => (clrObj) =>
+
 Later I might publish this as a NPM library. For now just copy this code.
 
 ```typescript
-/**
- * This is a library of usefull color manipulation functions.
- * At its core it is manipulating HSL values. So any color
- * reprensentation has to be transformed to HSL first.
- * There is support to translate from HEX/RGB but it is easy
- * to add support for any other color format if needed.
- * Aplha supprt is WIP but does not interfere with any color fn.
- *
- * Example usage:
- * - First, turn your color into a color object
- * - unless its already like { hue:20, saturation:0.3, lightness:0.5, alpha:1 }
- * const clrObj = rgbToObject({ red:20, green:0.3, blue:0.5, alpha:1 })
- * or
- * const clrObj = webHslToObject('hsl(20deg 100% 50%)')
- * - Then run desired effect
- * const myLighterShade = lighten(0.2)(clrObj)
- * - To use as web color
- * colorObjToWeb(myLighterShade)
- *
- * The transformers are forgiving. hslToObject detects wheather you
- * use 0-1 or 0-100 for saturation and lightness.
- * Same for rgbToObject and the 0-1 or 0-255 range for the rgb values.
- * The other functions however will expect 0-1 values in the color object.
- */
-
 interface Rgb {
   r: number
   g: number
@@ -118,16 +125,6 @@ const colorObjToWeb = (color: ColorObject) => {
 interface CssVarToObject {
   el: HTMLElement | null
   cssVar: `--${string}`
-}
-/** Example: cssVarToColorObject = ({ el, cssVar }) */
-const cssVarToColorObject = ({ el, cssVar }: CssVarToObject) => {
-  if (!el) return null
-  const webClr = getComputedStyle(el).getPropertyValue(cssVar)
-  if (webClr[0] === '#') return hexToWebRGB(webClr as HEX)
-  else if (webClr.slice(0, 3) === 'hsl') return webHslToObject(webClr as HSL)
-  else {
-    throw new Error('Could not parse color.')
-  }
 }
 
 /**
@@ -397,3 +394,46 @@ export {
   normalizeHue,
 }
 ```
+
+Then you can use following snippet to auto calculate alt hover colors etc.
+
+```typescript
+interface eventClrVariation {
+  event: 'onmouseover'
+  light: number
+  suffix: string
+  cssProperty: string
+}
+
+const autoCssVarOnEvent =
+  ({ event, light, suffix, cssProperty }: eventClrVariation) =>
+  ({ el, cssVar }: CssVarToObject) => {
+    if (!el) throw new Error('Element is undefined.')
+    const webClr = getComputedStyle(el).getPropertyValue(cssVar)
+    if (webClr[0] !== '#' || webClr.slice(0, 3) === 'hsl')
+      throw new Error('Could not parse color. Use Hex or Hsl format.')
+    const newClrObj = lighten(light)(
+      webClr[0] === '#'
+        ? hexToObject(webClr as HEX)
+        : webHslToObject(webClr as HSL)
+    )
+    document.documentElement.style.setProperty(
+      `${cssVar}-${suffix}`,
+      colorObjToWeb(newClrObj)
+    )
+    el[event] = () =>
+      el.style.setProperty(cssProperty, `var(${cssVar}-${suffix})`)
+  }
+```
+
+Use like this.
+
+```typescript
+//Creates a reusable function that creates a darker shade of existing css var color and add suffix of "-hover".
+const hoverAltClrCreator = autoCssVarOnEvent({event:'onmouseover',light:-10,suffix:'hover', cssProperty:'background-color'})
+
+// Use over and over again.
+hoverAltClrCreator({document.querySelector('button'), cssVar: '--accent-color'})
+```
+
+Now when you experiment with your colors the variant color will be automatically created.
