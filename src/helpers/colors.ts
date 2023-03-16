@@ -89,15 +89,40 @@ interface CssVarToObject {
   cssVar: `--${string}`
 }
 /** Example: cssVarToColorObject = ({ el, cssVar }) */
-const cssVarToColorObject = ({ el, cssVar }: CssVarToObject) => {
-  if (!el) return null
-  const webClr = getComputedStyle(el).getPropertyValue(cssVar)
-  if (webClr[0] === '#') return hexToWebRGB(webClr as HEX)
-  else if (webClr.slice(0, 3) === 'hsl') return webHslToObject(webClr as HSL)
-  else {
-    throw new Error('Could not parse color.')
+const cssVarToColorObject =
+  ({ el, cssVar }: CssVarToObject) =>
+  () => {
+    if (!el) return null
+    const webClr = getComputedStyle(el).getPropertyValue(cssVar)
+    if (webClr[0] === '#') return hexToWebRGB(webClr as HEX)
+    else if (webClr.slice(0, 3) === 'hsl') return webHslToObject(webClr as HSL)
+    else {
+      throw new Error('Could not parse color.')
+    }
   }
+
+interface eventClrVariation {
+  light: number
+  suffix: string
 }
+/** Example: const hover = autoCssVarOnEvent({event:'onmouseover',light:-10,suffix:'hover'})({el, cssVar: '--accent-color'}) */
+const autoCssVarOnEvent =
+  ({ light, suffix }: eventClrVariation) =>
+  ({ el, cssVar }: CssVarToObject) => {
+    if (!el) throw new Error('Element is undefined.')
+    const webClr = getComputedStyle(el).getPropertyValue(cssVar)
+    if (webClr[0] !== '#' || webClr.slice(0, 3) === 'hsl')
+      throw new Error('Could not parse color. Use Hex or Hsl format.')
+    const newClrObj = lighten(light)(
+      webClr[0] === '#'
+        ? hexToObject(webClr as HEX)
+        : webHslToObject(webClr as HSL)
+    )
+    document.documentElement.style.setProperty(
+      `${cssVar}-${suffix}`,
+      colorObjToWeb(newClrObj)
+    )
+  }
 
 /**
  * HSL <-> RGB
@@ -340,6 +365,7 @@ const normalizeHue = _normalizeAttribute('hue')
 //--------------------------------------------------------------------------------------------------
 
 export {
+  autoCssVarOnEvent,
   cssVarToColorObject,
   webHslToObject,
   hexToWebRGB,

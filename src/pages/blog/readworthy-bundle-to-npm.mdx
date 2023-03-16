@@ -1,10 +1,16 @@
 ---
 layout: '../../layouts/BlogPost.astro'
-title: 'Readworthy: You may not need a bundler'
-description: 'Redworthy is misc bits of information I found usefull since last time.'
+title: 'Readworthy: No bundler? Crud JSON. Publish NPM.'
+description: 'Readworthy is misc bits of information I found usefull since last time.'
 pubDate: 'Mar 15 2023'
-#heroImage: '/placeholder-hero.jpg'
+heroImage: '/assets/blog/readworthy.webp'
 ---
+
+**{frontmatter.description}**
+
+---
+
+### You may not need a bundler
 
 "I have seen a couple threads on twitter where people complain about the difficulty with publishing NPM libraries or ask what starter kit they should use (or, people recommended starter packs anyways)
 Example threads: [here](https://twitter.com/cramforce/status/1513903035197526017) [here](https://twitter.com/oleg008/status/1510006191296061441) [here](https://twitter.com/iansu/status/1524860613943382017) [and here](https://twitter.com/mpocock1/status/1525075901905522691)
@@ -14,7 +20,7 @@ One thing that is notable to me in these threads is that people often recommend 
 
 ---
 
-### CRUD on regular JSON
+### Do a CRUD with regular JSON
 
 A Simple and plain file-based JSON database for Node
 
@@ -30,6 +36,8 @@ The npm package:
 
 ### How to publish your typescript repo to npm
 
+From the begining.
+
 - Name your package to the name that will be used on NPM. If your name is not original enough or you just want to group your uploaded packages over time add a namespace `@myNamespace/[package name here]`
 - Add a license (MIT)
 - Add typescript as a dev dependency `pnpm add -D typescript`
@@ -42,15 +50,17 @@ The npm package:
 - Add tsup with `pnpm add -D tsup` which bundles your files for you, turning typescript files into js files.
 - In package.json / scripts add `"build": "tsup src/index.ts --format cjs,esm --dts"` ('cjs' if you want common-js support)
 - test run with `pnpm run build`
-- In package.json add "main": "dist/index.js", "module": "dist/index.mjs", "types": "dist/index.d.ts",
-- Add a lint script in `"scripts": { ... "lint": "tsc"}`
+- In package.json add `"main": "dist/index.js", "module": "dist/index.mjs", "types": "dist/index.d.ts"`,
+- Add a lint script in `"scripts": { ... "lint": "tsc", ...}`
 - To make versioning easier add chsangesets cli: `pnpm add -D @changesets/cli`
 - Run `pnpm changeset init`
 - It wil add a folder called changesets
-- Add an initial version to your package in package.json.
-- Every time you want add a change you could add a changeset `pnpm changeset` wich creates a markdown file that describes what change you've done. When you publish later it will merge those into a full changeset.
+- Add an initial version number to your package in package.json.
+- Every time you want add a change you could add a changeset through `pnpm changeset` wich creates a markdown file that describes what change you've done. When you publish later it will merge those into a full changeset.
 - Create a login at [https://npmjs.org](npmjs.org) and login with `npm login`
 - publish with `npm publish --access public`
+
+This is part one. Next I'll update with added github action worklflow. Soon, stay put.
 
 Source [Publishing to npm](https://www.youtube.com/watch?v=eh89VE3Mk5g)
 

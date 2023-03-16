@@ -1,7 +1,7 @@
 ---
 layout: '../../layouts/BlogPost.astro'
-title: 'Dark mode with no script fallback'
-description: ''
+title: 'Dark mode with no-script fallback'
+description: 'Seen many examples on dark/light mode that fully relies on javascript to be enabled. So had to do something about it.'
 pubDate: 'Mar 4 2023'
 heroImage: '/assets/blog/dark-mode.webp'
 ---
