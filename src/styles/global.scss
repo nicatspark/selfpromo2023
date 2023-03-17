@@ -47,7 +47,7 @@
       --color-orange-faded: rgb(34 64 75); //rgb(75, 58, 34);
       --color-orange-bright: hsl(19, 63%, 19%);
       --color-accent: hsl(18, 86%, 54%);
-      --color-pre: hsl(36, 4%, 24%);
+      --color-pre: hsl(232deg 4% 24%); //hsl(36, 4%, 24%);
       --bg-header: rgba(69, 74, 76, 0.75);
       --bg-color: #151616; // #f6f8f9;
       --neu-light: #2f2e2e; // #e9faff;
@@ -465,6 +465,13 @@ a:is(:link, :visited, :hover, :active).fa-linkedin {
   padding: 1rem 0.5rem;
   border-radius: 3px;
   width: 4rem;
+}
+
+footer {
+  color: hsl(192deg 16% 84%);
+}
+.dark-theme footer {
+  color: hsl(0deg 0% 20%);
 }
 
 /* body {
