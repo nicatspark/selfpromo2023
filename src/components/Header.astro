@@ -6,13 +6,39 @@ import CheckScrollDirection from './CheckScrollDirection'
 import Icon from './icon.astro'
 ---
 
+<script is:inline>
+  function togglemenu() {
+    const nav = document.querySelector('nav')
+    nav.setAttribute('aria-expanded', 'true')
+    setTimeout(() => window.addEventListener('click', clickHandler))
+
+    function clickHandler({ target }) {
+      if (target.closest('nav')) return
+      console.log('here')
+      const nav = document.querySelector('nav')
+      nav.removeAttribute('aria-expanded')
+      window.removeEventListener('click', clickHandler)
+    }
+  }
+</script>
 <header>
   <div class='logo'>
     <Icon icon='logo' />
-    <h1><a href='/'>UX/FULLSTACK DEV</a></h1></div
+    <h1
+      ><a href='/'
+        ><span class='desktop'>UX/FULLSTACK</span><span class='mobile'>LE</span>
+        DEV</a
+      ></h1
+    ></div
+  >
+  <button
+    id='mobile-menu-btn'
+    aria-label='User menu'
+    aria-haspopup='true'
+    onclick='togglemenu();'><i class='fa fa-bars'></i></button
   >
   <nav aria-label='Main Menu'>
-    <ul>
+    <ul role='menu' aria-labelledby='user-menu'>
       <li aria-label='home'>
         <HeaderLink href='/'>Home</HeaderLink>
       </li>
@@ -131,17 +157,42 @@ import Icon from './icon.astro'
       background-color: unset;
       color: var(--color-dark);
     }
+    #mobile-menu-btn {
+      display: block;
+      background-color: transparent;
+    }
     nav {
       display: flex;
+      flex-flow: column;
       gap: 2rem;
       font-family: var(--sans-serif);
       text-transform: uppercase;
       font-size: 0.9rem;
       letter-spacing: 0.1em;
+
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: var(--bg-code);
+      padding: 3rem 1rem 1rem;
+      width: min(300px, 80%);
+      height: 100dvh;
+      z-index: 1;
+      transition: transform 400ms ease-out;
+      border-left: 1px solid hsl(0 0% 0% / 0.2);
+      &:not([aria-expanded]) {
+        transform: translateX(100%);
+      }
+      &[aria-expanded] {
+        transform: translateX(0%);
+      }
+
       ul {
         list-style: none;
         display: flex;
+        flex-flow: column nowrap;
         gap: 2rem;
+        padding: 0;
         li {
           padding: 0;
           &[aria-current='true'] {
@@ -150,6 +201,33 @@ import Icon from './icon.astro'
               border-bottom: 1px solid var(--color-dark);
             }
           }
+        }
+      }
+    }
+    @media screen and (min-width: 768px) {
+      #mobile-menu-btn {
+        display: none;
+      }
+
+      nav {
+        &:not([aria-expanded]) {
+          transform: none;
+        }
+        &[aria-expanded] {
+          transform: none;
+        }
+
+        position: static;
+        background-color: transparent;
+        top: unset;
+        right: unset;
+        padding: 0;
+        width: unset;
+        border-left: none;
+        flex-flow: row nowrap;
+        height: unset;
+        ul {
+          flex-flow: row nowrap;
         }
       }
     }
