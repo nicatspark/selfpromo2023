@@ -47,6 +47,7 @@ import Clients from '../components/Clients.astro'
       }
       .hero {
         display: flex;
+        flex-direction: column;
         align-items: center;
         p {
           padding-inline-start: 3em;
@@ -62,6 +63,11 @@ import Clients from '../components/Clients.astro'
           mix-blend-mode: darken;
           filter: opacity(0) hue-rotate(145deg) grayscale(0) brightness(6);
           animation: heroimg 2s forwards 1s;
+        }
+      }
+      @media screen and (min-width: 768px) {
+        .hero {
+          flex-direction: row;
         }
       }
       html.dark-theme .hero .entry {

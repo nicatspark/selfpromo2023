@@ -96,12 +96,32 @@ latestPost['contrastColorShadow'] = latestPost.contrastColorShadow || 'black'
         }
         .collections {
           display: flex;
+          flex-direction: column;
           gap: 3rem;
+          @media screen and (min-width: 768px) {
+            flex-direction: row;
+          }
         }
       }
       section {
         padding: 1rem;
         width: 100%;
+        max-height: 35vh;
+        overflow-y: auto;
+        @media screen and (min-width: 768px) {
+          max-height: unset;
+          overflow-y: initial;
+        }
+        h3 {
+          position: sticky;
+          top: -30px;
+          background-color: var(--bg-color);
+          @media screen and (min-width: 768px) {
+            position: initial;
+            top: unset;
+            background-color: transparent;
+          }
+        }
       }
       ul {
         list-style-type: none;
