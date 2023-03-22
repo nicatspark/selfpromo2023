@@ -99,12 +99,13 @@ main {
   margin: 0 auto 4rem auto;
   padding-top: calc(var(--header-height) + 2rem);
   padding-inline: 1rem;
+  min-height: calc(100vh - 130px);
 }
 
 .neu-box {
   border-radius: var(--neu-radius);
   background: var(--bg-color);
-  box-shadow: 8px 8px 16px var(--neu-dark), -8px -8px 16px var(--neu-light);
+  box-shadow: 4px 4px 8px var(--neu-dark), -4px -4px 8px var(--neu-light);
   border-top: 1px solid white;
 }
 

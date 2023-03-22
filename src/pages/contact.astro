@@ -10,7 +10,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <style lang='scss'>
-      form {
+      form#form {
         display: flex;
         flex-flow: column;
         position: relative;
@@ -25,7 +25,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
           rgba(187, 187, 187, 0.33237044817927175) 48%,
           rgba(0, 212, 255, 0.15870098039215685) 100%
         );
-        box-shadow: 2px 2px 6px hsl(0 0% 0% / 0.3);
+        // box-shadow: 2px 2px 6px hsl(0 0% 0% / 0.3);
         border-radius: 5px;
         fieldset {
           margin: 1rem 0;
@@ -116,7 +116,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
   <body>
     <Header />
     <main>
-      <form id='form' onsubmit='event => event.preventDefault();return false'>
+      <form
+        id='form'
+        class='neu-box'
+        onsubmit='event => event.preventDefault();return false'
+      >
         <fieldset>
           <label for='name'>Name</label>
           <input type='text' id='name' value='' />
