@@ -175,7 +175,8 @@ pre {
 // article.snippet,
 article.blog {
   hr.separator {
-    border-top: 1px solid hsl(172deg, 9%, 37%);
+    border-top: 1px solid hsl(172deg, 9%, 37%, 0.4);
+    background-color: transparent;
     height: 1px;
     width: min(100%, 720px);
     & + p {
@@ -200,6 +201,7 @@ article.snippet {
     padding: 0.3rem;
     position: relative;
     top: -1rem;
+    opacity: 0.5;
   }
   ul.contains-task-list {
     list-style: none;
