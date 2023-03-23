@@ -23,7 +23,7 @@ import Icon from './icon.astro'
 </script>
 <header>
   <div class='logo'>
-    <Icon icon='logo' />
+    <span class='rotate'><Icon icon='logo' /></span>
     <h1
       ><a href='/'
         ><span class='desktop'>UX/FULLSTACK</span><span class='mobile'>LE</span>
@@ -233,6 +233,7 @@ import Icon from './icon.astro'
     }
     .logo {
       display: flex;
+      gap: 0.5rem;
       align-items: center;
       h1 {
         white-space: nowrap;
@@ -259,5 +260,19 @@ import Icon from './icon.astro'
   html.dark-theme header {
     --logo-color: hsl(28deg 72% 46%);
     --logo-shadow: 1px 1px 5px hsl(0deg 0% 30%);
+  }
+</style>
+<style is:global>
+  .loading .rotate {
+    animation: rotate 4s cubic-bezier(0.48, 0.1, 0.52, 1) infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(720deg);
+    }
   }
 </style>

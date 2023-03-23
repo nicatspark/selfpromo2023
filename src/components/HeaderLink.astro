@@ -12,6 +12,7 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '')
   role='menuitem'
   class:list={[className, { active: isActive }]}
   {...props}
+  onclick="document.documentElement.classList.add('loading');"
 >
   <slot />
 </a>
