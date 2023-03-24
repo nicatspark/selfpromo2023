@@ -1,0 +1,39 @@
+---
+const props = Astro.props
+---
+
+<svg width='120' height='120' viewBox='0 0 120 120'>
+  <circle cx='60' cy='60' r='54' fill='none' stroke='#e6e6e6' stroke-width='12'
+  ></circle>
+  <circle
+    class='percent'
+    cx='60'
+    cy='60'
+    r='54'
+    fill='none'
+    stroke='#f77a52'
+    stroke-width='12'
+    pathLength='100'></circle>
+</svg>
+<style lang='scss'>
+  svg {
+    rotate: -90deg;
+    --val: 45;
+  }
+
+  .percent {
+    stroke-dasharray: 100;
+    stroke-dashoffset: calc(100 - var(--val));
+    position: relative;
+    // &::after {
+    //     content: "45%";
+    //     font-weight: bold;
+    //     font-size: 2rem;
+    //     text-align: center;
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -50%);
+    // }
+  }
+</style>
