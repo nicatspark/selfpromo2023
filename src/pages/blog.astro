@@ -152,12 +152,12 @@ latestPost['contrastColorShadow'] = latestPost.contrastColorShadow || 'black'
     <Header />
     <main>
       <div class='latest-article' style={`--contrast-color: ${latestPost?.contrastColor};--contrast-color-shadow: ${latestPost?.contrastColorShadow};`}
-        ><a href={latestPost?.url}
+        ><a aria-label="featured article" href={latestPost?.url}
           ><img src={latestPost?.heroImage} alt={latestPost?.title} /></a
         ><h2 class='title'>{latestPost?.title}</h2></div
       >
       <div class='collections'>
-        <section class='neu-box'>
+        <section class='neu-box' aria-label="Articles">
           <h3>Articles</h3>
           <ul>
             {
@@ -179,7 +179,7 @@ latestPost['contrastColorShadow'] = latestPost.contrastColorShadow || 'black'
             }
           </ul>
         </section>
-        <section class='neu-box'>
+        <section class='neu-box' aria-label="Snippets">
           <h3>Code Snippets</h3>
           <ul>
             {

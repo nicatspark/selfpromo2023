@@ -22,6 +22,12 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props
 <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
 <link rel='manifest' href='/site.webmanifest' />
 <meta name='generator' content={Astro.generator} />
+<meta
+  name='description'
+  content='A personal website of a frontend aficionado. Updated regularly with tips and tricks.'
+/>
+<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<link rel='canonical' href='https://hervy.se/' />
 
 <!-- font awesome -->
 <link
@@ -35,7 +41,6 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name='title' content={title} />
-<meta name='description' content={description} />
 <meta name='color-scheme' content='dark light' />
 
 <!-- Open Graph / Facebook -->
