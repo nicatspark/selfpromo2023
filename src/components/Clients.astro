@@ -76,6 +76,7 @@ import skf from '../assets/clients/skf.png'
 </aside>
 <style lang='scss'>
   aside {
+    --opacity: 0.5;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,11 +94,11 @@ import skf from '../assets/clients/skf.png'
       max-height: 2rem;
       object-fit: scale-down;
       filter: grayscale(1);
-      opacity: 0.3;
+      opacity: var(--opacity);
     }
   }
   html.dark-theme aside {
-    border-color: hsl(30, 4%, 100%, 0.3);
+    border-color: hsl(30, 4%, 100%, var(--opacity));
     border-bottom: none;
     img {
       filter: grayscale(1) invert(1) opacity(0.8);
