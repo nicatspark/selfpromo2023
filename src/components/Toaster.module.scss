@@ -1,12 +1,12 @@
 .toaster__container {
   position: fixed;
-  bottom: 0;
+  bottom: 1rem;
   width: 100%;
 }
 
 .toaster__item {
   list-style: none;
-  width: max-content;
+  width: min(95vw, 500px);
   margin: auto;
   background: rgb(164, 194, 235);
   color: rgb(82, 96, 133);
@@ -33,5 +33,8 @@
     background: rgb(235, 226, 164);
     color: rgb(58, 56, 52);
     border: 1px solid rgb(224, 179, 0);
+  }
+  @media screen and (min-width: 768px) {
+    width: min(80vw, 500px);
   }
 }

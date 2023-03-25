@@ -7,6 +7,7 @@ import face from '/assets/_male_intellectual_face_in_paper_art.png' //?w=200&h=2
 import Clients from '../components/Clients.astro'
 import InteractiveMeter from '../components/InteractiveMeter.astro'
 import Industries from '../components/Industries.astro'
+import Toaster from '../components/Toaster'
 ---
 
 <!DOCTYPE html>
@@ -37,6 +38,7 @@ import Industries from '../components/Industries.astro'
     </main>
     <Footer />
     <Header title={SITE_TITLE} />
+    <Toaster client:only />
     <style lang='scss'>
       h1 {
         font-size: 2rem;
