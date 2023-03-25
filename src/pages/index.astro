@@ -6,6 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 import face from '/assets/_male_intellectual_face_in_paper_art.png' //?w=200&h=200&format=webp&q=80
 import Clients from '../components/Clients.astro'
 import InteractiveMeter from '../components/InteractiveMeter.astro'
+import Industries from '../components/Industries.astro'
 ---
 
 <!DOCTYPE html>
@@ -31,6 +32,7 @@ import InteractiveMeter from '../components/InteractiveMeter.astro'
         <div><img src={face} alt='Hero image' width={400} height={400} /></div>
       </div>
       <InteractiveMeter />
+      <Industries />
       <Clients />
     </main>
     <Footer />

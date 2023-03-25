@@ -1,0 +1,43 @@
+---
+---
+
+<h4>Experience Across Different Industry Categories</h4>
+<section aria-label='Previous industry experience' class='columns'>
+  <ul>
+    <li>Aeronautics</li>
+    <li>Automotive</li>
+    <li>Chemical Industry</li>
+    <li>Education</li>
+    <li>Finance</li>
+    <li>Healthcare</li>
+    <li>Magazine Media</li>
+    <li>Newspaper Media</li>
+    <li>Renewable Energy</li>
+    <li>Retail/E-commerce</li>
+    <li>Startups</li>
+    <li>Television Media</li>
+    <li>Truck Retail</li>
+  </ul>
+</section>
+<style lang='scss'>
+  h4 {
+    margin-block-start: 1rem;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: minmax(2rem, auto);
+  }
+  li {
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    background-color: white;
+    font-size: 1rem;
+  }
+  :root.dark-theme li {
+    background-color: var(--color-dark);
+  }
+</style>
