@@ -37,6 +37,7 @@ import CircularProgressbar from './CircularProgressbar.astro'
   }
 </style>
 <script is:inline>
+  const clamp = (number, min, max) => Math.max(min, Math.min(number, max))
   let percent = 0
   const form = document.getElementById('interactive')
   const checkboxes = [...form.querySelectorAll('input[type="checkbox"]')]
@@ -45,7 +46,7 @@ import CircularProgressbar from './CircularProgressbar.astro'
   const clickHandler = (e) => {
     const el = e.target
     el.checked ? (percent += step) : (percent -= step)
-    form.parentElement.style.setProperty('--val', percent)
+    form.parentElement.style.setProperty('--val', clamp(percent, 0, 100))
   }
   checkboxes.map((el) => el.addEventListener('click', clickHandler))
 </script>
