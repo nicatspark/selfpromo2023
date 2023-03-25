@@ -229,6 +229,77 @@ li.showall {
   }
 }
 
+[data-tool-tip] {
+  --tooltip-bg: var(--neu-dark);
+  --tooltip-color: hsl(0, 0%, 10%);
+  --tooltip-offset: 8%;
+  --tooltip-transition: 150ms;
+  --tooltip-delay: 500ms;
+  --tooltip-transition-delay: calc(
+    var(--tooltip-delay) + var(--tooltip-transition)
+  );
+  position: relative;
+  &[data-tool-tip] {
+    &::after {
+      content: attr(data-tool-tip);
+      display: block;
+      position: absolute;
+      background-color: var(--tooltip-bg);
+      border-radius: 5px;
+      padding: 1em 2em;
+      color: var(--tooltip-color);
+      font-size: 0.8em;
+      bottom: 0;
+      left: 0;
+      white-space: nowrap;
+      transform: scale(0);
+      transition: transform var(--tooltip-transition) ease-out
+          var(--tooltip-transition-delay),
+        bottom var(--tooltip-transition) ease-out
+          var(--tooltip-transition-delay);
+      pointer-events: none;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: calc(100% + var(--tooltip-offset));
+      transform: translateY(0%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid var(--tooltip-bg);
+      opacity: 0;
+      transition: transform var(--tooltip-transition) linear
+          var(--tooltip-delay),
+        opacity var(--tooltip-transition) linear var(--tooltip-delay);
+      pointer-events: none;
+    }
+    &:hover {
+      &::after {
+        bottom: calc(100% + var(--tooltip-offset));
+        transform: scale(1);
+        transition: transform var(--tooltip-transition) ease-out
+            var(--tooltip-delay),
+          bottom var(--tooltip-transition) ease-out var(--tooltip-delay);
+      }
+      &::before {
+        transform: translateY(100%);
+        opacity: 1;
+        transition: transform var(--tooltip-transition) linear
+            var(--tooltip-transition-delay),
+          opacity var(--tooltip-transition) linear
+            var(--tooltip-transition-delay);
+      }
+    }
+  }
+}
+.dark-theme [data-tool-tip] {
+  --tooltip-bg: hsl(0, 0%, 100%);
+  --tooltip-color: hsl(0, 0%, 10%);
+  --tooltip-offset: 4%;
+}
+
 .desktop {
   display: none;
 }
