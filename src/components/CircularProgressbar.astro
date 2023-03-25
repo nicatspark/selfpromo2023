@@ -18,12 +18,13 @@ const props = Astro.props
 <style lang='scss'>
   svg {
     rotate: -90deg;
-    --val: 45;
+    --val-percent: var(--val, 20);
   }
 
   .percent {
     stroke-dasharray: 100;
-    stroke-dashoffset: calc(100 - var(--val));
+    stroke-dashoffset: calc(100 - var(--val-percent));
+    transition: stroke-dashoffset 0.4s ease-in-out;
     position: relative;
     // &::after {
     //     content: "45%";

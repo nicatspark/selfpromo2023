@@ -1,0 +1,51 @@
+---
+import CircularProgressbar from './CircularProgressbar.astro'
+---
+
+<h4>Are you recruiting? <br class='mobile' />Do the test :)</h4>
+<section aria-label='interactive meter'>
+  <CircularProgressbar />
+  <form id='interactive'>
+    <label><input type='checkbox' /> It's a greenfield project.</label>
+    <label><input type='checkbox' /> It's 1-2 team big project.</label>
+    <label
+      ><input type='checkbox' /> Team of skilled and experienced coworkers.</label
+    >
+    <label
+      ><input type='checkbox' checked /> We know your skills, and those are exactly
+      what we're looking for.</label
+    >
+    <label><input type='checkbox' /> We have a clear goal.</label>
+    <label><input type='checkbox' /> Salary? Name a number.</label>
+  </form>
+</section>
+<style lang='scss'>
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+    }
+  }
+  form {
+    color: var(--color-dark);
+    display: flex;
+    flex-flow: column nowrap;
+    padding-left: 1rem;
+  }
+</style>
+<script is:inline>
+  let percent = 0
+  const form = document.getElementById('interactive')
+  const checkboxes = [...form.querySelectorAll('input[type="checkbox"]')]
+  const step = Math.ceil(100 / checkboxes.length)
+  percent = step
+  const clickHandler = (e) => {
+    const el = e.target
+    el.checked ? (percent += step) : (percent -= step)
+    form.parentElement.style.setProperty('--val', percent)
+  }
+  checkboxes.map((el) => el.addEventListener('click', clickHandler))
+</script>
