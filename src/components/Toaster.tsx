@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './Toaster.module.scss'
 import { useMicroTransitions } from '../helpers/useMicroTransitions'
 
@@ -12,6 +12,8 @@ interface Detail {
 const Toaster = () => {
   const [toaster, setToaster] = useState<ToastData | null>(null)
   const [listitem, setListitem] = useState<HTMLLIElement | null>(null)
+  const id = useRef<NodeJS.Timeout>()
+
   useMicroTransitions(listitem)
 
   const setToasterToState = (data: ToastData) => setToaster(data)
@@ -19,8 +21,14 @@ const Toaster = () => {
   useEffect(() => {
     const listenerCb = ({ detail }: CustomEventInit) => {
       setToasterToState(detail)
+      if (!id.current) {
+        clearTimeout(id.current)
+        id.current = undefined
+      }
     }
-    setTimeout(() => document.body.addEventListener('TOASTER', listenerCb))
+    id.current = setTimeout(() =>
+      document.body.addEventListener('TOASTER', listenerCb)
+    )
     return document.body.removeEventListener('TOASTER', listenerCb)
   }, [])
 
