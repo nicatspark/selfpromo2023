@@ -67,7 +67,7 @@ latestPost['contrastColorShadow'] = latestPost.contrastColorShadow || 'black'
                 min(calc(50% - var(--img-height)), 100%) 0% round 1rem
             );
           }
-          h2 {
+          h3 {
             position: relative;
             color: var(--contrast-color, white);
             text-shadow: 0px 0px 4px var(--contrast-color-shadow, black);
@@ -153,7 +153,7 @@ latestPost['contrastColorShadow'] = latestPost.contrastColorShadow || 'black'
       <div class='latest-article' style={`--contrast-color: ${latestPost?.contrastColor};--contrast-color-shadow: ${latestPost?.contrastColorShadow};`}
         ><a aria-label="featured article" href={latestPost?.url}
           ><img src={latestPost?.heroImage} alt={latestPost?.title} /></a
-        ><h2 class='title'>{latestPost?.title}</h2></div
+        ><h3 class='title'>{latestPost?.title}</h3></div
       >
       <div class='collections'>
         <section class='neu-box' aria-label="Articles">
