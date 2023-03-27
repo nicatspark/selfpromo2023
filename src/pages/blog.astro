@@ -12,20 +12,19 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}'))
       new Date(b.frontmatter.pubDate).valueOf() -
       new Date(a.frontmatter.pubDate).valueOf()
   )
-// console.log('posts', posts[0].Content)
+
+// Snippets
 const snippets = (await Astro.glob('./snippets/*.{md,mdx}'))
   .filter((a) => a.frontmatter.title.toLowerCase().includes !== 'draft')
   .filter((post) => !post.frontmatter.draft)
   .sort(
-    (a, b) =>
-      new Date(b.frontmatter.pubDate).valueOf() -
-      new Date(a.frontmatter.pubDate).valueOf()
+    (a, b) => a.frontmatter.title - b.frontmatter.title
   )
+
+// latest blog post with image
 let i = posts.findIndex((post) => !!post?.frontmatter?.heroImage?true:false)
-console.log('i',i)
 i = (i===-1)? 0: i; 
 const latestPost = posts[i].frontmatter
-console.log('latestPost', latestPost)
 latestPost['url'] = posts[i].url
 latestPost['contrastColor'] = latestPost.contrastColor || 'white'
 latestPost['contrastColorShadow'] = latestPost.contrastColorShadow || 'black'
@@ -184,16 +183,6 @@ latestPost['contrastColorShadow'] = latestPost.contrastColorShadow || 'black'
             {
               snippets.map((post) => (
                 <li>
-                  <time datetime={post.frontmatter.pubDate}>
-                    {new Date(post.frontmatter.pubDate).toLocaleDateString(
-                      'en-us',
-                      {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      }
-                    )}
-                  </time>
                   <a href={post.url}>{post.frontmatter.title}</a>
                 </li>
               ))
