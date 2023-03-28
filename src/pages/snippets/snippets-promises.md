@@ -8,14 +8,10 @@ pubDate: 'Jan 7 2023'
 ##### Delay
 
 ```javascript
-function delay(timeout) {
-  return new Promise((resolve) => {
-    const timeoutHandle = setTimeout(() => {
-      clearTimeout(timeoutHandle)
-      resolve()
-    }, timeout)
-  })
+function delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
 }
+
 // Example
 async function example() {
   console.log('The first log')
@@ -23,6 +19,10 @@ async function example() {
   console.log('The second log with 1000 ms delay')
 }
 ```
+
+or just run a typescript-safe onliner, like this
+
+`await new Promise(f => setTimeout(f, 1000));`
 
 ##### Break Up a Long-Running Task
 
