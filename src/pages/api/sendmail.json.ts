@@ -11,13 +11,11 @@ export const post: APIRoute = async ({ request }) => {
   if (request.headers.get('Content-Type') === 'application/json') {
     const formData = await request.json()
     const name = formData.name
-    const surname = formData.surname
     const email = formData.email
-    const tel = formData.tel
     const subject = formData.subject
     const message = `${formData.message}
     ----------------------------------------------------------------------
-    From: ${name} ${surname} • email: ${email} • tel: ${tel}
+    From: ${name} • email: ${email}
     `
     const html = `<div style="margin: 20px auto;font-family: Helvetica, Verdana, sans-serif">${message.replace(
       /[\r\n]/g,
