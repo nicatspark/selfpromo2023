@@ -18,7 +18,7 @@ git config --global diff.colorMoved zebra
 
 This configuration will make pull commands rebase instead of merge:
 
-```BASH
+```bash
 git config --global pull.rebase true
 ```
 
@@ -32,7 +32,7 @@ Working with a pair? Rebasing when pulling makes the branch history cleaner. And
 
 This configuration will automatically clean Git objects in your repository locally whenever you fetch changes from remote.
 
-```BASH
+```bash
 git config --global fetch.prune true
 ```
 
@@ -44,7 +44,7 @@ Having this option enabled minimizes the number of branches I have on my local m
 
 This configuration adds extra colors when running git diff to show blocks of lines that remain unchanged but have moved in the file.
 
-```BASH
+```bash
 git config --global diff.colorMoved zebra
 ```
 
