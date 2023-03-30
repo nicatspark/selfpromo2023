@@ -51,3 +51,7 @@ git config --global diff.colorMoved zebra
 By default, the diff expresses the changes as additions and deletions, with green and red denoting the operation done to a line. The additional colors help differentiate actual changes and lines moving around due to those changes.
 
 Since turning on this configuration, I’ve found diffs much easier to read. I’m able to focus on the lines of code that actually changed and brush over blocks of code that are just moving around. Diffs are much more meaningful when I have a way to focus on what really changes.
+
+### Bonus
+
+Set `git config –global push.default simple` if you want to only push current branch.
