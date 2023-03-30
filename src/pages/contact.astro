@@ -219,7 +219,7 @@ import Toaster from '../components/Toaster'
 
         // ----
         const sendmail = async () => {
-          const { name, email, message, subject } = getFormData()
+          let { name, email, message, subject } = getFormData()
           if (name.trim() === '') {
             displayToaster('Name is missing.', (type = 'error'))
             name.focus()
