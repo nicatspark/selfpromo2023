@@ -192,3 +192,30 @@ type T6 = FunctionProperties<User> // { updateName: (newName: string) => void; }
 type T7 = NonFunctionPropertyNames<User> // "id" | "name" | "age"
 type T8 = NonFunctionProperties<User> // { id: number; name: string; age: number; }
 ```
+
+##### Instead of enums use this
+
+Instead of doing types for your data, generate type _from_ your data.
+
+```typescript
+const weights = {
+  heavy: 900,
+  light: 200,
+} as const // narrows the type from number to actual value
+
+type Weights = typeof weights;
+
+type WeightKey = keyof Weights; // wil get you a union > "heavy" | "light"
+
+// iterate over that object and grab you a union of the actual value
+type WeightValue = (typeof weights)[WeightKey]; // > 900 | 200
+
+function styleText(weight: weightKey | WeightValue) {
+  console.log(message: weight);
+}
+
+styleText(weights.heavy); // paste in like an enum
+styleText('heavy'); // paste in values directly
+styleText('light');
+styleText(900);
+```
