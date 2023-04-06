@@ -1,0 +1,97 @@
+---
+---
+
+<h4>Check out my npm libraries</h4>
+<div class='card-container'>
+  <dic
+    class='card-item'
+    onClick={`location.href = "https://www.npmjs.com/package/@foundit/broadcasterjs"`}
+  >
+    <!-- <img class='card-image' src={data.heroImage} alt={data.title} /> -->
+    <h5>
+      <i class='fa-brands fa-npm'></i>
+      <a href='https://www.npmjs.com/package/@foundit/broadcasterjs'
+        >Broadcasterjs</a
+      >
+    </h5>
+    <p
+      >Broadcasterjs is a pub/sub library building on javascript custom events.
+      It simplifies the event handling and provides an debugable way of
+      inspecting subscribers. It even got <a
+        href='http://broadcasterjs.hervy.se/'>its own website</a
+      >.</p
+    >
+  </dic>
+
+  <dic
+    class='card-item'
+    onClick={`location.href = "https://www.npmjs.com/package/@foundit/colorutils"`}
+  >
+    <!-- <img class='card-image' src={data.heroImage} alt={data.title} /> -->
+    <h5>
+      <i class='fa-brands fa-npm'></i>
+      <a href='https://www.npmjs.com/package/@foundit/colorutils'>Colorutils</a>
+    </h5>
+    <p
+      >Colorutils is a library of color realated functions such as
+      darken/ligther a well as transformers, filters, etc.</p
+    >
+  </dic>
+</div>
+<style lang='scss'>
+  i {
+    font-size: 3rem;
+    color: hsl(172, 9%, 37%);
+  }
+  a:link {
+    color: hsl(172, 9%, 37%);
+  }
+  h4 {
+    padding: 3rem 0 1rem 0;
+  }
+  .card-image {
+    object-fit: cover;
+    height: 140px;
+    width: 100%;
+  }
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(200px, 1fr)
+    ); /* set minimum column width to 200px, and allow autosizing to fill available space */
+    gap: 20px;
+  }
+
+  .card-item {
+    cursor: pointer;
+    h5 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: white;
+      border-radius: 3px;
+      padding: 0.3rem 0.2rem;
+      margin: 0.5rem 0 1rem;
+      font-size: 1.5rem;
+      letter-spacing: 0;
+      padding-inline: 0.5rem;
+      i {
+        font-size: 3rem;
+        color: hsl(172, 9%, 37%);
+      }
+      a:is(:link, :visited) {
+        color: hsl(172, 9%, 37%);
+      }
+    }
+  }
+  p a {
+    text-decoration: underline;
+  }
+  :root.dark-theme .card-item h5 {
+    background-color: var(--color-dark);
+    a {
+      color: hsl(172, 9%, 37%);
+    }
+  }
+</style>
