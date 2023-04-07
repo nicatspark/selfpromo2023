@@ -2,7 +2,11 @@
 import CircularProgressbar from './CircularProgressbar.astro'
 ---
 
-<h4>Are you recruiting? <br class='mobile' />Do the test :)</h4>
+<h4
+  >Are you recruiting? <br class='mobile' />Calculate my happiness index <br
+    class='mobile'
+  />before contacting me</h4
+>
 <section aria-label='interactive meter'>
   <CircularProgressbar />
   <form id='interactive'>
@@ -38,16 +42,28 @@ import CircularProgressbar from './CircularProgressbar.astro'
 </style>
 <script is:inline>
   const clamp = (number, min, max) => Math.max(min, Math.min(number, max))
+  const totalLength = 337
   let percent = 0
   const form = document.getElementById('interactive')
+  const circle = document.querySelector('.percent')
   const checkboxes = [...form.querySelectorAll('input[type="checkbox"]')]
+  circle.style.strokeDashoffset =
+    totalLength - totalLength * (1 / checkboxes.length)
   const step = Math.ceil(100 / checkboxes.length)
   percent = step
   const clickHandler = (e) => {
     const el = e.target
     el.checked ? (percent += step) : (percent -= step)
-    form.parentElement.style.setProperty('--val', clamp(percent, 0, 100))
-    console.log('percent', percent)
+    circle.style.strokeDashoffset = clamp(
+      totalLength - percent * 0.01 * totalLength,
+      0,
+      totalLength
+    )
+    // form.parentElement.style.setProperty(
+    //   '--val',
+    //   clamp(percent, 0, 100) * (totalLength / 100)
+    // )
+    // console.log('percent', percent)
     if (percent >= 100) {
       displayToaster('We should get in touch ! :)', (type = 'success'))
     } else if (percent > 100 - step) {

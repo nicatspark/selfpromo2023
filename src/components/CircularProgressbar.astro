@@ -12,18 +12,20 @@ const props = Astro.props
     r='54'
     fill='none'
     stroke='#f77a52'
-    stroke-width='12'
-    pathLength='100'></circle>
+    stroke-width='12'></circle>
+  <!-- for chrome: pathLength='100' -->
 </svg>
 <style lang='scss'>
   svg {
     rotate: -90deg;
-    --val-percent: var(--val, 20);
+    --path-length: 338;
+    // --default-progress: calc(var(--path-length) * 0.2);
+    // --val-percent: var(--val, var(--default-progress));
   }
 
   .percent {
-    stroke-dasharray: 100;
-    stroke-dashoffset: calc(100 - var(--val-percent));
+    stroke-dasharray: var(--path-length);
+    // stroke-dashoffset: calc(var(--path-length) - var(--val-percent));
     transition: stroke-dashoffset 0.4s ease-in-out;
     position: relative;
     // &::after {
