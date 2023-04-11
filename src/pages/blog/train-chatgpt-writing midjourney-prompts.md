@@ -1,7 +1,7 @@
 ---
 layout: '../../layouts/BlogPost.astro'
 title: 'Train ChatGPT writing your midjourney promts'
-description: 'Are you a secret fontofile? Here is some food for you.'
+description: 'Train chatGPT to work for you.'
 pubDate: 'Apr 11 2023'
 #heroImage: '/assets/blog/typefaces.webp'
 ---
