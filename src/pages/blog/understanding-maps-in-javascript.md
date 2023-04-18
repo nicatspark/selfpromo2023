@@ -2,9 +2,9 @@
 layout: '../../layouts/BlogPost.astro'
 title: 'Understanding maps in javascript'
 description: 'Map is a collection of key and value pairs, similar to Object. When and how should we use it?'
-pubDate: 'Mar 27 2023'
-heroImage: '/assets/blog/typefaces.webp'
-draft: true
+pubDate: 'Apr 12 2023'
+#heroImage: '/assets/blog/typefaces.webp'
+draft: false
 ---
 
 #### What is Map
@@ -55,6 +55,37 @@ new Map(arr) // a map
 ```
 
 We should not access Map using object syntax: `map[key]`. This will make Map behave similar to a javascript object with all the limitations of an object.
+
+#### Convert a Map to Object
+
+To convert a Map to an object, we can use the `Object.fromEntries()` method, passing the Map as an argument. For example:
+
+```javascript
+const map = new Map([
+  ['user1', 'John'],
+  ['user2', 'Kate'],
+  ['user3', 'Peter'],
+]);
+
+const obj = Object.fromEntries(map);
+
+// { user1: 'John', user2: 'Kate', user3: 'Peter' }
+console.log(obj);
+```
+
+Note: `Object.fromEntries()` can transform any list of key-value pairs into an object. For example, it can directly transform the array of key-value pairs that we passed to the Map() constructor:
+
+```javascript
+const arr = [
+  ['user1', 'John'],
+  ['user2', 'Kate'],
+  ['user3', 'Peter'],
+];
+const obj = Object.fromEntries(arr);
+
+// { user1: 'John', user2: 'Kate', user3: 'Peter' }
+console.log(obj);
+```
 
 #### Remove a key-value pair in Map
 
