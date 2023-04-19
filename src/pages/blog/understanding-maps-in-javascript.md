@@ -197,8 +197,20 @@ map.forEach(function(value, key) {
 
 Map preserves the order in which values are inserted. So, while iterating over a Map, elements will be in the same order in which they are inserted.
 
-#### Summary
+#### Iteration over a map in summary
 
 To iterate over a Map, we can use for..of and `forEach()` loop constructs.
 Map provides three methods that return iterable: `map.keys()`, `map.values()` and `map.entries()`.
 Iteration over Maps is always in insertion order.
+
+#### So when should I prefer a map over an object?
+
+A JavaScript Map is preferred over an object when:
+
+- The keys are unknown or dynamic: If the keys of your data structure are not known or might change dynamically during runtime, then using a Map is a better option than using an object.
+- Keys can be any data type: Maps can have keys of any data type, whereas objects can only have keys that are strings or symbols. If your use case requires keys of different data types, then a Map would be the better option.
+- Iteration is required: Maps have built-in iterator methods that make it easier to iterate over their keys and values. If you need to iterate over the keys or values of your data structure, then a Map is a better option than an object.
+- Performance is not a concern: In general, Maps are slightly slower than objects when it comes to accessing and setting values. If performance is critical to your application, then you might want to use an object instead of a Map.
+- Maintaining insertion order: If you need to maintain the insertion order of your data structure, then a Map is a better option than an object. Maps maintain the order in which elements were added, whereas the order of keys in an object is not guaranteed.
+
+In summary, Maps are preferred over objects when the keys are unknown or dynamic, can be any data type, iteration is required, insertion order needs to be maintained, and performance is not a critical concern.
