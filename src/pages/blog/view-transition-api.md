@@ -61,3 +61,5 @@ Now you can also tweak transitions times from the default for example by adding 
 ```
 
 Check out [can i use](https://caniuse.com/?search=view-transition) before implementing.
+
+[Chris Argile demoes it](https://www.youtube.com/shorts/aTGwrErX9AM) in a Youtube shorts.

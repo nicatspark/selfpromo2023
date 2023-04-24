@@ -219,3 +219,43 @@ styleText('heavy'); // paste in values directly
 styleText('light');
 styleText(900);
 ```
+
+#### Keyof `object` but for values
+
+Doing a `keyof typeof myObject` is great for creating an union type out of object keys. Here is how you do the same for values.
+
+```typescript
+// Create a valueOf ts-function helper...
+type ValueOf<T> = T[keyof T];
+
+// ...or just inline (and admitadly more readable introspect)
+
+type MyValueUnion = (typeof weights)[keyof WeightKey];
+```
+
+#### Need to get rid of that undefined?
+
+Got an incomming argument that is optional but you know it will be set further in? Narrow out that undefined.
+
+```typescript
+function assertMember(arg: unknown): assert arg is member {
+  if(!arg ||
+    typeof arg !== 'object' ||
+    !('id' in arg) ||
+    typeof arg.id !== 'number') {
+      throw new Error()
+    }
+}
+
+assertMember(memberObj) // below memberObj is without undefined
+
+...
+```
+
+Or if your target is a primitve
+
+```typescript
+function isNotNull<T>(arg: T | null | undefined): arg is T {
+  return !!arg
+}
+```

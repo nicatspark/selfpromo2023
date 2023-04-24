@@ -197,11 +197,20 @@ map.forEach(function(value, key) {
 
 Map preserves the order in which values are inserted. So, while iterating over a Map, elements will be in the same order in which they are inserted.
 
-#### Iteration over a map in summary
+#### Iteration over a Map in summary
 
 To iterate over a Map, we can use for..of and `forEach()` loop constructs.
 Map provides three methods that return iterable: `map.keys()`, `map.values()` and `map.entries()`.
 Iteration over Maps is always in insertion order.
+
+#### How do I type a Map in typescript?
+
+```typescript
+const colors: ReadonlyMap<TagProps['feColor'], TagColors> = new Map([
+  ['blue',{bg:'azurblue',accent:'yellow'}],
+  [...]
+]}
+```
 
 #### So when should I prefer a map over an object?
 
