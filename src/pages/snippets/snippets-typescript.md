@@ -220,7 +220,7 @@ styleText('light');
 styleText(900);
 ```
 
-#### Keyof `object` but for values
+##### Keyof `object` but for values
 
 Doing a `keyof typeof myObject` is great for creating an union type out of object keys. Here is how you do the same for values.
 
@@ -233,7 +233,7 @@ type ValueOf<T> = T[keyof T];
 type MyValueUnion = (typeof weights)[keyof WeightKey];
 ```
 
-#### Need to get rid of that undefined?
+##### Need to get rid of that undefined?
 
 Got an incomming argument that is optional but you know it will be set further in? Narrow out that undefined.
 
