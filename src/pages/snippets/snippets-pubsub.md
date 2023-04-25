@@ -212,3 +212,128 @@ const unsubscribeFood = subscribe('food', function (data) {
 // Removes the subscribed callback
 unsubscribeFood()
 ```
+
+#### A refactored version of my Broadcaster lib
+
+No frills barbones version where you can namespace it to fit your needs.
+
+```typescript
+const namespace = 'SKF_UI_'
+
+//--------------------------------------------------------------------------------------------------
+// Eported eventEmitter
+//--------------------------------------------------------------------------------------------------
+
+interface emitEventProps {
+  eventDescription: string
+  eventRootElement?: HTMLElement
+  tagName: string
+}
+
+/**
+ * Creates a namespaced event and emits it from given element.
+ *
+ * @param {Object} obj - Object containing event data
+ * @param {string} obj.eventDescription - A string that the details property in the listener callback can read
+ * @param {string} obj.eventRootElement - a reference to the element from where to emit
+ * @param {string} obj.tagName - A namespace string that holds the ui tag name of the emitter
+ * @returns namespaced event id string mostly for debuggin purpose. This is the id to use in your listener.
+ */
+const eventEmit = ({
+  eventDescription,
+  eventRootElement,
+  tagName,
+}: emitEventProps) => {
+  if (!eventRootElement) return
+  const eventNameId = `${namespace}${tagName.toLocaleUpperCase()}`
+  const tag_event = new CustomEvent(eventNameId, {
+    bubbles: true,
+    detail: {
+      description: eventDescription,
+    },
+  })
+  eventRootElement?.dispatchEvent(tag_event)
+  return eventNameId
+}
+
+//--------------------------------------------------------------------------------------------------
+// Eported eventListener
+//--------------------------------------------------------------------------------------------------
+
+interface EventListenerOptionsType {
+  capture?: boolean
+  once?: boolean
+  passive?: boolean
+}
+
+// Constants
+const hubId = ` ${namespace}LISTENER `
+const eventTarget = createOrGetCustomEventNode(hubId)
+
+/**
+ * A optional event listener function matching the 'eventEmit' function. Feature de-anonymizer
+ * on listener callback (de-anonymizing and thereby making inline functions cancelable),
+ * returns a cancel-listener-function (practical in useEffects) and
+ * create and appends a comment node where one can inspect listeners from devtools.
+ *
+ * @param tagName - The name of the ui component emitting the event.
+ * @param listenerCallback - Callback function triggered on reception of emit.
+ * @param options - Takes an object with boolean key of 'once' that auto removes listener after one receieved emit.
+ * @returns function to cancel listener
+ */
+const eventListener = (
+  tagName: string,
+  listenerCallback: EventListenerOrEventListenerObject,
+  options: { once?: boolean } = {}
+) => {
+  return bind(eventTarget, {
+    type: (namespace +
+      tagName.toLocaleUpperCase()) as keyof HTMLElementEventMap,
+    listener: listenerCallback,
+    options,
+  })
+}
+
+//--------------------------------------------------------------------------------------------------
+// Functional lego logic
+//--------------------------------------------------------------------------------------------------
+
+/** Helps name anonumous functions that can not be used in native event handler */
+function bind(
+  target: Node,
+  {
+    type,
+    listener,
+    options,
+  }: {
+    listener: EventListenerOrEventListenerObject
+    options?: EventListenerOptionsType
+    type: keyof HTMLElementEventMap
+  }
+) {
+  target.addEventListener(type, listener, options)
+  return function unbind() {
+    target.removeEventListener(type, listener, options)
+  }
+}
+
+/** Initiate or retreive node for custom event */
+function createOrGetCustomEventNode(hubId: string): Node {
+  const nodeIterator = document.createNodeIterator(
+    document.body,
+    NodeFilter.SHOW_COMMENT
+  )
+  while (nodeIterator.nextNode()) {
+    if (nodeIterator.referenceNode.nodeValue === hubId) {
+      return nodeIterator.referenceNode
+    }
+  }
+  return document.body.appendChild(document.createComment(hubId))
+}
+
+//--------------------------------------------------------------------------------------------------
+// Exports
+//--------------------------------------------------------------------------------------------------
+
+export { eventEmit, eventListener }
+```

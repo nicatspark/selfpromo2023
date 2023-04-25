@@ -678,6 +678,12 @@ function uuid() {
 const userID = uuid() //something like: "ec0c22fa-f909-48da-92cb-db17ecdb91c5"
 ```
 
+or just for basical uid need...
+
+```typescript
+const uid = Math.random().toString(16).slice(2);
+```
+
 ##### Capitalize first letter of string
 
 ```typescript

@@ -7,6 +7,8 @@ pubDate: 'Jan 7 2023'
 
 ##### Function overload
 
+Function overload has a serious drawback. It needs to have all possible combinations of arguments covered. With a couple of arguments the complexity quickly get out of hand.
+
 ```typescript
 function foo(arg1: number, arg2: number): number
 function foo(arg1: string, arg2: string): string
