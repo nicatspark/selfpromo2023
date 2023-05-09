@@ -664,6 +664,49 @@ asyncRetrier(testFunction, 5, { delay: 1000, args: ['myString'] })
   .catch((err) => console.log(err.status))
 ```
 
+...or shorter, better (including example)
+
+```typescript
+let myvar = false
+setTimeout(() => (myvar = true), 10000)
+
+interface RetryProps {
+  attempts?: number
+  delay: number
+  fn: () => boolean
+  maxAttempts: number
+}
+
+/** Retry helper function */
+function retry({ fn, maxAttempts = 1, delay = 0, attempts = 0 }: RetryProps) {
+  return new Promise((resolve, reject) => {
+    if (fn()) resolve(true)
+    else {
+      if (attempts < maxAttempts) {
+        setTimeout(
+          () =>
+            retry({ fn, maxAttempts, delay, attempts: attempts + 1 })
+              .then(() => resolve(true))
+              .catch((err) => reject(err)),
+          delay
+        )
+      } else reject('Could not resolve function.')
+    }
+  })
+}
+
+retry({
+  fn: function () {
+    console.log('tried', myvar)
+    return myvar
+  },
+  maxAttempts: 4,
+  delay: 2000,
+})
+  .then(() => console.log('Done'))
+  .catch(() => console.log("Didn't pan out"))
+```
+
 ##### Create UUID
 
 ```javascript
@@ -681,7 +724,7 @@ const userID = uuid() //something like: "ec0c22fa-f909-48da-92cb-db17ecdb91c5"
 or just for basical uid need...
 
 ```typescript
-const uid = Math.random().toString(16).slice(2);
+const uid = Math.random().toString(16).slice(2)
 ```
 
 ##### Capitalize first letter of string

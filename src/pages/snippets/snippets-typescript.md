@@ -228,11 +228,11 @@ Doing a `keyof typeof myObject` is great for creating an union type out of objec
 
 ```typescript
 // Create a valueOf ts-function helper...
-type ValueOf<T> = T[keyof T];
+type ValueOf<T> = T[keyof T]
 
 // ...or just inline (and admitadly more readable introspect)
 
-type MyValueUnion = (typeof weights)[keyof WeightKey];
+type MyValueUnion = (typeof weights)[keyof WeightKey]
 ```
 
 ##### Need to get rid of that undefined?
@@ -240,7 +240,7 @@ type MyValueUnion = (typeof weights)[keyof WeightKey];
 Got an incomming argument that is optional but you know it will be set further in? Narrow out that undefined.
 
 ```typescript
-function assertMember(arg: unknown): assert arg is member {
+function assertMember(arg: unknown): asserts arg is member {
   if(!arg ||
     typeof arg !== 'object' ||
     !('id' in arg) ||
@@ -259,5 +259,15 @@ Or if your target is a primitve
 ```typescript
 function isNotNull<T>(arg: T | null | undefined): arg is T {
   return !!arg
+}
+```
+
+...but personally I had most luck with this function:
+
+```typescript
+function assertIsDefined<T>(value: T): asserts value is NonNullable<T> {
+  if (value === undefined || value === null) {
+    throw new Error(`${value} is not defined`)
+  }
 }
 ```
