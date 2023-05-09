@@ -1,9 +1,9 @@
 ---
 layout: '../../layouts/BlogPost.astro'
 title: 'React: a better useState'
-description: 'Instead of mounting multiple useState inside a component, have a look at useReducer'
+description: 'Instead of mounting multiple useState inside a component, have a (second?) look at useReducer'
 pubDate: 'May 9 2023'
-#heroImage: '/assets/blog/typefaces.webp'
+heroImage: '/assets/blog/happygirl.webp'
 ---
 
 I am sure you recognize yourself using multiple usestate hooks that share some kind of relation between them. And then you add a couple of useEffect to keep the relations between those states. Now what if you could do all that with just one hook? You can.
