@@ -54,18 +54,64 @@ const functionName = (fn) => (console.debug(fn.name), fn)
 functionName(Math.max) // max (logged in debug channel of console)
 ```
 
+##### Generate a random string of specified length
+
+```js
+const generateRandomString = (length) =>
+  [...Array(length)].map(() => Math.random().toString(36)[2]).join('')
+
+generateRandomString(12) // cysw0gfljoyx
+generateRandomString(12) // uoqaugnm8r4s
+```
+
+##### Clear all cookies
+
+```js
+const clearCookies = document.cookie
+  .split(';')
+  .forEach(
+    (cookie) =>
+      (document.cookie = cookie
+        .replace(/^ +/, '')
+        .replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`))
+  )
+```
+
+##### Detect if it is dark mode
+
+```js
+const isDarkMode =
+  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+
+console.log(isDarkMode)
+```
+
+##### Scroll to the top of the page
+
+```javascript
+const goToTop = () => window.scrollTo(0, 0)
+
+goToTop()
+```
+
+##### Is an apple device?
+
+```javascript
+const isAppleDevice = () => /Mac|iPod|iPhone|iPad/.test(navigator.platform)
+
+isAppleDevice()
+```
+
 ##### Get type
 
 - This snippet can be used to get the type of a value.
-  \*/
-  const getType = (v) =>
-  v === undefined
-  ? 'undefined'
-  : v === null
-  ? 'null'
-  : v.constructor.name.toLowerCase()
 
-getType(new Set([1, 2, 3])) // 'set'
+```js
+const typeOf = (obj) =>
+  Object.prototype.toString.call(obj).slice(8, -1).toLowerCase()
+```
+
+typeOf(new Set([1, 2, 3])) // 'set'
 
 ##### Is
 
@@ -506,6 +552,14 @@ fahrenheitToCelsius(59) // 15
 fahrenheitToCelsius(32) // 0
 ```
 
+##### Copy content to the clipboard
+
+```javascript
+const copyToClipboard = (content) => navigator.clipboard.writeText(content)
+
+copyToClipboard('Hello fatfish')
+```
+
 ##### Get selected text on webpage
 
 ```javascript
@@ -851,3 +905,16 @@ export function svgOptimizer({
     addSvgAttr: {width: '100%', height: '100%', focusInline: 'false'}
 })) */
 ```
+
+##### Color helpers: Convert rgba to hexadecimal
+
+```js
+const rgbaToHex = (r, g, b) =>
+  '#' +
+  [r, g, b].map((num) => parseInt(num).toString(16).padStart(2, '0')).join('')
+
+rgbaToHex(0, 0, 0) // #000000
+rgbaToHex(255, 0, 127) //#ff007f
+```
+
+##### Color helpers: Convert hexadecimal to rgba
