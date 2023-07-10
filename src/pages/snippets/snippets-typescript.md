@@ -222,6 +222,25 @@ styleText('light');
 styleText(900);
 ```
 
+##### Instead of union use this
+
+```ts
+const roles = ['user', 'admin', 'superadmin'] as const
+
+// Roles is now an array, not 'user' | 'admin' | 'superadmin'
+type RolesAsType = typeof roles
+
+// We can get the array members by manually passing each index to the type
+type Role = RolesAsType[1 | 2 | 3]
+
+// or we can pass in number to extract every member of the array
+type Role = RolesAsType[number]
+
+// Finally we can do a typeguard function
+const isRole = (RoleToCheck: string): RoleToCheck is Role =>
+  roles.some((role) => role === roleToCheck)
+```
+
 ##### Keyof `object` but for values
 
 Doing a `keyof typeof myObject` is great for creating an union type out of object keys. Here is how you do the same for values.
@@ -231,7 +250,6 @@ Doing a `keyof typeof myObject` is great for creating an union type out of objec
 type ValueOf<T> = T[keyof T]
 
 // ...or just inline (and admitadly more readable introspect)
-
 type MyValueUnion = (typeof weights)[keyof WeightKey]
 ```
 
@@ -240,7 +258,7 @@ type MyValueUnion = (typeof weights)[keyof WeightKey]
 Got an incomming argument that is optional but you know it will be set further in? Narrow out that undefined.
 
 ```typescript
-function assertMember(arg: unknown): asserts arg is member {
+function assertMember(arg: unknown): asserts arg is Member {
   if(!arg ||
     typeof arg !== 'object' ||
     !('id' in arg) ||
@@ -271,3 +289,25 @@ function assertIsDefined<T>(value: T): asserts value is NonNullable<T> {
   }
 }
 ```
+
+or
+
+```ts
+const raise = (err: string): never => {
+  throw new Error(err)
+}
+```
+
+now you can
+
+```ts
+const Page = (props: {
+  params: {
+    id?: string
+  }
+}) => {
+  const id = props.params.id ?? raise('No id provided')
+}
+```
+
+and `id` is infered to as a string, not string | undefined.
