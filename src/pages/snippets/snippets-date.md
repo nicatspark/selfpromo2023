@@ -26,18 +26,13 @@ const getColonTimeFromDate = (date) => date.toTimeString().slice(0, 8)
 getColonTimeFromDate(new Date()) // "08:38:00"
 ```
 
-##### Get Days Between Dates
+##### Calculate the interval between two dates
 
-This snippet can be used to find the difference in days between two dates.
+```js
+const dayDiff = (d1, d2) =>
+  Math.ceil(Math.abs(d1.getTime() - d2.getTime()) / (1000 * 60 * 60 * 24))
 
-```javascript
-const getDaysDiffBetweenDates = (dateInitial, dateFinal) =>
-  (dateFinal - dateInitial) / (1000 * 3600 * 24)
-// or
-const getDaysDiffBetweenDates = (date1, date2) =>
-  Math.ceil(Math.abs(date1 - date2) / (1000 * 60 * 60 * 24))
-
-getDaysDiffBetweenDates(new Date('2019-01-13'), new Date('2019-01-15')) // 2
+dayDiff(new Date('2023-06-23'), new Date('1997-05-31')) // 9519
 ```
 
 ##### isAfterDate
