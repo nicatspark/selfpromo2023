@@ -134,3 +134,50 @@ export default function User({ id }) {
   )
 }
 ```
+
+##### Bake your own QueryClient ([Youtube](https://www.youtube.com/watch?v=zwQs4wXr9Bg))
+
+In your client side rendered component you want to cache already fetched data.
+
+```ts
+function makeQueryClient() {
+  const fetchMap = new Map<string, Promise<any>>()
+  return function queryClient<QueryResult>(
+    name: string,
+    query: () => Promise<QueryResult>
+  ): Promise<QueryResult> {
+    if (!fetchMap.has(name)) {
+      fetchMap.set(name, query())
+    }
+    return fetchMap.get(name)!
+  }
+}
+
+const queryClient = makeQueryClient()
+```
+
+Then use it inside your component like...
+
+```ts
+const pokemon = use(
+  queryClient<Pokemon[]>('pokemon', () =>
+    fetch('http://localhost:3000/api/pokemon').then((res) => res.json())
+  )
+)
+```
+
+If you need to drill down more data, the `use` hook _can_ be conditional
+
+```ts
+const [selectedPokemon, setSelectedPokemon] = useState<Pokemon>()
+
+const pokemonDetail = selectedPokemon
+  ? use(
+      queryClient<Pokemon>(['pokemon', selectedPokemon.id].join('-'), () =>
+        fetch(`http://localhost:3000/api/${selectedPokemon.id}`).then((res) =>
+          res.json()
+        )
+      )
+    )
+  : null
+```
