@@ -5,34 +5,39 @@ description: 'SSR with Next'
 pubDate: 'Jan 7 2023'
 ---
 
-##### Are we in the client?
-
-```js
-export const isSsr = typeof window === 'undefined'
-```
-
 ##### Local and Session Storage
 
-```js
+Code needs to be improved since hooks are called conditionally inside.
+
+```ts
 import { useState, useEffect } from 'react'
-import { isSsr } from '@/utils/isSsr'
 
-export const getStorage = (storage, key) => JSON.parse(storage.getItem(key))
+type StorageProp = 'local' | 'session'
 
-export const setStorage = (storage, key, newValue) =>
+export const isSsr: boolean = typeof window === 'undefined'
+export const getStorage = (storage: Storage, key: string) =>
+  JSON.parse(storage.getItem(key) || 'null')
+
+export const setStorage = <T>(storage: Storage, key: string, newValue: T) =>
   storage.setItem(key, JSON.stringify(newValue))
 
-const useStorage = (storageType, key, initialValue) => {
+const useStorage = <T>(
+  storageType: StorageProp,
+  key: string,
+  initialValue: T
+) => {
   if (isSsr) return [initialValue]
 
-  const storageName = `${storageType}Storage`
-  const storage = window[storageName]
+  const storageName = `${storageType}Storage` as
+    | 'localStorage'
+    | 'sessionStorage'
+  const storage = window[storageName] as Storage
 
   const [value, setValue] = useState(getStorage(storage, key) || initialValue)
 
   useEffect(() => {
     setStorage(storage, key, value)
-  }, [value])
+  }, [key, storage, value])
 
   return [value, setValue]
 }
