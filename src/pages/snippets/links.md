@@ -137,6 +137,8 @@ _2019-11-16 18:00_ Analytics tool <https://www.hotjar.com/?utm_source=SyndicateA
 
 #### Typescript
 
+_2023-09-23_ [Typescript cheat sheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/setup)
+
 _2019-12-13 15:38_ Nice Typescript intro, it's live coding 50 minutes so using the youtube speed setting is recommended <https://youtu.be/IadZyDwfwWI>
 
 #### Router
