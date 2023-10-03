@@ -181,3 +181,45 @@ const pokemonDetail = selectedPokemon
     )
   : null
 ```
+
+##### useImperativeHandle to merge forward ref with internal ref
+
+If the ref is forwarded from the parent element you cannot use it without merging is somehow. Here is how to do it with useImperativeHandle.
+
+In the React documentation useImperativeHandle is used to expose selected nested element functionality.
+
+```js
+function App() {
+  const [text, setText] = useState('Fun')
+  const fancyRef = useRef()
+
+  const submitButton = () => {
+    setText(fancyRef.current.value)
+  }
+
+  return (
+    <div id='App'>
+      <p>Submitted Text from forwardRef: {text}</p>
+      {/* This ref is forwarded directly to the DOM element designated by FancyTextSubmit */}
+      <FancyTextSubmit ref={fancyRef} onClick={submitButton} />
+    </div>
+  )
+}
+
+const FancyTextSubmit = forwardRef(({ onClick }, forwardRef) => {
+  const inputRef = useRef()
+  useImperativeHandle(forwardRef, () => inputRef.current)
+  const onButtonClick = (e) => {
+    onClick(e)
+    // `current` points to the mounted text input element
+    inputRef.current.focus()
+  }
+
+  return (
+    <div>
+      <input ref={inputRef} type='text' />
+      <button onClick={onButtonClick}>Submit</button>
+    </div>
+  )
+})
+```
