@@ -10,16 +10,35 @@ import CircularProgressbar from './CircularProgressbar.astro'
 <section aria-label='interactive meter'>
   <CircularProgressbar />
   <form id='interactive'>
-    <label><input type='checkbox' /> Yes, it's a greenfield project.</label>
-    <label><input type='checkbox' /> Yes, it's 1-2 team sized project.</label>
     <label
-      ><input type='checkbox' /> Yes, it's a team of skilled and experienced coworkers.</label
+      ><input type='checkbox' />
+      <span
+        data-tool-tip='We are starting up something new. No legacy to clean up.'
+        >Yes, it's a greenfield project.</span
+      ></label
+    >
+    <label
+      ><input type='checkbox' />
+      <span
+        data-tool-tip="At least it's not huge with different trains and painful syncs before releasing."
+        >Yes, it's 1-2 team sized project.</span
+      ></label
+    >
+    <label
+      ><input type='checkbox' />
+      <span data-tool-tip='And bonus points your thinking of diversifying it.'
+        >Yes, it's a team of skilled and experienced coworkers.</span
+      ></label
     >
     <label
       ><input type='checkbox' checked /> Yes, we know your skills, and those are
       exactly what we're looking for.</label
     >
-    <label><input type='checkbox' /> Yes, we have a clear goal.</label>
+    <label
+      ><input type='checkbox' />
+      <span data-tool-tip='Just checking :)'>Yes, we have a clear goal.</span
+      ></label
+    >
     <label><input type='checkbox' /> Salary? Name a number :)</label>
   </form>
 </section>

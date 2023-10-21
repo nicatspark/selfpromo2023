@@ -262,6 +262,7 @@ li.showall {
       content: '';
       position: absolute;
       bottom: calc(100% + var(--tooltip-offset));
+      left: 2em;
       transform: translateY(0%);
       width: 0;
       height: 0;
