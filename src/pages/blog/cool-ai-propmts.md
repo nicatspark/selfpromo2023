@@ -21,11 +21,13 @@ Act as if you were a professional marketer trying to sell the [product name]. Do
 ```
 
 <details>
-<summary>Check a sample result</summary>
-1. Target Audience Description:
+<summary>Check a sample result (Warning it is a lot of text!)</summary>
+
+#### 1. Target Audience Description:
+
 Our target audience for the SKF-UI-Components consists of web app developers and designers working at SKF, a leading industrial engineering company. These professionals are responsible for creating web applications that align with SKF's brand and design guidelines. Here are the pain points and desires of our target audience:
 
-Pain Points:
+##### Pain Points:
 
 - Spending excessive time and effort in designing and developing user interface components from scratch.
 - Struggling to maintain consistency in design across different web applications.
@@ -33,7 +35,7 @@ Pain Points:
 - Lack of a standardized system for managing design tokens and UI components.
 - Limited resources and time to focus on solving end-user problems.
 
-Desires:
+##### Desires:
 
 - A solution that simplifies and accelerates the process of creating user interface components.
 - A design token system that ensures consistency and adherence to SKF's design guidelines.
@@ -41,7 +43,7 @@ Desires:
 - A framework-agnostic solution that can be easily integrated into different web development environments.
 - Access to a supportive community and resources for learning and collaboration.
 
-2. Marketing Copy:
+#### 2. Marketing Copy:
 
 Are you tired of spending countless hours designing and developing user interface components for your web applications? Introducing SKF-UI-Components, the ultimate solution to streamline your web development process and enhance your productivity like never before!
 
@@ -55,9 +57,10 @@ Join our vibrant community of developers and designers who are revolutionizing t
 
 Don't let the complexities of web development hold you back. Supercharge your productivity, unleash your creativity, and create web applications that leave a lasting impression with SKF-UI-Components. Try it today and experience the future of web development!
 
-3. Social Media Video Ad Scripts:
+#### 3. Social Media Video Ad Scripts:
 
-Script 1:
+##### Script 1:
+
 [Camera pans over a sleek, modern web application]
 Voice-over: "Tired of spending hours designing and developing user interface components?"
 [Camera zooms in on a developer using SKF-UI-Components]
@@ -71,7 +74,8 @@ Voice-over: "No matter which framework you use, SKF-UI-Components seamlessly int
 [Closing shot with the SKF-UI-Components logo]
 Voice-over: "Join the revolution in web development. Try SKF-UI-Components today!"
 
-Script 2:
+##### Script 2:
+
 [Camera focuses on a developer struggling with UI design]
 Voice-over: "Are you tired of reinventing the wheel every time you create a web application?"
 [Camera transitions to showcase SKF-UI-Components in action]
@@ -83,7 +87,8 @@ Voice-over: "Maintain a consistent look and feel across all your web apps with o
 [Closing shot with the SKF-UI-Components logo]
 Voice-over: "Unlock your full potential as a web developer. Try SKF-UI-Components today!"
 
-Script 3:
+##### Script 3:
+
 [Camera pans over a developer's workspace]
 Voice-over: "Attention web app developers! Are you ready to supercharge your productivity?"
 [Camera zooms in on a developer using SKF-UI-Components]
@@ -95,9 +100,10 @@ Voice-over: "Ensure brand consistency and impress your users with our powerful d
 [Closing shot with the SKF-UI-Components logo]
 Voice-over: "Don't settle for average. Unleash your creativity with SKF-UI-Components. Try it now!"
 
-4. Email Marketing Campaign:
+#### 4. Email Marketing Campaign:
 
-Email 1 - Introduction:
+##### Email 1 - Introduction:
+
 Subject: Revolutionize Your Web Development Process with SKF-UI-Components
 
 Hi [Name],
@@ -115,7 +121,8 @@ Stay tuned for our next email, where we'll dive deeper into the features and ben
 Best regards,
 [Your Name]
 
-Email 2 - Features and Benefits:
+##### Email 2 - Features and Benefits:
+
 Subject: Boost Your Productivity with SKF-UI-Components
 
 Hi [Name],
@@ -135,7 +142,8 @@ Stay tuned for our final email, where we'll share success stories from developer
 Best regards,
 [Your Name]
 
-Email 3 - Success Stories:
+##### Email 3 - Success Stories:
+
 Subject: Real Stories, Real Results with SKF-UI-Components
 
 Hi [Name],
@@ -153,7 +161,7 @@ Thank you for joining us on this journey to revolutionize web development. We ca
 Best regards,
 [Your Name]
 
-5. Social Media Influencers:
+#### 5. Social Media Influencers:
 
 1. WebDevGuru - A web development influencer with a focus on creating efficient and visually appealing web applications. Known for sharing tips, tutorials, and reviews of the latest web development tools.
 
@@ -175,7 +183,7 @@ Best regards,
 
 1. DevInspiration - A motivational influencer who inspires developers to push their boundaries and embrace new technologies. Their positive and uplifting content can create excitement and curiosity around SKF-UI-Components.
 
-1. High-Conversion Video Visuals:
+#### 6. High-Conversion Video Visuals:
 
 1. A developer effortlessly customizing a pre-built UI component with a few clicks.
 1. A split-screen comparison of a developer manually coding a UI component vs. using SKF-UI-Components for instant results.
@@ -188,48 +196,50 @@ Best regards,
 1. A montage of positive testimonials from developers and designers who have experienced the benefits of SKF-UI-Components.
 1. A captivating animation showcasing the versatility and flexibility of SKF-UI-Components in creating unique and engaging user interfaces.
 
-1. High-Conversion Landing Page Structure:
+#### 7. High-Conversion Landing Page Structure:
 
-Hero Section:
+##### Hero Section:
 
 - Engaging headline: "Revolutionize Your Web Development Process with SKF-UI-Components"
 - Compelling subheadline: "Create stunning web applications in record time and maintain brand consistency effortlessly"
 - Call-to-action button: "Get Started Now"
 
-Product Benefits Section:
+##### Product Benefits Section:
 
 - Clear and concise bullet points highlighting the key benefits of SKF-UI-Components, such as time-saving, design consistency, and framework-agnostic integration.
 
-How It Works Section:
+##### How It Works Section:
 
 - Step-by-step explanation of how SKF-UI-Components simplifies the web development process, including showcasing the library of pre-built components and the design token system.
 
-Pricing Table Section:
+##### Pricing Table Section:
 
 - Clear pricing options with different tiers and features, highlighting the value and affordability of SKF-UI-Components.
 
-Success Story Section:
+##### Success Story Section:
 
 - Testimonials from developers and designers who have experienced the benefits of SKF-UI-Components, including their achievements and the impact on their workflow.
 
-About Author Section:
+##### About Author Section:
 
 - Brief introduction to the team behind SKF-UI-Components, highlighting their expertise and commitment to empowering web developers.
 
-FAQ Section:
+##### FAQ Section:
 
 - Frequently asked questions addressing common queries and concerns about SKF-UI-Components, providing reassurance and clarity to potential customers.
 
-Final CTA Section:
+##### Final CTA Section:
 
 - Strong call-to-action encouraging visitors to take the next step, such as signing up for a free trial or contacting the sales team.
 
-Footer:
+##### Footer:
 
 - Contact information, social media links, and additional resources for visitors to explore, ensuring easy navigation and access to further information.
 </details>
 
 ---
+
+## Midjourney prompts
 
 Here are two Midjourney prompt templates for stunning results.
 
