@@ -7,7 +7,7 @@ draft: false
 heroImage: '/assets/blog/errorhandling.webp'
 ---
 
-Get a full marketing strategy plan and content with following prompt in ChatGPT.
+Get a full marketing strategy plan with content using following prompt in ChatGPT.
 
 ```text
 Act as if you were a professional marketer trying to sell the [product name]. Do the following:
