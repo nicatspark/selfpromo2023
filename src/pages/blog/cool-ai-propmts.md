@@ -2,7 +2,7 @@
 layout: '../../layouts/BlogPost.astro'
 title: 'Cool AI prompts'
 description: ''
-pubDate: 'Okt 24 2023'
+pubDate: 'Oct 24 2023'
 draft: false
 heroImage: '/assets/blog/errorhandling.webp'
 ---
