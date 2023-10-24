@@ -7,9 +7,9 @@ draft: false
 heroImage: '/assets/blog/errorhandling.webp'
 ---
 
-_This page is subject to continuous updates._
-
 Get a full marketing strategy plan with content using following prompt in ChatGPT. Just add your product name in the beginning and product description at the end.
+
+_(This page is subject to continuous updates)_
 
 ```text
 Act as if you were a professional marketer trying to sell the [product name]. Do the following:
