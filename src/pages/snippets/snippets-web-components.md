@@ -199,3 +199,54 @@ It’s only when going to production that you need tooling specific to your site
 [Rollup build script examples](https://open-wc.org/docs/building/rollup/) are out there, but Web Components don’t prescribe how to build your application, they don’t hitch you to an architecture. It could be a whole tree-shaken SPA (single page app), but Web Components also work well in a MPA (multi-page app) architecture. It’s up to you and your application to figure out what fits best.
 
 ---
+
+### Get context from within a web component
+
+Sometimes you might want to do things differently depending on were your component lives.
+
+Instead of writing
+
+```ts
+this.getRootNode()?.host?
+.getRootNode()?.host?
+.getRootNode()?.host?
+.getRootNode()?.host?
+.getRootNode()?.host?
+.tagName.toLowerCase()
+```
+
+Use this...
+
+```ts
+getAncestorHost(this, 5)
+
+function getAncestorHost(component: Element, level: number = 1) {
+  let host = component
+  let current = level
+
+  while (current-- > 0) {
+    const h = (host.getRootNode() as ShadowRoot | undefined)?.host
+
+    if (h === undefined) {
+      console.warn(`Could not find host (level ${current + 1}/${level})`)
+      return host
+    }
+
+    host = h
+  }
+
+  return host.tagName.toLowerCase()
+}
+```
+
+Most of the time you would prefer to just add `<my-component data-context="${getAncestorHost(this," 2)}></my-component>`
+
+which then lets you style it like
+
+```css
+:host([data-context='whatever-the-context-is']) {
+  /* styles */
+}
+```
+
+_idea from [here](https://benfrain.com/getting-the-context-of-web-components-lit/)_
