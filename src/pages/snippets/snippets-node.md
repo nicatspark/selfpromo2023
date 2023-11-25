@@ -92,7 +92,7 @@ It allows us to specify package manager configurations and it is used by both np
 
 Your .npmrc file should have the engine-strict property marked as true.
 
-```text
+```plaintext
 //.npmrc file
 
 engine-strict = true
@@ -105,7 +105,7 @@ Inside your package.json file you should add the engines section if you don’t 
 
 ```json
 //package.json
-{ 
+{
   ...
   "engines": {
     "npm": "please-use-yarn",

@@ -67,7 +67,7 @@ Read Astro's official docs on `File Routes` to learn more
 
 Your basic file tree should look like this after creating your endpoint.
 
-```text
+```plaintext
 src/
  pages/
    upload.ts
@@ -220,7 +220,7 @@ The hard way requires you to use the [multer](https://github.com/expressjs/multe
 
 The hard way mostly builds on the #easy-way, except instead of a `src/pages/upload.ts` file, you would instead use a `server.mjs` file in the root directory to define your endpoints, so, your file structure would look more like this.
 
-```text
+```plaintext
 src/
  pages/
    index.astro

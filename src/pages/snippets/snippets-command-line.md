@@ -61,7 +61,7 @@ Host workSKF github account
 
 ### In global git config
 
-```text
+```plaintext
 [alias]
  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [user]
@@ -73,7 +73,7 @@ Host workSKF github account
 
 ### In git config in local folder
 
-```text
+```plaintext
 [alias]
  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [user]

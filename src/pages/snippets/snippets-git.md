@@ -229,7 +229,7 @@ If you made lot of things after your git reset --hard, then you should search yo
 
 ## VIM
 
-```text
+```plaintext
 i = insert mode
 esc = gå ur insert mode
 :x = spara och stäng

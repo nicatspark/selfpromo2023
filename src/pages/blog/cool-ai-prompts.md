@@ -11,7 +11,7 @@ Get a full marketing strategy plan with content using following prompt in ChatGP
 
 _(This page is subject to continuous updates)_
 
-```text
+```plaintext
 Act as if you were a professional marketer trying to sell the [product name]. Do the following:
 1. Provide a very long, in-depth and detailed description of the target audience. List the pain points of the target audience in bullet point format. List the desires of the target audience in bullet point format.
 2. Create an engaging and highly converting marketing copy. The marketing copy should be very long and communicate the product\'s benefits in an engaging manner.
@@ -245,7 +245,7 @@ Best regards,
 
 Here are two Midjourney prompt templates for stunning results.
 
-```text
+```plaintext
 Cinematic shot [subject], [place], [time of the day/ lighting], [angle], vivid color palette, high contrast, photographed by Guy Aroch --ar 21:9 --v 5.2
 ```
 
@@ -253,7 +253,7 @@ Cinematic shot [subject], [place], [time of the day/ lighting], [angle], vivid c
 
 ...or try this oil painting prompt...
 
-```text
+```plaintext
 Expressionist Oil Painting by Jeremy Mann, [subject], [place], [ angle], [time of the day /lighting], dynamic brustrokes --ar 16:9 --v 5.2
 ```
 

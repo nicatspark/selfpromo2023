@@ -10,7 +10,7 @@ Instead of you doing the hard labour of comming up with the perfect midjourney p
 
 Tell Midjourney:
 
-```text
+```plaintext
 Here is a MidJourney Prompt Formula:
 A detailed image of [subject] [doing something interesting] during [time of day], taken with a [type of camera], using [type of lens] with cinematic lighting --v 5 --ar 16:9
 
@@ -19,7 +19,7 @@ Do you understand the formula?
 
 It will go "yes master" and then you write for example:
 
-```text
+```plaintext
 Create a prompt with the above formula with the subject of a rowing boat.
 ```
 

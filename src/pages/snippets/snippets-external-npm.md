@@ -31,7 +31,7 @@ What’s interesting about Localtunnel is that there is also a repository you ca
 
 Install for React: `@formkit/auto-animate/react`
 
-```Javascript
+```js
 import { useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 
@@ -39,15 +39,17 @@ const App = function () {
   const [items, setItems] = useState([0, 1, 2])
   const [parent, enableAnimations] = useAutoAnimate(/* optional config */)
   const add = () => setItems([...items, items.length])
-  return <>
-  <ul ref={parent}>
-    {items.map(
-      item => <li key={item}>{ item }</li>
-    )}
-  </ul>
-  <button onClick={add}>Add number</button>
-  <button onClick={() => enableAnimations(false)}>Disable</button>
-</>
+  return (
+    <>
+      <ul ref={parent}>
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+      <button onClick={add}>Add number</button>
+      <button onClick={() => enableAnimations(false)}>Disable</button>
+    </>
+  )
 }
 
 export default App
