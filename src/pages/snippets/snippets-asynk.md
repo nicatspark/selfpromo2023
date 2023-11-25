@@ -9,7 +9,7 @@ pubDate: 'Jan 7 2023'
 
 ##### Async arrow functions look like this
 
-```javascript
+```js
 const foo = async () => {
   // do something
 }
@@ -17,7 +17,7 @@ const foo = async () => {
 
 ##### Async arrow functions look like this for a single argument passed to it
 
-```javascript
+```js
 const foo = async (evt) => {
   // do something with evt
 }
@@ -25,7 +25,7 @@ const foo = async (evt) => {
 
 ##### The anonymous form works as well
 
-```javascript
+```js
 const foo = async function () {
   // do something
 }
@@ -33,7 +33,7 @@ const foo = async function () {
 
 ##### An async function declaration looks like this
 
-```javascript
+```js
 async function foo() {
   // do something
 }
@@ -41,7 +41,7 @@ async function foo() {
 
 ##### Using async function in a callback
 
-```javascript
+```js
 const foo = event.onCall(async () => {
   // do something
 })
@@ -49,7 +49,7 @@ const foo = event.onCall(async () => {
 
 ##### Native fetch in a one-liner
 
-```javascript
+```js
 const getPost = async (id) => {
   return await (
     await fetch(`https://jsonplaceholder.typicode.com/posts/${id}}`)
@@ -59,7 +59,7 @@ const getPost = async (id) => {
 
 However, it is difficult to properly error-handle it. You probably want to use this pattern instead.
 
-```javascript
+```js
 fetch("anything")
     .then(response => {
       if(!response.ok) { // status not in the 200-range
@@ -80,7 +80,7 @@ Since this quickly becomes quite verbose and non dynamic you might be intrested 
 
 Key here is to use `allSettled` instead of `Promise.all` with a `try/catch`.
 
-```javascript
+```js
 async function getPageData() {
   const result = await Promise.allSettled([fetchUser(), fetchProduct()])
 

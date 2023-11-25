@@ -9,7 +9,7 @@ pubDate: 'Jan 7 2023'
 
 This snippet uses existsSync() to check whether a directory exists and then mkdirSync() to create it if it doesn’t.
 
-```javascript
+```js
 const fs = require('fs')
 const createDirIfNotExists = (dir) =>
   !fs.existsSync(dir) ? fs.mkdirSync(dir) : undefined
@@ -21,7 +21,7 @@ createDirIfNotExists('test')
 
 This snippet can be used to determine whether the current runtime environment is a browser. This is helpful for avoiding errors when running front-end modules on the server (Node).
 
-```javascript
+```js
 const isBrowser = () => ![typeof window, typeof document].includes('undefined')
 
 isBrowser() // true (browser)
@@ -32,7 +32,7 @@ isBrowser() // false (Node)
 
 This snippet can be used to read a file by getting an array of lines from a file.
 
-```javascript
+```js
 const fs = require('fs')
 const readFileLines = (filename) =>
   fs.readFileSync(filename).toString('UTF8').split('\n')

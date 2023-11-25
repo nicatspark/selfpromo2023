@@ -54,20 +54,20 @@ As a last resort data-id can be used where the text content and label do not mak
 
 Find a button by role.
 
-```javascript
+```js
 screen.getByRole('button')
 ```
 
 Try to be as specific as possible by making use of the elements' accessibility names in the accessibility tree.
 
-```javascript
+```js
 const lastName = screen.getByRole('textbox', { name: /last_name/ })
 userEvent.type(lastName, 'Smith')
 ```
 
 Try to narrow down your search scope by using within.
 
-```javascript
+```js
 const form = screen.getByRole('form', { name: /edit_profile/ })
 const button = within(form).getByRole('button', { name: /save/ })
 ```
@@ -86,7 +86,7 @@ Sooner or later you'll run into the warning An update to Component inside a test
 
 A common cause for the warning is that the component updates after an async operation has completed. Maybe a loading spinner is removed after a data fetch call completes, but the test is not asserting that. The waitForElementToBeRemoved is useful in these scenarios.
 
-```javascript
+```js
 await waitForElementToBeRemoved(() => screen.queryByRole('progressbar'))
 ```
 
@@ -100,19 +100,19 @@ React Testing Library provides three versions of the element query methods: getB
 
 Use getBy to find an element or to assert its existence:
 
-```javascript
+```js
 const button = screen.getByRole('button')
 ```
 
 Use queryBy in conjunction with expect to assert non-existence:
 
-```javascript
+```js
 expect(screen.queryByRole('button')).not.toBeInDocument()
 ```
 
 Use findBy when an element is expected but will be rendered after an async operation has completed:
 
-```javascript
+```js
 const button = await screen.findByRole('button')
 ```
 
@@ -122,13 +122,13 @@ Avoid defining global MSW handlers that are shared with all tests. Each handler 
 
 As an example consider a test that needs to fetch a gateway and a list of available firmware versions. To setup the handlers for such a test the use method is used.
 
-```javascript
+```js
 server.use(getGateway(), getFirmwares())
 ```
 
 The getFirmwares method is then exported from a shared module containing all handler builders and could look something like:
 
-```javascript
+```js
 export const getFirmwares = () => {
   return rest.get(`/firmwares`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ firmwares: ['1.0', '2.0'] }))

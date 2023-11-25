@@ -16,7 +16,7 @@ Basically instead of using JSON to send data to and from your server, you'd use 
 
 For example:
 
-```javascript
+```js
 // 1. Create or Get a File
 /** Creating a File */
 const fileContent = `Text content...Lorem Ipsium`
@@ -35,7 +35,7 @@ const formData = new FormData()
 formData.append('file', file) // FormData keys are called fields
 ```
 
-```javascript
+```js
 const file = fileInput.files.item(0)
 ```
 
@@ -50,7 +50,7 @@ There are 2 ways to support FormData in Astro; the easy and the hard way, I'll s
 
 Note: both the easy and hard way require Astro to be configured in server (SSR) mode.
 
-```javascript
+```js
 import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
@@ -78,7 +78,7 @@ Inside your `index.astro` file follow the example I gave above in #getting-start
 
 Once you've created an instance of `FormData` and populated it with the files you'd like to upload, you then just setup a POST request to that endpoint.
 
-```javascript
+```js
 // ...
 const res = await fetch('/upload', {
   method: 'POST',
@@ -92,7 +92,7 @@ From the endpoint side you'd then need to export a post method to handle the POS
 
 Here is where things get complex. I recommend going through Astro's File Routes Docs.
 
-```javascript
+```js
 import type { APIContext } from 'astro'
 
 // File routes export a get() function, which gets called to generate the file.
@@ -134,7 +134,7 @@ First, the exported post function handles POST requests as its name suggests, me
 
 Let's first talk about the `request` parameter. As it's name suggests `request` is an instance of the Request class which includes all the methods that Request supports, including a method for transforming said request into FormData you can work with.
 
-```javascript
+```js
 // ...
 export async function post({ request }: APIContext) {
   const formData = await request.formData()
@@ -144,7 +144,7 @@ export async function post({ request }: APIContext) {
 
 Using formData you can get all the instances of a specific field (FormData keys are called fields), for example, get all File's in the file field.
 
-```javascript
+```js
 // ...
 export async function post({ request }: APIContext) {
   const formData = await request.formData()
@@ -161,7 +161,7 @@ The problem with this solution is that it will return {"fileNames":[{}]} due to 
 
 To deal with this formatting issue we need to format the File's array properly.
 
-```javascript
+```js
 // ...
 export async function post({ request }: APIContext) {
   const formData = await request.formData()
@@ -187,7 +187,7 @@ export async function post({ request }: APIContext) {
 
 The last part is converting ArrayBuffers into data that is easy to work with, for this case using arrays to represent buffers works rather well, so we just do some conversion,
 
-```javascript
+```js
 // ...
 export async function post({ request }: APIContext) {
   const formData = await request.formData()
@@ -229,7 +229,7 @@ server.mjs
 
 The core of the hard way occurs inside `server.mjs`. `server.mjs` should look like this by the end of this blog post.
 
-```javascript
+```js
 import express from 'express'
 import { handler as ssrHandler } from './dist/server/entry.mjs'
 import multer from 'multer'
@@ -258,7 +258,7 @@ When you build an Astro project in server (SSR) mode (e.g. `npm run build`), Ast
 
 For this specific use case we are using express for the server, and to enable FormData support in express we need the multer middleware, so if you're familiar with express at all this should look familiar.
 
-```javascript
+```js
 import express from 'express'
 import { handler as ssrHandler } from './dist/server/entry.mjs'
 
@@ -278,7 +278,7 @@ The real interesting part is where multer and express meet.
 
 By using a POST request handler we are able to recieve POST requests made to the /upload endpoint and respond back with the parsed FormData results, but unlike in the #easy-way, express is able to handle all the formatting allowing File responses to be as expected.
 
-```javascript
+```js
 // ...
 import multer from 'multer'
 

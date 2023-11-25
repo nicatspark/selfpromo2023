@@ -9,7 +9,7 @@ pubDate: 'Jan 7 2023'
 
 This snippet checks whether the bottom of a page is visible.
 
-```javascript
+```js
 const bottomVisible = () =>
   document.documentElement.clientHeight + window.scrollY >=
   (document.documentElement.scrollHeight ||
@@ -22,7 +22,7 @@ bottomVisible() // true
 
 This snippet checks whether the parent element contains the child.
 
-```javascript
+```js
 const elementContains = (parent, child) =>
   parent !== child && parent.contains(child)
 
@@ -34,7 +34,7 @@ elementContains(document.querySelector('body'), document.querySelector('body')) 
 
 This snippet can be used to get the value of a CSS rule for a particular element.
 
-```javascript
+```js
 const getStyle = (el, ruleName) => getComputedStyle(el)[ruleName]
 
 getStyle(document.querySelector('p'), 'font-size') // '16px'
@@ -44,7 +44,7 @@ getStyle(document.querySelector('p'), 'font-size') // '16px'
 
 This snippet can be used to hide all elements specified.
 
-```javascript
+```js
 const hide = (...el) => [...el].forEach((e) => (e.style.display = 'none'))
 
 hide(document.querySelectorAll('img')) // Hides all <img> elements on the page
@@ -54,7 +54,7 @@ hide(document.querySelectorAll('img')) // Hides all <img> elements on the page
 
 This snippet can be used to insert an HTML string after the end of a particular element.
 
-```javascript
+```js
 const insertAfter = (el, htmlString) =>
   el.insertAdjacentHTML('afterend', htmlString)
 
@@ -65,7 +65,7 @@ insertAfter(document.getElementById('myId'), '<p>after</p>') // <div id="myId">.
 
 This snippet can be used to insert an HTML string before a particular element.
 
-```javascript
+```js
 const insertBefore = (el, htmlString) =>
   el.insertAdjacentHTML('beforebegin', htmlString)
 
@@ -76,7 +76,7 @@ insertBefore(document.getElementById('myId'), '<p>before</p>') // <p>before</p> 
 
 This snippet can be used to determine whether the browser tab is focused.
 
-```javascript
+```js
 const isBrowserTabFocused = () => !document.hidden
 
 isBrowserTabFocused() // true
@@ -86,7 +86,7 @@ isBrowserTabFocused() // true
 
 This snippet can be used to convert a nodeList to an array.
 
-```javascript
+```js
 const nodeListToArray = (nodeList) => [...nodeList]
 
 nodeListToArray(document.childNodes) // [ <!DOCTYPE html>, html ]
@@ -96,7 +96,7 @@ nodeListToArray(document.childNodes) // [ <!DOCTYPE html>, html ]
 
 This snippet can be used to do a smooth scroll to the top of the current page.
 
-```javascript
+```js
 const scrollToTop = () => {
   const c = document.documentElement.scrollTop || document.body.scrollTop
   if (c > 0) {
@@ -112,7 +112,7 @@ scrollToTop()
 
 This snippet can be used to serialize a cookie name-value pair into a Set-Cookie header string.
 
-```javascript
+```js
 const serializeCookie = (name, val) =>
   `${encodeURIComponent(name)}=${encodeURIComponent(val)}`
 
@@ -123,7 +123,7 @@ serializeCookie('foo', 'bar') // 'foo=bar'
 
 This snippet can be used to set the value of a CSS rule for a particular element.
 
-```javascript
+```js
 const setStyle = (el, ruleName, val) => (el.style[ruleName] = val)
 
 setStyle(document.querySelector('p'), 'font-size', '20px')
@@ -134,7 +134,7 @@ setStyle(document.querySelector('p'), 'font-size', '20px')
 
 This snippet can be used to show all the elements specified.
 
-```javascript
+```js
 const show = (...el) => [...el].forEach((e) => (e.style.display = ''))
 
 show(...document.querySelectorAll('img')) // Shows all <img> elements on the page
@@ -144,7 +144,7 @@ show(...document.querySelectorAll('img')) // Shows all <img> elements on the pag
 
 This snippet can be used to smoothly scroll the element on which it is called into the visible area of the browser window.
 
-```javascript
+```js
 const smoothScroll = (element) =>
   document.querySelector(element).scrollIntoView({
     behavior: 'smooth',
@@ -158,7 +158,7 @@ smoothScroll('.fooBar') // scrolls smoothly to the first element with a class of
 
 But watchout, the new [web animation api](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) put this snippet in the legacy bin. Read my [intro article](http://localhost:3000/blog/we-animation-API).
 
-```javascript
+```js
 function setTransitionStylesOnElement(element, startStyles, endStyles) {
   return new Promise((resolve) => {
     Object.assign(element.style, startStyles)
@@ -182,7 +182,7 @@ setStylesOnElement(overlayElement, visibleStyles, hiddenStyles).then((el) =>
 
 ##### Lazy-loading stylesheet on scroll
 
-```javascript
+```js
 const loadStyle = (src) => {
   if (document.createStylesheet) {
     document.createStylesheet(src)
@@ -208,7 +208,7 @@ window.onscroll = () => {
 
 ##### Mutation observer example
 
-```javascript
+```js
 // Select the node that will be observed for mutations
 const targetNode = document.getElementById('some-id')
 

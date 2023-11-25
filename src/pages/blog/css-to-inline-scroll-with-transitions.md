@@ -11,7 +11,7 @@ CSS is getting more and more competent to do what JS has solved for a long time.
 
 ##### Example
 
-```javascript
+```js
 <!DOCTYPE html>
 <html>
 <head>

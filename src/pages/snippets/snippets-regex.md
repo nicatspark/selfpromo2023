@@ -12,7 +12,7 @@ Regex are extremly poweful but there is some truth to the old saying: You had on
 User want to escape ':' and '.' in
 [ab:1.2:ef]='12.3' => [ab\:1\.2\:ef]='12.3'
 
-```javascript
+```js
 result = subject.replace(/([:.])(?=[^[\]]*\])/g, '\\$1')
 ```
 
@@ -29,7 +29,7 @@ result = subject.replace(/([:.])(?=[^[\]]*\])/g, '\\$1')
 
 Very useful when you modify this depending on your needs.
 
-```javascript
+```js
 html.replace(/<[^>]+>/gi, '')
 ```
 

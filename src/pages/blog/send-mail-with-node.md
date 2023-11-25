@@ -10,7 +10,7 @@ To send a large number of emails at once in Node.js, you can use a library like 
 
 Install the Nodemailer library using npm:
 
-```javascript
+```js
 npm install nodemailer
 Import the Nodemailer library into your Node.js script:
 const nodemailer = require('nodemailer');
@@ -28,7 +28,7 @@ const transporter = nodemailer.createTransport({
 
 Create an array of email objects, where each object contains the information for a single email (e.g. recipient, subject, message):
 
-```javascript
+```js
 const emails = [
   {
     to: 'recipient1@example.com',
@@ -46,7 +46,7 @@ const emails = [
 
 Use a loop to send each email in the array using the transporter object:
 
-```javascript
+```js
 emails.forEach((email) => {
   transporter.sendMail(email, (error, info) => {
     if (error) {

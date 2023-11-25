@@ -7,7 +7,7 @@ pubDate: 'Jan 7 2023'
 
 Examples from [this Medium article](https://medium.com/javascript-in-plain-english/the-proxy-api-is-so-powerful-that-every-web-developer-should-master-it-9bdc71a4032c)
 
-```javascript
+```js
 const p = new Proxy(target, handler)
 // target: the target object to wrap with Proxy (can be any type of object, including native arrays, functions, or even another proxy).
 // handler: an object that defines which operations will be intercepted and how to redefine intercepted operations.
@@ -45,7 +45,7 @@ above, do you think the Proxy API is very powerful?
 
 ##### Enhanced Array
 
-```javascript
+```js
 function enhancedArray(arr) {
   return new Proxy(arr, {
     get(target, property, receiver) {
@@ -87,7 +87,7 @@ console.log(arr['-2:3']) // [ 5, 2, 10, 6, 8 ]
 
 ##### Enhanced Object
 
-```javascript
+```js
 const enhancedObject = (target) =>
   new Proxy(target, {
     get(target, property) {
@@ -130,7 +130,7 @@ console.log(data.address) // null
 
 ##### Freeze Object
 
-```javascript
+```js
 const man = { name: 'Joe' }
 
 function freezeObject(obj) {
@@ -164,7 +164,7 @@ console.log(freezedMan) // { name: 'Joe' }
 
 ##### Trace Method Call
 
-```javascript
+```js
 function traceMethodCall(obj) {
   const handler = {
     get(target, propKey, receiver) {
@@ -199,7 +199,7 @@ In fact, in addition to being able to track method calls, we can also track acce
 
 ##### Trace Property Access
 
-```javascript
+```js
 function tracePropertyAccess(obj, propKeys) {
   const propKeySet = new Set(propKeys)
   return new Proxy(obj, {
@@ -231,7 +231,7 @@ tracedMan.name = 'Lolo' // SET name=Lolo
 
 ##### Hide Property
 
-```javascript
+```js
 function hideProperty(target, prefix = '_') {
   return new Proxy(target, {
     has: (obj, prop) => !prop.startsWith(prefix) && prop in obj,
@@ -262,7 +262,7 @@ For JavaScript, the sandbox is not a sandbox in the traditional sense,
 it is just a security mechanism to run some untrusted code in the sandbox,
 so that it cannot access code outside the sandbox.
 
-```javascript
+```js
 function sandbox(code) {
   code = 'with (sandbox) {' + code + '}'
   const fn = new Function('sandbox', code)
@@ -300,7 +300,7 @@ The builder pattern decomposes a complex object into relatively simple parts,
 then creates them separately according to different needs,
 and finally builds the complex object.
 
-```javascript
+```js
 function Builder(typeOrTemplate, template) {
   let type
   if (typeOrTemplate instanceof Function) {

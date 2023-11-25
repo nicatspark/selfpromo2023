@@ -11,7 +11,7 @@ Error handling in Type/JavaScript is a topic that doesn’t get the importance i
 
 As I’ve started working with TypeScript more over the years, I started to realize that I didn’t really understand error handling. I would often run into this problem:
 
-```javascript
+```js
 try {
     throw new Error('Ooops)
 } catch (error) {
@@ -23,7 +23,7 @@ error is type unknown, so we can’t perform any actions with error until we cas
 
 In JavaScript, just about anything can be thrown:
 
-```javascript
+```js
 throw 'oops'
 throw 210
 throw null
@@ -47,7 +47,7 @@ So the error that is caught truly is unknown. But, there are ways we can handle 
 
 There are times when you should throw an error manually. For example, you might have some code that relies on a value being returned from a function call, but there’s a possibility of the value being `undefined`, or at least TypeScript believes there is. In this example throwing is the best solution to narrow the `user` that is returned.
 
-```javascript
+```js
 function createProject() {
   // Inferred type is user | undefined
   const user = getUser()
@@ -82,7 +82,7 @@ function createProject() {
 
 Once an error is thrown, it will bubble up the callstack until caught in a `try/catch` statement. When code that is run inside of a `try` block throws an error, it will be “caught” in the catch block. The error can originate from a function nested inside of a function, and will bubble up until caught.
 
-```javascript
+```js
 try {
   throw new ReferenceError()
 } catch (error) {
@@ -94,7 +94,7 @@ try {
 
 Once caught, it can be useful to check the type of error that was thrown. This allows us to narrow the type from `unknown`, to a specific type that we can then interact with. We can do that with `instanceof`.
 
-```javascript
+```js
 try {
   throw new ReferenceError()
 } catch (error) {
@@ -144,7 +144,7 @@ export class ProjectError extends Error {
 
 When a new error is instantiated, the name value has intellisense and must be one of the names defined in the union type.
 
-```javascript
+```js
 export async function createProject() {
   const { data, error } = await api.createProject()
 
@@ -171,7 +171,7 @@ export async function createProject() {
 
 When the error is caught we can narrow the error type by using `instanceof`. Once narrowed, `error.name` gives us intellisense. At this point we can perform logic based on the name of the error that was thrown. In this example the `PROJECT_LIMIT_REACHED` error is one we want to show the user, and we provided a message specifically to be rendered for the user.
 
-```javascript
+```js
 try {
   await createProject()
 } catch (error) {

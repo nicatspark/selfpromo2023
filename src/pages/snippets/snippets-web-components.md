@@ -11,7 +11,7 @@ pubDate: 'Jan 6 2023'
 
 By calling this on connectedCallback we can load the HTML and CSS from separate files and thus keep our separation of concerns.
 
-```javascript
+```js
 async connectedCallback() {
  var htmlFragment = await this.fetchTemplate();
  var styleElement = await this.fetchCSS();
@@ -42,7 +42,7 @@ async connectedCallback() {
 
 Then in parent code, refer the variables as this:
 
-```javascript
+```js
   my-component {
    --color: midnightblue;
    --background-color: mintcreme;
@@ -53,7 +53,7 @@ Then in parent code, refer the variables as this:
 
 ### Distribution Package.json
 
-```javascript
+```js
 {
  "name": "my-component",
  "version": "1.0.0",
@@ -144,7 +144,7 @@ If you’re looking for a `create-react-app` for Web Components, the folks at Op
 
 You get so much from this (local server, testing configs, a storybook, production rollup config, etc) but my favorite bit is from the sample component’s test file: it runs an [accessibility audit](https://open-wc.org/docs/testing/chai-a11y-axe/) on your Shadow DOM!
 
-```javascript
+```js
 it('passes the a11y audit', async () => {
   const el = await fixture(html`<custom-element></custom-element>`)
 
@@ -158,7 +158,7 @@ Accessibility out of the box! Nice.
 
 Want to mix and match components from different design systems but keep a consistent naming structure in your company? You can import a component and “rebrand” it or even add functionality.
 
-```javascript
+```js
 import { CoolButton } from 'cool-design-system'`
 
 class OurButton extends CoolButton {

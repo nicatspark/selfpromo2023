@@ -9,7 +9,7 @@ pubDate: 'Jan 7 2023'
 
 This snippet executes a function, returning either the result or the caught error object.
 
-```javascript
+```js
 const attempt = (fn, ...args) => {
   try {
     return fn(...args)
@@ -27,7 +27,7 @@ if (elements instanceof Error) elements = [] // elements = []
 
 This snippet returns the average of two or more numerical values.
 
-```javascript
+```js
 const average = (...nums) =>
   nums.reduce((acc, val) => acc + val, 0) / nums.length
 average(...[1, 2, 3]) // 2
@@ -38,7 +38,7 @@ average(1, 2, 3) // 2
 
 This snippet delays the execution of a function until the current call stack is cleared.
 
-```javascript
+```js
 const defer = (fn, ...args) => setTimeout(fn, 1, ...args)
 
 defer(console.log, 'a'), console.log('b') // logs 'b' then 'a'
@@ -48,7 +48,7 @@ defer(console.log, 'a'), console.log('b') // logs 'b' then 'a'
 
 This snippet prints the name of a function into the console.
 
-```javascript
+```js
 const functionName = (fn) => (console.debug(fn.name), fn)
 
 functionName(Math.max) // max (logged in debug channel of console)
@@ -88,7 +88,7 @@ console.log(isDarkMode)
 
 ##### Scroll to the top of the page
 
-```javascript
+```js
 const goToTop = () => window.scrollTo(0, 0)
 
 goToTop()
@@ -96,7 +96,7 @@ goToTop()
 
 ##### Is an apple device?
 
-```javascript
+```js
 const isAppleDevice = () => /Mac|iPod|iPhone|iPad/.test(navigator.platform)
 
 isAppleDevice()
@@ -117,7 +117,7 @@ typeOf(new Set([1, 2, 3])) // 'set'
 
 This snippet can be used to check if a value is of a particular type.
 
-```javascript
+```js
 const is = (type, val) => ![, null].includes(val) && val.constructor === type
 
 is(Array, [1]) // true
@@ -139,7 +139,7 @@ is(Boolean, new Boolean(true)) // true
 
 This snippet can be used to check whether a provided value is a number.
 
-```javascript
+```js
 function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n)
 }
@@ -152,7 +152,7 @@ isNumber(1) // true
 
 This snippet checks whether an object looks like a Promise.
 
-```javascript
+```js
 const isPromiseLike = (obj) =>
   obj !== null &&
   (typeof obj === 'object' || typeof obj === 'function') &&
@@ -171,7 +171,7 @@ isPromiseLike({}) // false
 
 Checks if function is a promise. Note that it will execute them aswell.
 
-```javascript
+```js
 const isPromise = (item) =>
   Object.prototype.toString.call(item) == '[object Promise]'
 const isFunction = (item) =>
@@ -185,7 +185,7 @@ isFunction(() => {}) // true
 
 This snippet can be used to check whether a string is a valid JSON.
 
-```javascript
+```js
 const isValidJSON = (str) => {
   try {
     JSON.parse(str)
@@ -204,7 +204,7 @@ isValidJSON(null) // true
 
 This snippet returns the n smallest elements from a list. If n is greater than or equal to the list’s length, then it will return the original list (sorted in ascending order).
 
-```javascript
+```js
 const minN = (arr, n = 1) => [...arr].sort((a, b) => a - b).slice(0, n)
 
 minN([1, 2, 3]) // [1]
@@ -215,7 +215,7 @@ minN([1, 2, 3], 2) // [1,2]
 
 This snippet can be used to generate a random hexadecimal color code.
 
-```javascript
+```js
 const generateRandomHexColor = () =>
   `#${Math.floor(Math.random() * 0xffffff).toString(16)}`
 
@@ -226,7 +226,7 @@ generateRandomHexColor() // "#e34155"
 
 This snippet can be used to run an array of promises in series.
 
-```javascript
+```js
 const runPromisesInSeries = (ps) =>
   ps.reduce((p, next) => p.then(next), Promise.resolve())
 const delay = (d) => new Promise((r) => setTimeout(r, d))
@@ -239,7 +239,7 @@ runPromisesInSeries([() => delay(1000), () => delay(2000)])
 
 This snippet can be used to delay the execution of an asynchronous function by putting it into sleep.
 
-```javascript
+```js
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 async function sleepyWork() {
@@ -253,7 +253,7 @@ async function sleepyWork() {
 
 This snippet can be used to find out the time it takes to execute a function.
 
-```javascript
+```js
 const timeTaken = (callback) => {
   console.time('timeTaken')
   const r = callback()
@@ -268,7 +268,7 @@ timeTaken(() => Math.pow(2, 10)) // 1024, (logged): timeTaken: 0.02099609375ms
 
 This snippet can be used to iterate over a callback n times.
 
-```javascript
+```js
 const times = (n, fn, context = undefined) => {
   let i = 0
   while (fn.call(context, i) !== false && ++i < n) {}
@@ -283,7 +283,7 @@ console.log(output) // 01234
 
 This snippet can be used to format a number like a currency.
 
-```javascript
+```js
 const toCurrency = (n, curr, LanguageFormat = undefined) =>
   Intl.NumberFormat(LanguageFormat, {
     style: 'currency',
@@ -301,7 +301,7 @@ toCurrency(322342436423.2435, 'JPY', 'fi') // 322 342 436 423 ¥ | currency: Jap
 
 This snippet uses the toLocaleString() function to convert float-point arithmetic to the decimal mark form by using a number to make a comma-separated string.
 
-```javascript
+```js
 const toDecimalMark = (num) => num.toLocaleString('en-US')
 
 toDecimalMark(12305030388.9087) // "12,305,030,388.909"
@@ -311,7 +311,7 @@ toDecimalMark(12305030388.9087) // "12,305,030,388.909"
 
 This snippet can be used to check whether a value is a number.
 
-```javascript
+```js
 const validateNumber = (n) =>
   !isNaN(parseFloat(n)) && isFinite(n) && Number(n) == n
 
@@ -323,7 +323,7 @@ validateNumber('10') // true
 <https://developers.google.com/web/updates/2017/09/abortable-fetch>
 <https://developer.mozilla.org/en-US/docs/Web/API/AbortController>
 
-```javascript
+```js
 export function cancelableFetch(reqInfo, reqInit) {
   const abortController = new AbortController()
   const signal = abortController.signal
@@ -369,7 +369,7 @@ setTimeout(() => req.cancel(), 2000)
 Run a (anonymous) function recursivly a countdown number of
 times until condition are met or countdown is done.
 
-```javascript
+```js
 const cbFetch = async () => fetch('http://trickyURL.com')
 
 ;({
@@ -406,7 +406,7 @@ const cbFetch = async () => fetch('http://trickyURL.com')
 
 Result: a 50/50 change on returning true of false
 
-```javascript
+```js
 const randomBoolean = () => Math.random() >= 0.5
 console.log(randomBoolean())
 ```
@@ -417,7 +417,7 @@ Using this method, you’ll be able to check
 if the date that you provide in the function
 is either a weekday or weekend day.
 
-```javascript
+```js
 const isWeekday = (date) => date.getDay() % 6 !== 0
 console.log(isWeekday(new Date(2021, 0, 11)))
 // Result: true (Monday)
@@ -430,7 +430,7 @@ console.log(isWeekday(new Date(2021, 0, 10)))
 We can check if the current tab is in view / focus
 by using the document.hidden property.
 
-```javascript
+```js
 const isBrowserTabInView = () => document.hidden
 isBrowserTabInView()
 // Result: returns true or false depending on
@@ -443,7 +443,7 @@ A super simple task that can be solved by using the modulo
 operator (%). If you’re not too familiar with it, here’s a
 nice visual explanation on Stack Overflow.
 
-```javascript
+```js
 const isEven = (num) => num % 2 === 0
 console.log(isEven(2))
 // Result: true
@@ -457,7 +457,7 @@ By using the .toTimeString() method and slicing the string at the
 correct place, we can get the time from a date that we provide,
 or get the current time.
 
-```javascript
+```js
 const timeFromDate = (date) => date.toTimeString().slice(0, 8)
 console.log(timeFromDate(new Date(2021, 0, 10, 17, 30, 0)))
 // Result: "17:30:00"
@@ -470,7 +470,7 @@ console.log(timeFromDate(new Date()))
 Using the Math.pow() method, we can truncate a number to a certain
 decimal point that we provide in the function.
 
-```javascript
+```js
 const toFixed = (n, fixed) => ~~(Math.pow(10, fixed) * n) / Math.pow(10, fixed)
 // Examples
 toFixed(25.198726354, 1) // 25.1
@@ -486,7 +486,7 @@ toFixed(25.198726354, 6) // 25.198726
 We can check if an element is currently in focus using the
 document.activeElement property.
 
-```javascript
+```js
 const elementIsInFocus = (el) => el === document.activeElement
 elementIsInFocus(anyElement)
 // Result: will return true if in focus, false if not in focus
@@ -494,7 +494,7 @@ elementIsInFocus(anyElement)
 
 ##### Check if the current user has touch events supported
 
-```javascript
+```js
 const touchSupported = () =>
   'ontouchstart' in window ||
   (window.DocumentTouch && document instanceof window.DocumentTouch)
@@ -507,7 +507,7 @@ console.log(touchSupported())
 We can use navigator.platform to check if the current user is
 on an Apple device.
 
-```javascript
+```js
 const isAppleDevice = /Mac|iPod|iPhone|iPad/.test(navigator.platform)
 console.log(isAppleDevice)
 // Result: will return true if user is on an Apple device
@@ -519,7 +519,7 @@ The window.scrollTo() method will take an x- and y-coordinate to
 scroll to. If we set these to zero and zero, we’ll scroll to the
 top of the page.
 
-```javascript
+```js
 const goToTop = () => window.scrollTo(0, 0)
 goToTop()
 // Result: will scroll the browser to the top of the page
@@ -530,7 +530,7 @@ goToTop()
 We can use the reduce method to get the average value of the
 arguments that we provide in this function.
 
-```javascript
+```js
 const average = (...args) => args.reduce((a, b) => a + b) / args.length
 average(1, 2, 3, 4)
 // Result: 2.5
@@ -541,7 +541,7 @@ average(1, 2, 3, 4)
 Dealing with temperatures can be confusing at times. These 2 functions
 will help you convert Fahrenheit to Celsius and the other way around.
 
-```javascript
+```js
 const celsiusToFahrenheit = (celsius) => (celsius * 9) / 5 + 32
 const fahrenheitToCelsius = (fahrenheit) => ((fahrenheit - 32) * 5) / 9
 // Examples
@@ -554,7 +554,7 @@ fahrenheitToCelsius(32) // 0
 
 ##### Copy content to the clipboard
 
-```javascript
+```js
 const copyToClipboard = (content) => navigator.clipboard.writeText(content)
 
 copyToClipboard('Hello fatfish')
@@ -562,13 +562,13 @@ copyToClipboard('Hello fatfish')
 
 ##### Get selected text on webpage
 
-```javascript
+```js
 const getSelectedText = () => window.getSelection().toString()
 ```
 
 ##### Serialize a function together with environment variables
 
-```javascript
+```js
 // First, what we want to serialize.
 const a = 123,
   b = 'hello'
@@ -604,21 +604,21 @@ function serializeFn() {
 
 ##### Create a hash of any string
 
-```javascript
+```js
 const hashCode = (s) =>
   s.split('').reduce((a, b) => ((a << 5) - a + b.charCodeAt(0)) | 0, 0)
 ```
 
 ##### Get text selection
 
-```javascript
+```js
 const getSelectedText = () => window.getSelection().toString()
 getSelectedText()
 ```
 
 ##### Copy to clipboard
 
-```javascript
+```js
 const copyToClipboard = (text) =>
   navigator.clipboard?.writeText && navigator.clipboard.writeText(text)
 copyToClipboard('Hello World')
@@ -626,7 +626,7 @@ copyToClipboard('Hello World')
 
 ##### Clear all cookies
 
-```javascript
+```js
 const clearCookies = document.cookie
   .split(';')
   .forEach(
@@ -639,7 +639,7 @@ const clearCookies = document.cookie
 
 ##### Turn url query params into an object
 
-```javascript
+```js
 const getParameters = (URL) => {
   URL = JSON.parse(
     '{"' +
@@ -657,7 +657,7 @@ getParameters(window.location)
 
 ##### Detect dark mode
 
-```javascript
+```js
 const isDarkMode =
   window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 console.log(isDarkMode) // Result: True or False
@@ -665,7 +665,7 @@ console.log(isDarkMode) // Result: True or False
 
 ##### Scroll to top / bottom
 
-```javascript
+```js
 const scrollToTop = (element) =>
   element.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
@@ -677,7 +677,7 @@ const scrollToBottom = (element) =>
 
 Try to execute a function until it returns true or it times out.
 
-```javascript
+```js
 function asyncRetrier(fn, attempts = 10, options = {}) {
   const defaultOptions = { delay: 1000, args: [] }
   const { delay, args } = { ...defaultOptions, ...options }
@@ -763,7 +763,7 @@ retry({
 
 ##### Create UUID
 
-```javascript
+```js
 function uuid() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
     var r = (Math.random() * 16) | 0,

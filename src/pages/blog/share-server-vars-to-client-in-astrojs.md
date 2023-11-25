@@ -8,7 +8,7 @@ heroImage: '/assets/blog/server-to-client.webp'
 
 In your astro file.
 
-```javascript
+```js
 ---
 const foregroundColor = "rgb(221 243 228)"; // CSS variable shared
 const backgroundColor = "rgb(24 121 78)"; // CSS variable shared

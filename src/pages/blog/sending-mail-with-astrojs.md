@@ -53,7 +53,7 @@ Host will contain `smtp.gmail.com` since we're using gmail. Email/pass contain t
 
 On the same page withing `script` tags with is:inline as attribute `<script is:inline> ... </script>` for it to be available on the client side add this script _below_ the form. (Below because I could not get `window.onload` to kick things of for some reason)
 
-```javascript
+```js
 const get = (id) => document.getElementById(id) || { value: '' }
 
 const submitForm = () => {

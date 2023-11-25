@@ -8,7 +8,7 @@ pubDate: 'Jan 7 2023'
 Event handling helper, always bind and unbind correctly. The type/listener/options need to be exact the same to be
 able to unbind. The listener needs to be the same by reference. An anonymous function will therefor never unbind. This is a pitfall even seasoned devs fall into. This wrapper fixes that.
 
-```javascript
+```js
 export default function bind(target, { type: Event, listener, options }) {
   target.addEventlistener(type, listener, options)
   return function unbind() {
@@ -19,6 +19,6 @@ export default function bind(target, { type: Event, listener, options }) {
 
 In a React useEffect it gets very slim having the unbind being returned and therefor preventing memory leaks.
 
-```javascript
+```js
 useEffect(() => bind(window, {'click', () => console.log('A click happended')}));
 ```

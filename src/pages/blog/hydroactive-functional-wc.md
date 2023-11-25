@@ -20,7 +20,7 @@ It makes use of the soon to be released declarative shadow DOM. This is importan
 </my-counter>
 ```
 
-```javascript
+```js
 import { component } from 'hydroactive'
 
 // `component()` creates a web component based on the given hydrate function. The

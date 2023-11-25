@@ -9,7 +9,7 @@ pubDate: 'Jan 7 2023'
 
 This code snippet can be used to convert a value from degrees to radians.
 
-```javascript
+```js
 const degreesToRads = (deg) => (deg * Math.PI) / 180.0
 
 degreesToRads(90.0) // ~1.5708
@@ -19,7 +19,7 @@ degreesToRads(90.0) // ~1.5708
 
 This snippet can be used to convert an angle from radians to degrees.
 
-```javascript
+```js
 const radsToDegrees = (rad) => (rad * 180.0) / Math.PI
 
 radsToDegrees(Math.PI / 2) // 90
@@ -29,7 +29,7 @@ radsToDegrees(Math.PI / 2) // 90
 
 This snippet returns the distance between two points by calculating the Euclidean distance.
 
-```javascript
+```js
 const distance = (x0, y0, x1, y1) => Math.hypot(x1 - x0, y1 - y0)
 
 distance(1, 1, 2, 3) // 2.23606797749979
@@ -39,7 +39,7 @@ distance(1, 1, 2, 3) // 2.23606797749979
 
 This snippet can be used to generate a random integer in a specified range.
 
-```javascript
+```js
 const randomIntegerInRange = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min
 
@@ -50,7 +50,7 @@ randomIntegerInRange(0, 5) // 3
 
 This snippet can be used to return a random number in a specified range.
 
-```javascript
+```js
 const randomNumberInRange = (min, max) => Math.random() * (max - min) + min
 
 randomNumberInRange(2, 10) // 6.0211363285087005

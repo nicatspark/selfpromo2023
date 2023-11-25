@@ -9,7 +9,7 @@ pubDate: 'Jan 7 2023'
 
 This snippet gets the day of the year from a Date object.
 
-```javascript
+```js
 const dayOfYear = (date) =>
   Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24)
 
@@ -20,7 +20,7 @@ dayOfYear(new Date()) // 272
 
 This snippet can be used to get the time from a Date object as a string.
 
-```javascript
+```js
 const getColonTimeFromDate = (date) => date.toTimeString().slice(0, 8)
 
 getColonTimeFromDate(new Date()) // "08:38:00"
@@ -39,7 +39,7 @@ dayDiff(new Date('2023-06-23'), new Date('1997-05-31')) // 9519
 
 This snippet can be used to check whether a date is after another date.
 
-```javascript
+```js
 const isAfterDate = (dateA, dateB) => dateA > dateB
 
 isAfterDate(new Date(2010, 10, 21), new Date(2010, 10, 20)) // true
@@ -49,7 +49,7 @@ isAfterDate(new Date(2010, 10, 21), new Date(2010, 10, 20)) // true
 
 This snippet can be used to check whether a date is before another date.
 
-```javascript
+```js
 const isBeforeDate = (dateA, dateB) => dateA < dateB
 
 isBeforeDate(new Date(2010, 10, 20), new Date(2010, 10, 21)) // true
@@ -59,7 +59,7 @@ isBeforeDate(new Date(2010, 10, 20), new Date(2010, 10, 21)) // true
 
 This snippet can be used to check whether two dates are equal.
 
-```javascript
+```js
 const isSameDate = (dateA, dateB) => dateA.toISOString() === dateB.toISOString()
 
 isSameDate(new Date(2010, 10, 20), new Date(2010, 10, 20)) // true
@@ -69,7 +69,7 @@ isSameDate(new Date(2010, 10, 20), new Date(2010, 10, 20)) // true
 
 This snippet can be used to get the latest date.
 
-```javascript
+```js
 const maxDate = (...dates) => new Date(Math.max.apply(null, ...dates))
 
 const array = [
@@ -85,7 +85,7 @@ maxDate(array) // 2018-03-11T22:00:00.000Z
 
 This snippet can be used to get the earliest date.
 
-```javascript
+```js
 const minDate = (...dates) => new Date(Math.min.apply(null, ...dates))
 
 const array = [
@@ -101,7 +101,7 @@ minDate(array) // 2016-01-08T22:00:00.000Z
 
 This snippet can be used to get a string representation of tomorrow’s date.
 
-```javascript
+```js
 const tomorrow = () => {
   let t = new Date()
   t.setDate(t.getDate() + 1)

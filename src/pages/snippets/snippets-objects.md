@@ -9,7 +9,7 @@ pubDate: 'Jan 6 2023'
 
 This snippet assigns default values for all properties in an object that are undefined.
 
-```javascript
+```js
 const defaults = (obj, ...defs) =>
   Object.assign({}, obj, ...defs.reverse(), obj)
 
@@ -20,12 +20,12 @@ defaults({ a: 1 }, { b: 2 }, { b: 6 }, { a: 3 }) // { a: 1, b: 2 }
 
 This snippet returns the first key that satisfies a given function.
 
-```javascript
+```js
 const findKey = (obj, fn) =>
   Object.keys(obj).find((key) => fn(obj[key], key, obj))
 ```
 
-```javascript
+```js
 findKey(
   {
     barney: { age: 36, active: true },
@@ -40,7 +40,7 @@ findKey(
 
 This snippet iterates on each property of an object and iterates a callback for each one respectively.
 
-```javascript
+```js
 const forOwn = (obj, fn) =>
   Object.keys(obj).forEach((key) => fn(obj[key], key, obj))
 forOwn({ foo: 'bar', a: 1 }, (v) => console.log(v)) // 'bar', 1
@@ -51,7 +51,7 @@ forOwn({ foo: 'bar', a: 1 }, (v) => console.log(v)) // 'bar', 1
 This snippet can be used to check whether a provided value is an object. It uses the Object constructor to create an object wrapper for the given value.
 If it is already an object, then an object type that corresponds to the given value will be returned. Otherwise, a new object will be returned.
 
-```javascript
+```js
 const isObject = (obj) => obj === Object(obj)
 
 isObject([1, 2, 3, 4]) // true
@@ -66,7 +66,7 @@ isObject(true) // false
 
 This snippet can be used to check if a value is not null and that its typeof is “object”.
 
-```javascript
+```js
 const isObjectLike = (val) => val !== null && typeof val === 'object'
 
 isObjectLike({}) // true
@@ -79,7 +79,7 @@ isObjectLike(null) // false
 
 This snippet checks whether a value is an object created by the Object constructor.
 
-```javascript
+```js
 const isPlainObject = (val) =>
   !!val && typeof val === 'object' && val.constructor === Object
 
@@ -91,7 +91,7 @@ isPlainObject(new Map()) // false
 
 This snippet compares two objects to determine if the first one contains the same property values as the second one.
 
-```javascript
+```js
 const matches = (obj, source) =>
   Object.keys(source).every(
     (key) => obj.hasOwnProperty(key) && obj[key] === source[key]
@@ -105,7 +105,7 @@ matches({ hair: 'long', beard: true }, { age: 25, hair: 'long', beard: true }) /
 
 This snippet can be used to create a shallow clone of an object.
 
-```javascript
+```js
 const shallowClone = (obj) => Object.assign({}, obj)
 
 const a = { x: true, y: 1 }
@@ -118,7 +118,7 @@ const b = shallowClone(a) // a !== b
 
 ##### Check if an object is empty
 
-```javascript
+```js
 const isEmpty = (obj) =>
   Reflect.ownKeys(obj).length === 0 && obj.constructor === Object
 ```

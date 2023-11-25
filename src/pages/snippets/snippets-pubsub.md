@@ -11,7 +11,7 @@ If you're not feeling like figure things out yourself use my framework agnostic 
 
 ...or use one of these...
 
-```javascript
+```js
 /*
  * Broadcaster © 2008 Tore Darell
  *
@@ -148,7 +148,7 @@ Broadcaster = function () {
 
 ---
 
-```javascript
+```js
 /**
  * The Publisher/Subscriber Pattern in JavaScript
  * From https://medium.com/better-programming/the-publisher-subscriber-pattern-in-javascript-2b31b7ea075a

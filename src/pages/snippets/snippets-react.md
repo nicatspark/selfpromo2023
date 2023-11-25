@@ -34,7 +34,7 @@ const [name, setName] = useReducer((_, value) => value, 'James')
 
 ##### Manually Re-render a Component
 
-```javascript
+```js
 const [, rerender] = useState()
 rerender({})
 //...or...
@@ -44,7 +44,7 @@ rerender()
 
 ##### Pass a Function to use useState
 
-```javascript
+```js
 const [count, setCount] = useState(0)
 setCount((c) => c + 1)
 
@@ -98,7 +98,7 @@ const element = // JSX
 
 ##### Cancellable fetch and clean up in react
 
-```javascript
+```js
 export default function User({ id }) {
   const [user, setUser] = useState(null)
 

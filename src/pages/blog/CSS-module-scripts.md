@@ -17,7 +17,7 @@ At the time of writing there is a [bug in Mozilla](https://bugzilla.mozilla.org/
 
 ##### Using CSS module scripts
 
-```javascript
+```js
 import sheet from './styles.css' assert { type: 'css' }
 document.adoptedStyleSheets = [sheet]
 shadowRoot.adoptedStyleSheets = [sheet]
@@ -37,7 +37,7 @@ CSS modules also have some of the same benefits as JavaScript modules.
 
 The `assert { type: 'css' }` part of the import statement is an [import assertion](https://v8.dev/features/import-assertions). This is required; without it, the import is treated as a normal JavaScript module import, and will fail if the imported file has a non-JavaScript MIME type.
 
-```javascript
+```js
 import sheet from './styles.css' // Failed to load module script:
 // Expected a JavaScript module
 // script but the server responded
@@ -48,7 +48,7 @@ import sheet from './styles.css' // Failed to load module script:
 
 You can also import a CSS module using dynamic import, with a new second parameter for the type: 'css' import assertion:
 
-```javascript
+```js
 const cssModule = await import('./style.css', {
   assert: { type: 'css' },
 })

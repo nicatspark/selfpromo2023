@@ -11,7 +11,7 @@ from [this Medium article](https://medium.com/better-programming/functional-prog
 
 ##### Instead of for loops
 
-```javascript
+```js
 const list1to100 = () => {
   return new Array(100).fill(null).map((x, i) => i + 1)
 }
@@ -23,7 +23,7 @@ Array(10)
 
 ##### Basic compose function
 
-```javascript
+```js
 const compose =
   (...fns) =>
   (x) =>
@@ -49,7 +49,7 @@ const pipe =
 
 ##### Use tap and Trace for debugging inside compose
 
-```javascript
+```js
 const tap = (f) => (x) => {
   f(x)
   return x
@@ -82,7 +82,7 @@ addSeparators: $1,000,000.00
 
 Use a container to encapsulate "side-effecty" operations.
 
-```javascript
+```js
 class Container {
   constructor(fn) {
     this.value = fn

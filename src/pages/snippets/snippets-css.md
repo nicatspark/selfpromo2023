@@ -36,10 +36,11 @@ pubDate: 'Jan 7 2023'
       left: 0;
       white-space: nowrap;
       transform: scale(0);
-      transition: transform var(--tooltip-transition) ease-out
-          var(--tooltip-transition-delay),
-        bottom var(--tooltip-transition) ease-out
-          var(--tooltip-transition-delay);
+      transition: transform var(--tooltip-transition) ease-out var(
+            --tooltip-transition-delay
+          ), bottom var(--tooltip-transition) ease-out var(
+            --tooltip-transition-delay
+          );
       pointer-events: none;
     }
     &::before {
@@ -53,26 +54,27 @@ pubDate: 'Jan 7 2023'
       border-right: 5px solid transparent;
       border-top: 5px solid var(--tooltip-bg);
       opacity: 0;
-      transition: transform var(--tooltip-transition) linear
-          var(--tooltip-delay),
-        opacity var(--tooltip-transition) linear var(--tooltip-delay);
+      transition: transform var(--tooltip-transition) linear var(
+            --tooltip-delay
+          ), opacity var(--tooltip-transition) linear var(--tooltip-delay);
       pointer-events: none;
     }
     &:hover {
       &::after {
         bottom: calc(100% + var(--tooltip-offset));
         transform: scale(1);
-        transition: transform var(--tooltip-transition) ease-out
-            var(--tooltip-delay),
-          bottom var(--tooltip-transition) ease-out var(--tooltip-delay);
+        transition: transform var(--tooltip-transition) ease-out var(
+              --tooltip-delay
+            ), bottom var(--tooltip-transition) ease-out var(--tooltip-delay);
       }
       &::before {
         transform: translateY(100%);
         opacity: 1;
-        transition: transform var(--tooltip-transition) linear
-            var(--tooltip-transition-delay),
-          opacity var(--tooltip-transition) linear
-            var(--tooltip-transition-delay);
+        transition: transform var(--tooltip-transition) linear var(
+              --tooltip-transition-delay
+            ), opacity var(--tooltip-transition) linear var(
+              --tooltip-transition-delay
+            );
       }
     }
   }
@@ -141,7 +143,7 @@ calc(14px + 8 * ((100vw - 500px)/1500))
 
 ##### Set multiple styles at once via javascript
 
-```javascript
+```js
 function setStylesOnElement(element, stylesObj) {
   // this wont work -> element.style = {...element.style, ...stylesObj};
   Object.assign(element.style, stylesObj)

@@ -13,7 +13,7 @@ The fetch request is awsome but you might be writing it wrong.
 
 You might think you catch all error with the catch clause but in reality you will only catch network error. All 404 and other specific error sent by the server will not automatically throw an error.
 
-```javascript
+```js
 fetch('/someapi')
     .then(res => res.json)
     .then(user => user)
@@ -22,7 +22,7 @@ fetch('/someapi')
 
 One option is too catch server error responses and throw it into en error.
 
-```javascript
+```js
 fetch("anything")
   .then(response => {
     if(!response.ok) {
@@ -39,7 +39,7 @@ fetch("anything")
 
 Another is to use a library like [`wretch`](https://www.npmjs.com/package/wretch)
 
-```javascript
+```js
 wretch('/someapi')
     .get()
     .badRequest(err => /* ... */)
@@ -53,7 +53,7 @@ wretch('/someapi')
 
 Another example
 
-```javascript
+```js
 wretch("anything")
   .get()
   .notFound(error => { /* ... */ })
@@ -65,7 +65,7 @@ wretch("anything")
 
 Or just for simplifying a post. Here we compare `fetch` here with `wretch` from their user docs
 
-```javascript
+```js
 fetch("endpoint", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
@@ -74,7 +74,7 @@ fetch("endpoint", {
 // Omitting the data retrieval and error management parts…
 ```
 
-```javascript
+```js
 wretch("endpoint")
   .post({ "hello": "world" })
   .res(response => /* ... */)

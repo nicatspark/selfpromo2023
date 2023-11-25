@@ -7,9 +7,9 @@ pubDate: 'Jan 7 2023'
 
 ##### Delay
 
-```javascript
+```js
 function delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 // Example
@@ -26,7 +26,7 @@ or just run a typescript-safe onliner, like this
 
 ##### Break Up a Long-Running Task
 
-```javascript
+```js
 function nextFrame() {
     const nextTick = requestAnimationFrame || setImmediate.
     return new Promise((res) => nextTick(() => res()))
@@ -46,7 +46,7 @@ async function longRunningTask(){
 
 ##### Add a Timeout Limit To Promise
 
-```javascript
+```js
 function addTimeoutToPromise(targetPromise, timeout) {
   let timeoutHandle
   const timeoutLimitPromise = new Promise((res, rej) => {
@@ -73,7 +73,7 @@ addTimeoutToPromise(delay(2000), 1000).catch((e) => console.error(e.message))
 
 ##### Complete promises in sequence
 
-```javascript
+```js
 function completeInSequence(promiseFactories: () => Promise<any>) {
   return promiseFactories.reduce(
     (chain, promiseFactory) => chain.then(() => promiseFactory()),
@@ -90,7 +90,7 @@ completeInSequence([
 
 ##### Complete Only N Promises Simultaneously
 
-```javascript
+```js
 function completePromisesInPool(
   promiseFactories: () => Promise<any>,
   maxPoolSize: number
