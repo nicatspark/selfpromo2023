@@ -156,3 +156,16 @@ function toPascalCase(string: string) {
 console.log(toCamelCase('Alpha-beta')) // alphaBeta
 console.log(toPascalCase(' aLLlpha-BETA eta')) // AlllphaBetaEta
 ```
+
+##### Parse string literal functions
+
+```js
+const a = sql`SELECT ${col} FROM users`
+console.log(a)
+
+function sql(str, ...values){
+  return values.reduce((s, v, i) => {
+    return return `${s}"${v}"${strs[i + 1]}`
+  }, strs[0])
+}
+```
