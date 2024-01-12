@@ -154,7 +154,7 @@ smoothScroll('#fooBar') // scrolls smoothly to the element with the id fooBar
 smoothScroll('.fooBar') // scrolls smoothly to the first element with a class of fooBar
 ```
 
-##### Start a css transition with js fairly synchronosly.
+##### Start a css transition with js fairly synchronosly
 
 But watchout, the new [web animation api](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) put this snippet in the legacy bin. Read my [intro article](http://localhost:3000/blog/we-animation-API).
 
@@ -235,4 +235,80 @@ observer.observe(targetNode, config)
 
 // Later, you can stop observing
 observer.disconnect()
+```
+
+or
+
+```html
+<div id="test">test</div>
+<button onclick="handleClick()">OK</button>
+
+<script>
+  const el = document.getElementById('test')
+  let n = 1
+  const observe = new MutationObserver((mutations) => {
+    console.log('attribute is changede', mutations)
+  })
+  observe.observe(el, {
+    attributes: true,
+  })
+  function handleClick() {
+    el.setAttribute('style', 'color: red')
+    el.setAttribute('data-name', n++)
+  }
+  setTimeout(() => {
+    observe.disconnect() // stop watch
+  }, 5000)
+</script>
+```
+
+##### Intersection observer example
+
+```html
+<style>
+  .item {
+    height: 350px;
+  }
+</style>
+
+<div class="container">
+  <div class="item" data-id="1">Invisible</div>
+  <div class="item" data-id="2">Invisible</div>
+  <div class="item" data-id="3">Invisible</div>
+</div>
+<script>
+  if (window?.IntersectionObserver) {
+    let items = [...document.getElementsByClassName('item')] // parses as a true array, also available Array.prototype.slice.call()
+    let io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((item) => {
+          item.target.innerHTML =
+            item.intersectionRatio === 1 // The display ratio of the element, when it is 1, it is completely visible, and when it is 0, it is completely invisible
+              ? `Element is fully visible`
+              : `Element is partially invisible`
+        })
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px',
+        threshold: 1, // The threshold is set to 1, and the callback function is triggered only when the ratio reaches 1
+      }
+    )
+    items.forEach((item) => io.observe(item))
+  }
+</script>
+```
+
+##### Preview images before upload
+
+```html
+<input type="file" name="" id="" />
+<img src="" alt="" />
+<script>
+  const getObjectURL = (file) => window.URL.createObjectURL(file)
+
+  document.querySelector('input').addEventListener('change', (event) => {
+    document.querySelector('img').src = getObjectURL(event.target.files[0])
+  })
+</script>
 ```
