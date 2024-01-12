@@ -918,3 +918,84 @@ rgbaToHex(255, 0, 127) //#ff007f
 ```
 
 ##### Color helpers: Convert hexadecimal to rgba
+
+Code missing here!! Fix me.
+
+##### Recursive function name decoupling
+
+```js
+// This is a basic Fibonacci sequence
+function fibonacci(n) {
+  const fn = arguments.callee
+  if (n <= 1) return 1
+  return fn(n - 1) + fn(n - 2)
+}
+```
+
+##### Image preloader
+
+```ts
+const preloader = (args: string[]) => args.map((src) => (new Image().src = src))
+
+const images = preloader(['1.png', '2.jpg'])
+```
+
+##### Use localStorage and sessionStorage in NextJS with this hook
+
+```js
+import { useState, useEffect } from 'react'
+import { isSsr } from '@/utils/isSsr'
+
+export const isSsr = typeof window === 'undefined'
+
+export const getStorage = (storage, key) => JSON.parse(storage.getItem(key))
+
+export const setStorage = (storage, key, newValue) =>
+  storage.setItem(key, JSON.stringify(newValue))
+
+const useStorage = (storageType, key, initialValue) => {
+  if (isSsr) return [initialValue]
+
+  const storageName = `${storageType}Storage`
+  const storage = window[storageName]
+
+  const [value, setValue] = useState(getStorage(storage, key) || initialValue)
+
+  useEffect(() => {
+    setStorage(storage, key, value)
+  }, [value])
+
+  return [value, setValue]
+}
+
+export default useStorage
+```
+
+Usage:
+
+```js
+const LOCAL_STORAGE_KEY = 'filters'
+const initialStateFilters = { isExpended: true }
+
+const [filters, setFilters] = useStorage(
+  'local',
+  LOCAL_STORAGE_KEY,
+  initialStateFilters
+)
+
+// The value
+const { isExpended } = filters
+
+// Setting the value
+const handleToggle = (newIsExpended) =>
+  setFilters({ ...filters, isExpended: newIsExpended })
+```
+
+##### Parse current CSS stylesheet
+
+```js
+const stylesheet = document.styleSheets[1]
+const boxParaRule = [...stylesheet.cssRules].find(
+  (r) => r.selectorText === '.box p'
+)
+```
