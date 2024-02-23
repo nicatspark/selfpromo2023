@@ -7,6 +7,8 @@ pubDate: 'Jan 6 2023'
 
 #### Expose localhost to internet
 
+**UPDATE** VS Code have now a [built in function](https://code.visualstudio.com/docs/editor/port-forwarding) that replaces Localtunnel
+
 [Localtunnel](https://localtunnel.github.io/www/) is an open-source project. It is necessary for your system to already have Node.js installed in order for you to be able to install it using npm using the following command:
 
 `npm install -g localtunnel`

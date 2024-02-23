@@ -7,7 +7,7 @@ pubDate: 'Jan 6 2023'
 
 [Much from this article](https://medium.com/better-programming/2020-007-the-facets-of-w3c-web-components-e76798ab7b29)
 
-### How to keep separation of concerns in web components.
+##### How to keep separation of concerns in web components.
 
 By calling this on connectedCallback we can load the HTML and CSS from separate files and thus keep our separation of concerns.
 
@@ -51,7 +51,7 @@ Then in parent code, refer the variables as this:
   }
 ```
 
-### Distribution Package.json
+###### Distribution Package.json
 
 ```js
 {
@@ -70,7 +70,7 @@ Then in parent code, refer the variables as this:
 }
 ```
 
-### Documentation
+###### Documentation
 
 The published readme file should have these sections:
 
@@ -88,7 +88,7 @@ The published readme file should have these sections:
 
 [Original article](https://daverupert.com/2022/04/7-web-component-tricks/)
 
-### 1. You can manipulate props right on a Lit element
+##### 1. You can manipulate props right on a Lit element
 
 This may be something only I would do, but if you make an element with Lit that exposes its properties, you can edit those props externally using querySelector.
 
@@ -101,7 +101,7 @@ myCounter.counter = 10
 </scrip>
 ```
 
-### 2. :host-context let’s you style an element based on its parent
+##### 2. :host-context let’s you style an element based on its parent
 
 You can use `:host-context()` to style an element based on its parent. Your HTML may look like this:
 
@@ -122,7 +122,7 @@ In your CSS inside the Web Component, you have something like this:
 
 [See Example](https://codepen.io/davatron5000/pen/jOYKKPN)
 
-### 3. Declarative ShadowDOM
+##### 3. Declarative ShadowDOM
 
 ```html
 <my-element>
@@ -136,7 +136,7 @@ Declarative Shadow DOM enables server-side rendering of Web Components, but one 
 
 [See Example](https://codepen.io/davatron5000/pen/PoEBezm)
 
-### 4. Open WC has a project starter
+##### 4. Open WC has a project starter
 
 If you’re looking for a `create-react-app` for Web Components, the folks at Open WC have you covered.
 
@@ -154,7 +154,7 @@ it('passes the a11y audit', async () => {
 
 Accessibility out of the box! Nice.
 
-### 5. You can “rebrand” other people’s components
+##### 5. You can “rebrand” other people’s components
 
 Want to mix and match components from different design systems but keep a consistent naming structure in your company? You can import a component and “rebrand” it or even add functionality.
 
@@ -168,7 +168,7 @@ class OurButton extends CoolButton {
 customElements.define('our-button', OurButton)
 ```
 
-### 6. The Open WC Publishing Guides are cool
+##### 6. The Open WC Publishing Guides are cool
 
 The OpenWC group also has some nice [community guidelines for publishing Web Components](https://open-wc.org/guides/developing-components/publishing/).
 
@@ -188,7 +188,7 @@ The OpenWC group also has some nice [community guidelines for publishing Web Com
 
 That’s helpful and hopefully provides a consistent experience, allowing for a consistent bundling story, and preventing weird footguns that might occur when trying to use other people’s Web Components in your project.
 
-### 7. You don’t need build tools until the very, very end
+##### 7. You don’t need build tools until the very, very end
 
 If you want to write Web Components, you can write vanilla web components and use ES Modules to join them together. You can use a web component library like Lit with an import statement pointed at skypack.dev or unpkg.com. It’s super handy to get started with zero tooling.
 
@@ -200,7 +200,7 @@ It’s only when going to production that you need tooling specific to your site
 
 ---
 
-### Get context from within a web component
+##### Get context from within a web component
 
 Sometimes you might want to do things differently depending on were your component lives.
 
@@ -250,3 +250,53 @@ which then lets you style it like
 ```
 
 _idea from [here](https://benfrain.com/getting-the-context-of-web-components-lit/)_
+
+##### Read global styles and apply in web component
+
+To read a global style sheet and let it apply to you shadow DOM styles you can use this helper.
+
+```js
+let globalSheets = null
+
+export function getGlobalStyleSheets() {
+  if (globalSheets === null) {
+    globalSheets = Array.from(document.styleSheets).map((x) => {
+      const sheet = new CSSStyleSheet()
+      const css = Array.from(x.cssRules)
+        .map((rule) => rule.cssText)
+        .join(' ')
+      sheet.replaceSync(css)
+      return sheet
+    })
+  }
+
+  return globalSheets
+}
+
+export function addGlobalStylesToShadowRoot(shadowRoot) {
+  shadowRoot.adoptedStyleSheets.push(...getGlobalStyleSheets())
+}
+```
+
+The style sheets we get from document.styleSheets are not “Constructible Style Sheet” instances, so we can’t directly use them with adoptedStyleSheets. No problem. We just create our own constructible style sheets from the css text of the document sheets.
+
+Add helper to a LIT component.
+
+```js
+import { ExistingLitElement } from './existing-lit-element.js'
+import { getGlobalStyleSheets } from './global-styles.js'
+
+// Lit
+ExistingLitElement.styles = [
+  ...getGlobalStyleSheets(),
+  ...(Array.isArray(ExistingLitElement.styles)
+    ? ExistingLitElement.styles
+    : ExistingLitElement.styles
+    ? [ExistingLitElement.styles]
+    : []),
+]
+
+customElements.define('existing-lit-element', ExistingLitElement)
+```
+
+Code from this [medium article](https://eisenbergeffect.medium.com/using-global-styles-in-shadow-dom-5b80e802e89d)
