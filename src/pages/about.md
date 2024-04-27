@@ -16,4 +16,6 @@ Throughout my career, I have had the opportunity to work in both large teams for
 
 Overall, I think my experience and passion for web development make me a valuable asset to any team.
 
-<a href='https://www.linkedin.com/in/nicolashervy/' class='fa fa-linkedin'></a>
+[linkedin](https://www.linkedin.com/in/nicolashervy/)
+
+<!-- <a href='https://www.linkedin.com/in/nicolashervy/' class='fa fa-linkedin'></a> -->
