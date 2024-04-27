@@ -228,10 +228,7 @@ initial([1, 2, 3]) // [1,2]'
 This snippet can be used to get an array with elements that are included in two other arrays.
 
 ```js
-const intersection = (a, b) => {
-  const s = new Set(b)
-  return a.filter((x) => s.has(x))
-}
+const intersection = (a, b) => a.filter((x) => [...new Set(s)].has(x))
 
 intersection([1, 2, 3], [4, 3, 2]) // [2, 3]
 ```
@@ -382,14 +379,36 @@ const foo = [1, 2, 3]
 shuffle(foo) // [2, 3, 1], foo = [1, 2, 3]
 ```
 
-##### Similarity
+##### Intersection 2
 
 This snippet can be used to return an array of elements that appear in two arrays.
 
 ```js
-const similarity = (arr, values) => arr.filter((v) => values.includes(v))
+const intersection = (arrA, arrB) => arrA.filter((x) => arrB.includes(x))
 
-similarity([1, 2, 3], [1, 2, 4]) // [1, 2]
+similarity([1, 2, 3], [1, 2, 4]) // ( (x) ) => [1, 2]
+```
+
+##### Difference left
+
+The difference will output the elements from array A that are not in the array B.
+
+```js
+const difference = arrA.filter((x) => !arrB.includes(x))
+
+difference([1, 2, 3, 5], [1, 2, 4]) // (x () ) => [5]
+```
+
+##### Symetrical Difference
+
+The difference will output the elements from array A that are not in the array B.
+
+```js
+const difference = arrA
+  .filter((x) => !arrB.includes(x))
+  .concat(arrB.filter((x) => !arrA.includes(x)))
+
+difference([1, 2, 3, 5], [1, 2, 4]) // (x () x) => [4, 5]
 ```
 
 ##### Sum
